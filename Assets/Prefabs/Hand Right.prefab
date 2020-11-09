@@ -788,7 +788,6 @@ GameObject:
   - component: {fileID: 573763192728940801}
   - component: {fileID: 573763192728940800}
   - component: {fileID: 573763192060454923}
-  - component: {fileID: 573763192728940863}
   - component: {fileID: 573763192728940803}
   m_Layer: 9
   m_Name: Hand Right
@@ -804,14 +803,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 573763192728940802}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0.05, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 573763192168743769}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!95 &573763192728940801
 Animator:
   serializedVersion: 3
@@ -843,6 +842,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcdba9caf664b1b47a57882aea8f9a8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 5
+  controller: {fileID: 0}
 --- !u!54 &573763192060454923
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -859,18 +860,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &573763192728940863
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 573763192728940802}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa7e21c36734a424bb0a8918ab12cdd1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &573763192728940803
 BoxCollider:
   m_ObjectHideFlags: 0
