@@ -23,12 +23,12 @@ public class HandAnimator : MonoBehaviour
         new Finger(FingerType.Thumb),
     };
 
-    private void Awake()
+    void Awake()
     {
         animator = GetComponent<Animator>();
     }
 
-    private void Update()
+    void Update()
     {
         if (controller.inputDevice.TryGetFeatureValue(CommonUsages.grip, out float gripValue))
         {
@@ -47,7 +47,7 @@ public class HandAnimator : MonoBehaviour
         AnimateFingers(gripFingers);
     }
 
-    private void SetFingerTargets(List<Finger> fingers, float value)
+    void SetFingerTargets(List<Finger> fingers, float value)
     {
         foreach(Finger finger in fingers)
         {
@@ -55,7 +55,7 @@ public class HandAnimator : MonoBehaviour
         }
     }
 
-    private void SmoothFinger(List<Finger> fingers)
+    void SmoothFinger(List<Finger> fingers)
     {
         foreach (Finger finger in fingers)
         {
@@ -64,7 +64,7 @@ public class HandAnimator : MonoBehaviour
         }
     }
 
-    private void AnimateFingers(List<Finger> fingers)
+    void AnimateFingers(List<Finger> fingers)
     {
         foreach (Finger finger in fingers)
         {

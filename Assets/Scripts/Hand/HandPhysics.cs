@@ -9,41 +9,41 @@ public class HandPhysics : MonoBehaviour
     private Vector3 targetPosition = Vector3.zero;
     private Quaternion targetRotation = Quaternion.identity;
 
-    private void Awake()
+    void Awake()
     {
         rigidBody = GetComponent<Rigidbody>();
     }
 
-    private void Start()
+    void Start()
     {
         TeleportToTarget();
     }
 
-    private void Update()
+    void Update()
     {
         SetTargetPosition();
         SetTargetRotation();
     }
 
-    private void SetTargetPosition()
-    {
-        float time = smoothing * Time.unscaledDeltaTime;
-        targetPosition = Vector3.Lerp(targetPosition, target.position, time);
-    }
-
-    private void SetTargetRotation()
-    {
-        float time = smoothing * Time.unscaledDeltaTime;
-        targetRotation = Quaternion.Slerp(targetRotation, target.rotation, time);
-    }
-
-    private void FixedUpdate()
+    void FixedUpdate()
     {
         MoveToController();
         RotateToController();
     }
 
-    private void MoveToController()
+    void SetTargetPosition()
+    {
+        float time = smoothing * Time.unscaledDeltaTime;
+        targetPosition = Vector3.Lerp(targetPosition, target.position, time);
+    }
+
+    void SetTargetRotation()
+    {
+        float time = smoothing * Time.unscaledDeltaTime;
+        targetRotation = Quaternion.Slerp(targetRotation, target.rotation, time);
+    }
+
+    void MoveToController()
     {
         Vector3 positionDelta = targetPosition - transform.position;
         rigidBody.velocity = Vector3.zero;
@@ -51,7 +51,7 @@ public class HandPhysics : MonoBehaviour
 
     }
 
-    private void RotateToController()
+    void RotateToController()
     {
         rigidBody.angularVelocity = Vector3.zero;
         rigidBody.MoveRotation(targetRotation);

@@ -8,31 +8,31 @@ public class HandHider : MonoBehaviour
     private HandPhysics handPhysics = null;
     private XRDirectInteractor interactor = null;
 
-    private void Awake()
+    void Awake()
     {
         handPhysics = handObject.GetComponent<HandPhysics>();
         interactor = GetComponent<XRDirectInteractor>();
     }
 
-    private void OnEnable()
+    void OnEnable()
     {
         interactor.onSelectEntered.AddListener(Hide);
         interactor.onSelectExited.AddListener(Show);
     }
 
-    private void OnDisable()
+    void OnDisable()
     {
         interactor.onSelectEntered.RemoveListener(Hide);
         interactor.onSelectExited.RemoveListener(Show);
     }
 
-    private void Show(XRBaseInteractable interactable)
+    void Show(XRBaseInteractable interactable)
     {
         handPhysics.TeleportToTarget();
         handObject.SetActive(true);
     }
 
-    private void Hide(XRBaseInteractable interactable)
+    void Hide(XRBaseInteractable interactable)
     {
         handObject.SetActive(false);
     }
