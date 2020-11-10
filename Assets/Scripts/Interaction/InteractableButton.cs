@@ -52,7 +52,7 @@ public class InteractableButton : XRBaseInteractable
     void StartPress(XRBaseInteractor interactor)
     {
         hoverInteractor = interactor;
-        previouseHandHeight = interactor.transform.position.y;
+        previouseHandHeight = GetLocalYPosition(interactor.transform.position);
     }
 
     void EndPress(XRBaseInteractor interactor)
@@ -66,7 +66,6 @@ public class InteractableButton : XRBaseInteractable
     void CheckPress()
     {
         bool inPosition = IsInPosition();
-
         if (inPosition && inPosition != previousePress)
         {
             OnPress.Invoke();
