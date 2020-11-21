@@ -6,6 +6,9 @@ using UnityEngine.EventSystems;
 
 public class VRInput : BaseInput
 {
+
+    public OVRInput.Button clickButton = OVRInput.Button.PrimaryIndexTrigger;
+
     // Start is called before the first frame update
     void Start()
     {
