@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 
 public class VRInput : BaseInput
 {
+    public Camera eventCamera;
 
     public OVRInput.Button clickButton = OVRInput.Button.PrimaryIndexTrigger;
 
