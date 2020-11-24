@@ -5,7 +5,7 @@ using UnityEngine;
 public class GunTurretLaser : MonoBehaviour
 {
 
-    public float defaultLength = 3.0f;
+    public float defaultLength = 15.0f;
     public GameObject hand;
 
     private LineRenderer lineRenderer;
