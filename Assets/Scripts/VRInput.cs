@@ -1,24 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
-
 
 public class VRInput : BaseInput
 {
     public Camera eventCamera;
 
-    public OVRInput.Button clickButton = OVRInput.Button.PrimaryIndexTrigger;
-
-    // Start is called before the first frame update
-    void Start()
+    protected override void Awake()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        GetComponent<BaseInputModule>().inputOverride = this;
     }
 }
