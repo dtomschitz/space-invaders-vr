@@ -154,8 +154,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enenmyPrefab: {fileID: 1127429720928874676, guid: 6ab2a551ea45dd34eb1e72191ef183db,
     type: 3}
-  center: {x: 0, y: 5, z: 15}
-  size: {x: 10, y: 10, z: 10}
+  center: {x: 0, y: 0.55, z: 8.58}
+  size: {x: 19.95, y: 1.02, z: 2.24}
 --- !u!4 &482903389
 Transform:
   m_ObjectHideFlags: 0
@@ -570,16 +570,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -4203428355859120683, guid: 6ab2a551ea45dd34eb1e72191ef183db,
-        type: 3}
-      propertyPath: m_Speed
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: -4203428355859120683, guid: 6ab2a551ea45dd34eb1e72191ef183db,
-        type: 3}
-      propertyPath: m_Acceleration
-      value: 0.23
-      objectReference: {fileID: 0}
     - target: {fileID: 355432488247405070, guid: 6ab2a551ea45dd34eb1e72191ef183db,
         type: 3}
       propertyPath: m_LocalPosition.x
