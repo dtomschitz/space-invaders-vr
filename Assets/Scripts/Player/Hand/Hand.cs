@@ -1,12 +1,16 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.XR;
-using UnityEngine.XR.Interaction.Toolkit;
 
-public class HandAnimator : MonoBehaviour
+public enum HandPosition
+{
+    LEFT,
+    RIGHT
+}
+
+public class Hand : MonoBehaviour
 {
     public float speed = 5.0f;
-    public XRController controller;
+    public HandPosition position;
 
     private Animator animator;
 
@@ -28,28 +32,32 @@ public class HandAnimator : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
+    void Start()
+    {
+        if (position == HandPosition.LEFT)
+        {
+            Player.instance.controls.OnLeftTriggerButton += value => SetFingerTargets(pointFingers, value);
+            Player.instance.controls.OnLeftGripButton += value => SetFingerTargets(gripFingers, value);
+        } else
+        {
+            Player.instance.controls.OnRightTriggerButton += value => SetFingerTargets(pointFingers, value);
+            Player.instance.controls.OnRightGripButton += value => SetFingerTargets(gripFingers, value);
+        }
+    }
+
     void Update()
     {
-        /*if (controller.inputDevice.TryGetFeatureValue(CommonUsages.grip, out float gripValue))
-        {
-            SetFingerTargets(gripFingers, gripValue);
-        }
-
-        if (controller.inputDevice.TryGetFeatureValue(CommonUsages.trigger, out float triggerValue))
-        {
-            SetFingerTargets(pointFingers, triggerValue);
-        }
-
         SmoothFinger(pointFingers);
         SmoothFinger(gripFingers);
 
         AnimateFingers(pointFingers);
-        AnimateFingers(gripFingers);*/
+        AnimateFingers(gripFingers);
     }
 
     void SetFingerTargets(List<Finger> fingers, float value)
     {
-        foreach(Finger finger in fingers)
+
+        foreach (Finger finger in fingers)
         {
             finger.target = value;
         }
@@ -70,5 +78,15 @@ public class HandAnimator : MonoBehaviour
         {
             animator.SetFloat(finger.type.ToString(), finger.current);
         }
+    }
+
+    public void Hide()
+    {
+        gameObject.SetActive(false);
+    }
+
+    public void Show()
+    {
+        gameObject.SetActive(true);
     }
 }

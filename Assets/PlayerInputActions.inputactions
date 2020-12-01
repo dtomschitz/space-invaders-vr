@@ -154,6 +154,22 @@
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Trigger",
+                    "type": "Value",
+                    "id": "3ac1b990-77df-4c08-8c81-97f59b0718df",
+                    "expectedControlType": "",
+                    "processors": "Normalize(max=1),Clamp(max=1)",
+                    "interactions": ""
+                },
+                {
+                    "name": "Grip",
+                    "type": "Value",
+                    "id": "c60efd91-6326-425e-90f9-36695c9db16b",
+                    "expectedControlType": "",
+                    "processors": "Normalize(max=1),Clamp(max=1)",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -332,6 +348,28 @@
                     "action": "Haptic Device",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fcdd3ea2-f422-4349-b7a6-db7009e2c7a4",
+                    "path": "<XRController>{LeftHand}/trigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Generic XR Controller",
+                    "action": "Trigger",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "dffc602c-7750-4cb4-a417-a897312354e0",
+                    "path": "<XRController>{LeftHand}/grip",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Generic XR Controller",
+                    "action": "Grip",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -345,6 +383,22 @@
                     "id": "c4990d70-7b8a-4ce1-b03c-da86716b8352",
                     "expectedControlType": "Vector3",
                     "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Grip",
+                    "type": "Value",
+                    "id": "d902fd7c-0185-46c0-b695-eadc7ac50d65",
+                    "expectedControlType": "",
+                    "processors": "Normalize(max=1),Clamp(max=1)",
+                    "interactions": ""
+                },
+                {
+                    "name": "Trigger",
+                    "type": "Value",
+                    "id": "247e0f2c-ca60-457e-b19b-c1fb2a7ee401",
+                    "expectedControlType": "",
+                    "processors": "Normalize(max=1),Clamp(max=1)",
                     "interactions": ""
                 },
                 {
@@ -607,6 +661,28 @@
                     "processors": "",
                     "groups": "Generic XR Controller",
                     "action": "Haptic Device",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1e6db6bb-a155-48d2-9ef0-2e59a07bcd96",
+                    "path": "<XRController>{RightHand}/trigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Generic XR Controller",
+                    "action": "Trigger",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "db7b6da1-018f-4b40-b760-15e8db080ca0",
+                    "path": "<XRController>{RightHand}/grip",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Generic XR Controller",
+                    "action": "Grip",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -802,10 +802,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8220382583221551341}
   - component: {fileID: 8220382583221551338}
-  - component: {fileID: 8220382583221551339}
   - component: {fileID: 8220382582513428222}
   - component: {fileID: 8220382583221551336}
-  - component: {fileID: 6736698970639287210}
+  - component: {fileID: 2874514819738576659}
   m_Layer: 9
   m_Name: Hand Left
   m_TagString: Untagged
@@ -847,20 +846,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &8220382583221551339
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8220382583221551337}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bcdba9caf664b1b47a57882aea8f9a8f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 5
-  controller: {fileID: 0}
 --- !u!54 &8220382582513428222
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -890,20 +875,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.1, y: 0.05, z: 0.15}
   m_Center: {x: -0.035, y: 0.04, z: 0}
---- !u!114 &6736698970639287210
+--- !u!114 &2874514819738576659
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8220382583221551337}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa7e21c36734a424bb0a8918ab12cdd1, type: 3}
+  m_Script: {fileID: 11500000, guid: ee246810b49060649aac8c25d186fda0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  smoothing: 15
-  target: {fileID: 0}
+  speed: 5
+  controller: {fileID: 0}
 --- !u!1 &8220382583237586019
 GameObject:
   m_ObjectHideFlags: 0

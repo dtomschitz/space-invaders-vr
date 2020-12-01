@@ -167,6 +167,22 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Trigger"",
+                    ""type"": ""Value"",
+                    ""id"": ""3ac1b990-77df-4c08-8c81-97f59b0718df"",
+                    ""expectedControlType"": """",
+                    ""processors"": ""Normalize(max=1),Clamp(max=1)"",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Grip"",
+                    ""type"": ""Value"",
+                    ""id"": ""c60efd91-6326-425e-90f9-36695c9db16b"",
+                    ""expectedControlType"": """",
+                    ""processors"": ""Normalize(max=1),Clamp(max=1)"",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -345,6 +361,28 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""action"": ""Haptic Device"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fcdd3ea2-f422-4349-b7a6-db7009e2c7a4"",
+                    ""path"": ""<XRController>{LeftHand}/trigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Generic XR Controller"",
+                    ""action"": ""Trigger"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""dffc602c-7750-4cb4-a417-a897312354e0"",
+                    ""path"": ""<XRController>{LeftHand}/grip"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Generic XR Controller"",
+                    ""action"": ""Grip"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -358,6 +396,22 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""id"": ""c4990d70-7b8a-4ce1-b03c-da86716b8352"",
                     ""expectedControlType"": ""Vector3"",
                     ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Grip"",
+                    ""type"": ""Value"",
+                    ""id"": ""d902fd7c-0185-46c0-b695-eadc7ac50d65"",
+                    ""expectedControlType"": """",
+                    ""processors"": ""Normalize(max=1),Clamp(max=1)"",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Trigger"",
+                    ""type"": ""Value"",
+                    ""id"": ""247e0f2c-ca60-457e-b19b-c1fb2a7ee401"",
+                    ""expectedControlType"": """",
+                    ""processors"": ""Normalize(max=1),Clamp(max=1)"",
                     ""interactions"": """"
                 },
                 {
@@ -622,6 +676,28 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""action"": ""Haptic Device"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1e6db6bb-a155-48d2-9ef0-2e59a07bcd96"",
+                    ""path"": ""<XRController>{RightHand}/trigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Generic XR Controller"",
+                    ""action"": ""Trigger"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""db7b6da1-018f-4b40-b760-15e8db080ca0"",
+                    ""path"": ""<XRController>{RightHand}/grip"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Generic XR Controller"",
+                    ""action"": ""Grip"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -706,9 +782,13 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
         m_LeftHand_Move = m_LeftHand.FindAction("Move", throwIfNotFound: true);
         m_LeftHand_RotateAnchor = m_LeftHand.FindAction("Rotate Anchor", throwIfNotFound: true);
         m_LeftHand_TranslateAnchor = m_LeftHand.FindAction("Translate Anchor", throwIfNotFound: true);
+        m_LeftHand_Trigger = m_LeftHand.FindAction("Trigger", throwIfNotFound: true);
+        m_LeftHand_Grip = m_LeftHand.FindAction("Grip", throwIfNotFound: true);
         // RightHand
         m_RightHand = asset.FindActionMap("RightHand", throwIfNotFound: true);
         m_RightHand_Position = m_RightHand.FindAction("Position", throwIfNotFound: true);
+        m_RightHand_Grip = m_RightHand.FindAction("Grip", throwIfNotFound: true);
+        m_RightHand_Trigger = m_RightHand.FindAction("Trigger", throwIfNotFound: true);
         m_RightHand_Rotation = m_RightHand.FindAction("Rotation", throwIfNotFound: true);
         m_RightHand_Select = m_RightHand.FindAction("Select", throwIfNotFound: true);
         m_RightHand_Activate = m_RightHand.FindAction("Activate", throwIfNotFound: true);
@@ -824,6 +904,8 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
     private readonly InputAction m_LeftHand_Move;
     private readonly InputAction m_LeftHand_RotateAnchor;
     private readonly InputAction m_LeftHand_TranslateAnchor;
+    private readonly InputAction m_LeftHand_Trigger;
+    private readonly InputAction m_LeftHand_Grip;
     public struct LeftHandActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -841,6 +923,8 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
         public InputAction @Move => m_Wrapper.m_LeftHand_Move;
         public InputAction @RotateAnchor => m_Wrapper.m_LeftHand_RotateAnchor;
         public InputAction @TranslateAnchor => m_Wrapper.m_LeftHand_TranslateAnchor;
+        public InputAction @Trigger => m_Wrapper.m_LeftHand_Trigger;
+        public InputAction @Grip => m_Wrapper.m_LeftHand_Grip;
         public InputActionMap Get() { return m_Wrapper.m_LeftHand; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -889,6 +973,12 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                 @TranslateAnchor.started -= m_Wrapper.m_LeftHandActionsCallbackInterface.OnTranslateAnchor;
                 @TranslateAnchor.performed -= m_Wrapper.m_LeftHandActionsCallbackInterface.OnTranslateAnchor;
                 @TranslateAnchor.canceled -= m_Wrapper.m_LeftHandActionsCallbackInterface.OnTranslateAnchor;
+                @Trigger.started -= m_Wrapper.m_LeftHandActionsCallbackInterface.OnTrigger;
+                @Trigger.performed -= m_Wrapper.m_LeftHandActionsCallbackInterface.OnTrigger;
+                @Trigger.canceled -= m_Wrapper.m_LeftHandActionsCallbackInterface.OnTrigger;
+                @Grip.started -= m_Wrapper.m_LeftHandActionsCallbackInterface.OnGrip;
+                @Grip.performed -= m_Wrapper.m_LeftHandActionsCallbackInterface.OnGrip;
+                @Grip.canceled -= m_Wrapper.m_LeftHandActionsCallbackInterface.OnGrip;
             }
             m_Wrapper.m_LeftHandActionsCallbackInterface = instance;
             if (instance != null)
@@ -932,6 +1022,12 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                 @TranslateAnchor.started += instance.OnTranslateAnchor;
                 @TranslateAnchor.performed += instance.OnTranslateAnchor;
                 @TranslateAnchor.canceled += instance.OnTranslateAnchor;
+                @Trigger.started += instance.OnTrigger;
+                @Trigger.performed += instance.OnTrigger;
+                @Trigger.canceled += instance.OnTrigger;
+                @Grip.started += instance.OnGrip;
+                @Grip.performed += instance.OnGrip;
+                @Grip.canceled += instance.OnGrip;
             }
         }
     }
@@ -941,6 +1037,8 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
     private readonly InputActionMap m_RightHand;
     private IRightHandActions m_RightHandActionsCallbackInterface;
     private readonly InputAction m_RightHand_Position;
+    private readonly InputAction m_RightHand_Grip;
+    private readonly InputAction m_RightHand_Trigger;
     private readonly InputAction m_RightHand_Rotation;
     private readonly InputAction m_RightHand_Select;
     private readonly InputAction m_RightHand_Activate;
@@ -958,6 +1056,8 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
         private @PlayerInputActions m_Wrapper;
         public RightHandActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Position => m_Wrapper.m_RightHand_Position;
+        public InputAction @Grip => m_Wrapper.m_RightHand_Grip;
+        public InputAction @Trigger => m_Wrapper.m_RightHand_Trigger;
         public InputAction @Rotation => m_Wrapper.m_RightHand_Rotation;
         public InputAction @Select => m_Wrapper.m_RightHand_Select;
         public InputAction @Activate => m_Wrapper.m_RightHand_Activate;
@@ -982,6 +1082,12 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                 @Position.started -= m_Wrapper.m_RightHandActionsCallbackInterface.OnPosition;
                 @Position.performed -= m_Wrapper.m_RightHandActionsCallbackInterface.OnPosition;
                 @Position.canceled -= m_Wrapper.m_RightHandActionsCallbackInterface.OnPosition;
+                @Grip.started -= m_Wrapper.m_RightHandActionsCallbackInterface.OnGrip;
+                @Grip.performed -= m_Wrapper.m_RightHandActionsCallbackInterface.OnGrip;
+                @Grip.canceled -= m_Wrapper.m_RightHandActionsCallbackInterface.OnGrip;
+                @Trigger.started -= m_Wrapper.m_RightHandActionsCallbackInterface.OnTrigger;
+                @Trigger.performed -= m_Wrapper.m_RightHandActionsCallbackInterface.OnTrigger;
+                @Trigger.canceled -= m_Wrapper.m_RightHandActionsCallbackInterface.OnTrigger;
                 @Rotation.started -= m_Wrapper.m_RightHandActionsCallbackInterface.OnRotation;
                 @Rotation.performed -= m_Wrapper.m_RightHandActionsCallbackInterface.OnRotation;
                 @Rotation.canceled -= m_Wrapper.m_RightHandActionsCallbackInterface.OnRotation;
@@ -1025,6 +1131,12 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                 @Position.started += instance.OnPosition;
                 @Position.performed += instance.OnPosition;
                 @Position.canceled += instance.OnPosition;
+                @Grip.started += instance.OnGrip;
+                @Grip.performed += instance.OnGrip;
+                @Grip.canceled += instance.OnGrip;
+                @Trigger.started += instance.OnTrigger;
+                @Trigger.performed += instance.OnTrigger;
+                @Trigger.canceled += instance.OnTrigger;
                 @Rotation.started += instance.OnRotation;
                 @Rotation.performed += instance.OnRotation;
                 @Rotation.canceled += instance.OnRotation;
@@ -1112,10 +1224,14 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnRotateAnchor(InputAction.CallbackContext context);
         void OnTranslateAnchor(InputAction.CallbackContext context);
+        void OnTrigger(InputAction.CallbackContext context);
+        void OnGrip(InputAction.CallbackContext context);
     }
     public interface IRightHandActions
     {
         void OnPosition(InputAction.CallbackContext context);
+        void OnGrip(InputAction.CallbackContext context);
+        void OnTrigger(InputAction.CallbackContext context);
         void OnRotation(InputAction.CallbackContext context);
         void OnSelect(InputAction.CallbackContext context);
         void OnActivate(InputAction.CallbackContext context);

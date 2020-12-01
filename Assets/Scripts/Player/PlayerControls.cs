@@ -6,10 +6,29 @@ public class PlayerControls : MonoBehaviour
 {
     public PlayerInputActions inputActions;
 
+    public delegate void LeftTriggerButton(float value);
+    public event LeftTriggerButton OnLeftTriggerButton;
+
+    public delegate void LeftGripButton(float value);
+    public event LeftGripButton OnLeftGripButton;
+
+    public delegate void LeftTriggerButtonPressed();
+    public event LeftTriggerButtonPressed OnLeftTriggerButtonPressed;
+
+    public delegate void RightTriggerButton(float value);
+    public event RightTriggerButton OnRightTriggerButton;
+
+    public delegate void RightGripButton(float value);
+    public event RightGripButton OnRightGripButton;
+
+    public delegate void RightTriggerButtonPressed();
+    public event RightTriggerButtonPressed OnRightTriggerButtonPressed;
+
     void Awake()
     {
         inputActions = new PlayerInputActions();
-        inputActions.LeftHand.Activate.performed += TriggerButtonAction;
+        InitializeLeftHandActions();
+        InitializeRightHandActions();
     }
 
     void OnEnable()
@@ -22,10 +41,18 @@ public class PlayerControls : MonoBehaviour
         inputActions.Disable();
     }
 
-
-    void TriggerButtonAction(CallbackContext ctx) 
+    void InitializeLeftHandActions()
     {
-        Debug.Log("SHooT");
+        inputActions.LeftHand.Activate.performed += ctx => OnLeftTriggerButtonPressed?.Invoke();
+        inputActions.LeftHand.Trigger.performed += ctx => OnLeftTriggerButton?.Invoke(ctx.ReadValue<float>());
+        inputActions.LeftHand.Grip.performed += ctx => OnLeftGripButton?.Invoke(ctx.ReadValue<float>());
+    }
+
+    void InitializeRightHandActions()
+    {
+        inputActions.RightHand.Activate.performed += ctx => OnRightTriggerButtonPressed?.Invoke();
+        inputActions.RightHand.Trigger.performed += ctx => OnRightTriggerButton?.Invoke(ctx.ReadValue<float>());
+        inputActions.RightHand.Grip.performed += ctx => OnRightGripButton?.Invoke(ctx.ReadValue<float>());
     }
 
     void PauseGame(CallbackContext ctx)
