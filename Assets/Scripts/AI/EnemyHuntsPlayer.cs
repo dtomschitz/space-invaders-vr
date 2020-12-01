@@ -39,7 +39,7 @@ public class EnemyHuntsPlayer : MonoBehaviour
 
     private void ChasePlayer()
     {
-        agent.SetDestination(player.position);
+        agent.Warp(player.position);
     }
 
     private void AttackPlayer()

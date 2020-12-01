@@ -11,17 +11,19 @@ public class SpawnObject : MonoBehaviour
     public Vector3 size;
 
     // Start is called before the first frame update
-    void Start()
+    /* void Start()
     {
         SpawnEnemy();
-    }
+    } /
 
     // Update is called once per frame
-    void Update()
+   /* void Update()
     {
-        if (Input.GetKey(KeyCode.Q))
+        for (int i = 0; i < 5; i++)
+        {
             SpawnEnemy();
-    }
+        }
+    } */
 
     public void SpawnEnemy()
     {
