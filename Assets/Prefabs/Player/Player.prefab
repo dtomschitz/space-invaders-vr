@@ -10,8 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 8077666526225647212}
   - component: {fileID: 8077666526225647213}
+  - component: {fileID: 7882183512152379933}
+  - component: {fileID: 6286108221572578430}
+  - component: {fileID: 7688673265735176630}
   m_Layer: 0
-  m_Name: XR Rig
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -50,6 +53,48 @@ MonoBehaviour:
   m_TrackingOriginMode: 2
   m_TrackingSpace: 3
   m_CameraYOffset: 1.36144
+--- !u!114 &7882183512152379933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8077666526225647210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 417276ecabf5adf4ea392bb9f27f7692, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats: {fileID: 0}
+  combat: {fileID: 0}
+--- !u!114 &6286108221572578430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8077666526225647210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae356a99f1612d94fb649e73c97faaf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shieldRegenerationAmount: 0
+  shieldRegenerationSpeed: 0
+--- !u!114 &7688673265735176630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8077666526225647210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e05e66e0d78a4134da4369748df3f7ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  damage: 20
 --- !u!1 &8077666526457096861
 GameObject:
   m_ObjectHideFlags: 0

@@ -50,4 +50,8 @@ public class GameState : MonoBehaviour
         }
     }
 
+    public bool IsInGame
+    {
+        get { return State == GameStateType.InGame || State == GameStateType.TargetAcquisition; }
+    }
 }

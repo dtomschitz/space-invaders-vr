@@ -3,16 +3,12 @@
 public class GunTurretLaser : MonoBehaviour
 {
     public float defaultLength = 15.0f;
-    public string tag;
+    public string layerName;
 
-    public Material defaultMaterial;
-    public Material highlightMaterial;
-
-    // public GameObject dot;
     public GameObject hand;
+    public GameObject dot;
 
     private LineRenderer lineRenderer;
-
 
     void Awake()
     {
@@ -21,16 +17,14 @@ public class GunTurretLaser : MonoBehaviour
 
     void Update()
     {
-
         RaycastHit hit = CreateForwardRaycast();
-        Vector3 endPosition = transform.position + (this.hand.transform.forward * defaultLength);
+        Vector3 endPosition = transform.position + (hand.transform.forward * defaultLength);
 
-        if (hit.collider != null)
+        if (hit.collider)
         {
             endPosition = hit.point;
+            Debug.Log("Hit " + hit.transform.tag);
         }
-
-       //  SetDotPosition(endPosition);
 
         lineRenderer.SetPosition(0, transform.position);
         lineRenderer.SetPosition(1, endPosition);
@@ -38,16 +32,10 @@ public class GunTurretLaser : MonoBehaviour
 
     private RaycastHit CreateForwardRaycast()
     {
-        Ray ray = new Ray(transform.position, this.hand.transform.forward);
+        Ray ray = new Ray(transform.position, hand.transform.forward);
         Physics.Raycast(ray, out RaycastHit hit, defaultLength);
 
         return hit;
-    }
-
-    private void SetDotPosition(Vector3 position)
-    {
-      //  dot.transform.position = position;
-
     }
 }
 
