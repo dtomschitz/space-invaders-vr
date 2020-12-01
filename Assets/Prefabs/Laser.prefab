@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 5267219257076734736}
   - component: {fileID: 5267219257076734764}
   - component: {fileID: 5267219257076734738}
-  - component: {fileID: -3965766395976658872}
   - component: {fileID: 5267219257076734739}
   m_Layer: 0
   m_Name: Laser
@@ -175,22 +174,6 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
---- !u!114 &-3965766395976658872
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5267219257076734737}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c49b4cc203aa6414fae5c798d1d0e7d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EventMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_MaxRayIntersections: 0
 --- !u!114 &5267219257076734739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -204,6 +187,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultLength: 15
-  layerName: 
+  tag: Enemy
   hand: {fileID: 0}
   dot: {fileID: 0}

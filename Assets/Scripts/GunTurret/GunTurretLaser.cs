@@ -3,7 +3,7 @@
 public class GunTurretLaser : MonoBehaviour
 {
     public float defaultLength = 15.0f;
-    public string layerName;
+    public string enemyTag;
 
     public GameObject hand;
     public GameObject dot;
@@ -22,8 +22,12 @@ public class GunTurretLaser : MonoBehaviour
 
         if (hit.collider)
         {
+            if (hit.collider.tag == enemyTag)
+            {
+                Debug.Log("Hit " + hit.transform.tag);
+            }
+
             endPosition = hit.point;
-            Debug.Log("Hit " + hit.transform.tag);
         }
 
         lineRenderer.SetPosition(0, transform.position);

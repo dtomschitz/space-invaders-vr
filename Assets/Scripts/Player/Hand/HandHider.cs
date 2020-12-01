@@ -5,12 +5,10 @@ public class HandHider : MonoBehaviour
 {
     public GameObject handObject = null;
 
-    private HandPhysics handPhysics = null;
     private XRDirectInteractor interactor = null;
 
     void Awake()
     {
-        handPhysics = handObject.GetComponent<HandPhysics>();
         interactor = GetComponent<XRDirectInteractor>();
     }
 
@@ -28,7 +26,6 @@ public class HandHider : MonoBehaviour
 
     void Show(XRBaseInteractable interactable)
     {
-        handPhysics.TeleportToTarget();
         handObject.SetActive(true);
     }
 

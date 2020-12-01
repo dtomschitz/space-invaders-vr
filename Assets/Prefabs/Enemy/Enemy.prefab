@@ -11,10 +11,9 @@ GameObject:
   - component: {fileID: 355432488247405070}
   - component: {fileID: 3693343542657263019}
   - component: {fileID: 1487757067753181537}
-  - component: {fileID: -7756062370878489358}
   - component: {fileID: 5173182339282295218}
   - component: {fileID: 4500881059683670953}
-  - component: {fileID: 2873735969771150466}
+  - component: {fileID: -7756062370878489358}
   - component: {fileID: 5742012470646228225}
   - component: {fileID: 4364347624682269291}
   m_Layer: 0
@@ -87,22 +86,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &-7756062370878489358
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1127429720928874676}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 528d4a94210079641af862549d17859e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stats: {fileID: 0}
-  combat: {fileID: 0}
-  defaultMaterial: {fileID: 2100000, guid: bd0bb729cb6159b4ab21c5f62cad24ee, type: 3}
-  highlightMaterial: {fileID: 2100000, guid: 669025377795b574da66d9bb2472fcab, type: 2}
 --- !u!135 &5173182339282295218
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -132,7 +115,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &2873735969771150466
+--- !u!114 &-7756062370878489358
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -144,10 +127,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 528d4a94210079641af862549d17859e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 0}
-  combat: {fileID: 0}
-  defaultMaterial: {fileID: 0}
-  highlightMaterial: {fileID: 0}
+  stats: {fileID: 5742012470646228225}
+  combat: {fileID: 4364347624682269291}
+  defaultMaterial: {fileID: 2100000, guid: bd0bb729cb6159b4ab21c5f62cad24ee, type: 3}
+  highlightMaterial: {fileID: 2100000, guid: 669025377795b574da66d9bb2472fcab, type: 2}
 --- !u!114 &5742012470646228225
 MonoBehaviour:
   m_ObjectHideFlags: 0

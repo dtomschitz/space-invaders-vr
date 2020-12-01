@@ -30,7 +30,7 @@ public class HandAnimator : MonoBehaviour
 
     void Update()
     {
-        if (controller.inputDevice.TryGetFeatureValue(CommonUsages.grip, out float gripValue))
+        /*if (controller.inputDevice.TryGetFeatureValue(CommonUsages.grip, out float gripValue))
         {
             SetFingerTargets(gripFingers, gripValue);
         }
@@ -44,7 +44,7 @@ public class HandAnimator : MonoBehaviour
         SmoothFinger(gripFingers);
 
         AnimateFingers(pointFingers);
-        AnimateFingers(gripFingers);
+        AnimateFingers(gripFingers);*/
     }
 
     void SetFingerTargets(List<Finger> fingers, float value)

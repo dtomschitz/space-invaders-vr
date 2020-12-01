@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8077666526225647212}
   - component: {fileID: 8077666526225647213}
   - component: {fileID: 7882183512152379933}
+  - component: {fileID: -7130818476468835419}
   - component: {fileID: 6286108221572578430}
   - component: {fileID: 7688673265735176630}
   m_Layer: 0
@@ -65,8 +66,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 417276ecabf5adf4ea392bb9f27f7692, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 0}
-  combat: {fileID: 0}
+  stats: {fileID: 7688673265735176630}
+  combat: {fileID: 6286108221572578430}
+--- !u!114 &-7130818476468835419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8077666526225647210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e97990dabc230944694470c7dc95ac9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &6286108221572578430
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -710,6 +723,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8220382583221551340, guid: 50b0ad0913843dc4f820aae6010fc65f, type: 3}
+    - {fileID: 6736698970639287210, guid: 50b0ad0913843dc4f820aae6010fc65f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 50b0ad0913843dc4f820aae6010fc65f, type: 3}
 --- !u!1 &8077666528157223489 stripped
 GameObject:
@@ -815,7 +829,8 @@ PrefabInstance:
       propertyPath: handObject
       value: 
       objectReference: {fileID: 8077666526624050733}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1494499903529623033, guid: 142de5c27643e9a4fa3f29573aedd1f9, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 142de5c27643e9a4fa3f29573aedd1f9, type: 3}
 --- !u!1 &8077666526624050733 stripped
 GameObject:
