@@ -14,10 +14,10 @@ public class SpawnObject : MonoBehaviour
     /* void Start()
     {
         SpawnEnemy();
-    } /
+    } 
 
     // Update is called once per frame
-   /* void Update()
+    void Update()
     {
         for (int i = 0; i < 5; i++)
         {
