@@ -11,7 +11,7 @@ public class SpawnObject : MonoBehaviour
     public Vector3 size;
 
     // Start is called before the first frame update
-    /* void Start()
+    void Start()
     {
         SpawnEnemy();
     } 
@@ -23,7 +23,7 @@ public class SpawnObject : MonoBehaviour
         {
             SpawnEnemy();
         }
-    } */
+    } 
 
     public void SpawnEnemy()
     {

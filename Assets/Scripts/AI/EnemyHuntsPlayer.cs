@@ -21,7 +21,7 @@ public class EnemyHuntsPlayer : MonoBehaviour
 
     private void Awake()
     {
-        player = GameObject.Find("Player").transform;
+        player = GameObject.Find("Body").transform;
         agent = GetComponent<NavMeshAgent>();
     }
 
