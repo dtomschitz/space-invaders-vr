@@ -13,17 +13,17 @@ public class SpawnObject : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SpawnEnemy();
-    } 
-
-    // Update is called once per frame
-    void Update()
-    {
         for (int i = 0; i < 5; i++)
         {
             SpawnEnemy();
         }
     } 
+
+    // Update is called once per frame
+    /* void Update()
+    {
+       
+    } */
 
     public void SpawnEnemy()
     {
