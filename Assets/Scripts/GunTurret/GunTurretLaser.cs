@@ -18,7 +18,7 @@ public class GunTurretLaser : MonoBehaviour
     void Update()
     {
         RaycastHit hit = CreateForwardRaycast();
-        Vector3 endPosition = transform.position + (hand.transform.forward * defaultLength);
+        Vector3 endPosition = hand.transform.position + (hand.transform.forward * defaultLength);
 
         if (hit.collider)
         {
@@ -32,6 +32,7 @@ public class GunTurretLaser : MonoBehaviour
 
         lineRenderer.SetPosition(0, transform.position);
         lineRenderer.SetPosition(1, endPosition);
+        dot.transform.position = endPosition;
     }
 
     private RaycastHit CreateForwardRaycast()

@@ -22,7 +22,7 @@ public class GameState : MonoBehaviour
 
     #endregion
 
-    public GameStateType State { get; protected set; } = GameStateType.InGame;
+    public GameStateType State { get; protected set; } = GameStateType.TargetAcquisition;
 
     public void SetState(GameStateType newState)
     {
