@@ -34,9 +34,18 @@ public class GunTurret : MonoBehaviour
     void OnShoot()
     {
         if (GameState.instance.IsInTargetAcquisition)
-        {
-            Projectile projectile = Instantiate(projectilePrefab, firePoint.transform.position, Quaternion.identity);
-            projectile.transform.localRotation = firePoint.transform.rotation;
+        {   
+            if (muzzlePrefab != null)
+            {
+                GameObject muzzleFlash = Instantiate(muzzlePrefab, firePoint.transform.position, Quaternion.identity);
+                Destroy(muzzleFlash, 3f);
+            }
+
+            if (projectilePrefab != null)
+            {
+                Projectile projectile = Instantiate(projectilePrefab, firePoint.transform.position, Quaternion.identity);
+                projectile.transform.localRotation = firePoint.transform.rotation;
+            }
         }
     }
 }

@@ -210,7 +210,8 @@ MonoBehaviour:
   defaultLength: 0
   projectilePrefab: {fileID: 4705605870948186941, guid: 58c9b7eb56fa8ec4286c547fabaedad3,
     type: 3}
-  muzzlePrefab: {fileID: 0}
+  muzzlePrefab: {fileID: 1073392105364942, guid: 63954ca44c170254dbc6886640a04fc0,
+    type: 3}
   laser: {fileID: 1220956958151774586}
   hand: {fileID: 0}
   firePoint: {fileID: 6007045584605479999}
