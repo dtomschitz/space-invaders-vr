@@ -16,24 +16,21 @@ public class Enemy : Entity
 
     public EnemyState State { get; protected set; }
 
-
-    private Player player;
-    private PlayerCombat playerCombat;
     protected override void Start()
     {
         base.Start();
-
-        player = Player.instance;
-        playerCombat = player.combat as PlayerCombat;
         State = EnemyState.Seek;
     }
 
     public override void OnDeath()
     {
         base.OnDeath();
-        GetComponent<CapsuleCollider>().enabled = false;
-        playerCombat.AddShieldPower(10f);
+        GetComponent<SphereCollider>().enabled = false;
+        (Player.instance.combat as PlayerCombat).AddShieldPower(10f);
         Statistics.instance.AddKill();
-        Destroy(gameObject, 2f);
+
+        //TODO: Add Explosion
+
+        Destroy(gameObject, 1f);
     }
 }

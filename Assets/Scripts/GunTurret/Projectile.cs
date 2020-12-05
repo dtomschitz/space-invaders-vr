@@ -19,11 +19,9 @@ public class Projectile : MonoBehaviour
         {
             ContactPoint contact = collision.contacts[0];
             Quaternion rotation = Quaternion.FromToRotation(Vector3.up, contact.normal);
-            Vector3 position = contact.point;
-            Instantiate(hitPrefab, position, rotation);
+            GameObject hit = Instantiate(hitPrefab, contact.point, rotation);
+            Destroy(hit, 3f);
         }
-
-        Debug.Log("Dadwd");
 
         if (collision.gameObject.tag == "Enemy")
         {

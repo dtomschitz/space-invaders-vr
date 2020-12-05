@@ -28,7 +28,6 @@ public class GunTurret : MonoBehaviour
 
     void Update()
     {
-        //gameObject.transform.localRotation = Quaternion.Lerp(gameObject.transform.rotation, rotation, 1);
         gameObject.transform.LookAt(laser.dot.transform);
     }
 
