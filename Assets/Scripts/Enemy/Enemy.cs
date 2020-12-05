@@ -19,11 +19,6 @@ public class Enemy : Entity
 
     private Player player;
     private PlayerCombat playerCombat;
-    private GameObject playerObject;
-
-    private MeshRenderer meshRenderer;
-
-    // Start is called before the first frame update
     protected override void Start()
     {
         base.Start();
@@ -31,21 +26,6 @@ public class Enemy : Entity
         player = Player.instance;
         playerCombat = player.combat as PlayerCombat;
         State = EnemyState.Seek;
-
-
-        this.meshRenderer = GetComponent<MeshRenderer>();
-    }
-
-    void OnTriggerEnter(Collider other)
-    {
-        Debug.Log("Enter");
-        meshRenderer.material = highlightMaterial;
-    }
-
-    void OnTriggerExit(Collider other)
-    {
-        Debug.Log("Exit");
-        meshRenderer.material = defaultMaterial;
     }
 
     public override void OnDeath()

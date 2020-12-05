@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class GunTurretLaser : MonoBehaviour
 {
@@ -7,6 +8,7 @@ public class GunTurretLaser : MonoBehaviour
 
     public GameObject hand;
     public GameObject dot;
+    public XRRayInteractor rayInteractor;
 
     private LineRenderer lineRenderer;
 
@@ -17,7 +19,7 @@ public class GunTurretLaser : MonoBehaviour
 
     void Update()
     {
-        RaycastHit hit = CreateForwardRaycast();
+        rayInteractor.GetCurrentRaycastHit(out RaycastHit hit) ;
         Vector3 endPosition = hand.transform.position + (hand.transform.forward * defaultLength);
 
         if (hit.collider)

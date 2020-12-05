@@ -23,6 +23,17 @@ public class Projectile : MonoBehaviour
             Instantiate(hitPrefab, position, rotation);
         }
 
+        Debug.Log("Dadwd");
+
+        if (collision.gameObject.tag == "Enemy")
+        {
+            Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+            if (enemy != null)
+            {
+                Player.instance.combat.Attack(enemy.stats);
+            }
+        }
+
         Destroy(gameObject);
     }
 }

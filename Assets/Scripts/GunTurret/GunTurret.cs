@@ -23,7 +23,6 @@ public class GunTurret : MonoBehaviour
         else
         {
             Player.instance.controls.OnRightTriggerButtonPressed += OnShoot;
-            Debug.Log("Right");
         }
     }
 
@@ -35,13 +34,10 @@ public class GunTurret : MonoBehaviour
 
     void OnShoot()
     {
-
-        Debug.Log("Dwe");
-
         if (GameState.instance.IsInTargetAcquisition)
         {
-            Debug.Log("Shoot");
             Projectile projectile = Instantiate(projectilePrefab, firePoint.transform.position, Quaternion.identity);
+            projectile.transform.localRotation = firePoint.transform.rotation;
         }
     }
 }

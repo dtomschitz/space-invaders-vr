@@ -208,7 +208,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turretPosition: 0
   defaultLength: 0
-  projectilePrefab: {fileID: 6616191785547793116, guid: 58c9b7eb56fa8ec4286c547fabaedad3,
+  projectilePrefab: {fileID: 4705605870948186941, guid: 58c9b7eb56fa8ec4286c547fabaedad3,
     type: 3}
   muzzlePrefab: {fileID: 0}
   laser: {fileID: 1220956958151774586}
@@ -237,13 +237,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6007045584605479999}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.564}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 175258699575147358}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1001 &6478808372933708393
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -310,6 +310,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Laser
+      objectReference: {fileID: 0}
+    - target: {fileID: 5267219257076734739, guid: 041bc15813172834594eb682ce203e53,
+        type: 3}
+      propertyPath: defaultLength
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 041bc15813172834594eb682ce203e53, type: 3}
