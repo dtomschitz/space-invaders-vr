@@ -20,6 +20,7 @@ public class EntityStats : MonoBehaviour
 
     protected virtual void Start()
     {
+        this.CurrentHealth = maxHealth;
     }
 
 
@@ -33,9 +34,16 @@ public class EntityStats : MonoBehaviour
     /// <param name="item">The item with which the damage where dealed.</param>
     public virtual void Damage(float damage)
     {
+        Debug.Log(damage);
         damage = Mathf.Clamp(damage, 0, maxHealth);
+        Debug.Log(damage);
+
+        Debug.Log(CurrentHealth);
+
         CurrentHealth -= damage;
         OnDamaged?.Invoke(damage);
+
+        Debug.Log(CurrentHealth);
 
         if (IsDead) OnDeath?.Invoke();
     }
