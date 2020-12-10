@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -27,19 +28,31 @@ public class EnemyHuntsPlayer : MonoBehaviour
 
     private void Update()
     {
+        if(transform.position.z <= 0){
+            Destroy(agent.gameObject);
+        }
         //Check for attack range
-        playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
+        transform.LookAt(player.position);
+        print(Vector3.Distance(player.position, transform.position));
+        playerInAttackRange = (Vector3.Distance(player.position, transform.position)<= attackRange);
 
         if(playerInAttackRange)
         {
+            agent.speed = 0;
             AttackPlayer();
+        }else{
+            agent.speed = 10;
+            ChaseEntity(player.position);
         }
-        ChasePlayer();
+        
+        
+
     }
 
-    private void ChasePlayer()
+   
+    private void ChaseEntity(Vector3 position)
     {
-        agent.Warp(player.position);
+        agent.SetDestination(position);
     }
 
     private void AttackPlayer()
@@ -64,3 +77,4 @@ public class EnemyHuntsPlayer : MonoBehaviour
     }
 
 }
+

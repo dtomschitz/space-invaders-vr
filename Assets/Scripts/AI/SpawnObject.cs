@@ -28,7 +28,7 @@ public class SpawnObject : MonoBehaviour
     public void SpawnEnemy()
     {
         Vector3  pos = center + new Vector3(Random.Range(-size.x / 2, size.x / 2), Random.Range(-size.y / 2, size.y / 2), Random.Range(-size.z / 2, size.z / 2));
-
+        
         Instantiate(enenmyPrefab, pos, Quaternion.identity);
     }
 
