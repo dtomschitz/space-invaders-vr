@@ -3,8 +3,7 @@
 public class Projectile : MonoBehaviour
 {
     public float speed;
-
-    public GameObject hitPrefab;
+    public GameObject[] hitPrefabs;
 
     void Update()
     {
@@ -15,13 +14,15 @@ public class Projectile : MonoBehaviour
     {
         speed = 0;
 
-        if (hitPrefab)
+        if (hitPrefabs?.Length != 0)
         {
+            GameObject hitPrefab = hitPrefabs[Random.Range(0, hitPrefabs.Length)];
             ContactPoint contact = collision.contacts[0];
             Quaternion rotation = Quaternion.FromToRotation(Vector3.up, contact.normal);
             GameObject hit = Instantiate(hitPrefab, contact.point, rotation);
             Destroy(hit, 3f);
         }
+        
 
         if (collision.gameObject.tag == "Enemy")
         {

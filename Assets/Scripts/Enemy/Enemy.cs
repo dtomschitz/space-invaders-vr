@@ -14,6 +14,9 @@ public class Enemy : Entity
     public Material defaultMaterial;
     public Material highlightMaterial;
 
+    [Header("Explosion")]
+    public GameObject explosionPrefab;
+
     public EnemyState State { get; protected set; }
 
     protected override void Start()
@@ -29,8 +32,14 @@ public class Enemy : Entity
         (Player.instance.combat as PlayerCombat).AddShieldPower(10f);
         Statistics.instance.AddKill();
 
-        //TODO: Add Explosion
+        ShowExplosion();
 
-        Destroy(gameObject, 1f);
+        Destroy(gameObject);
+    }
+
+    private void ShowExplosion()
+    {
+        GameObject hit = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+        Destroy(hit, 3f);
     }
 }

@@ -101,6 +101,7 @@ MonoBehaviour:
   combat: {fileID: 4364347624682269291}
   defaultMaterial: {fileID: 2100000, guid: bd0bb729cb6159b4ab21c5f62cad24ee, type: 3}
   highlightMaterial: {fileID: 2100000, guid: 669025377795b574da66d9bb2472fcab, type: 2}
+  explosionPrefab: {fileID: 100006, guid: a49596ebf788acd4ab1281bffea444b1, type: 3}
 --- !u!114 &5742012470646228225
 MonoBehaviour:
   m_ObjectHideFlags: 0
