@@ -36,14 +36,6 @@ public class GunTurretLaser : MonoBehaviour
         lineRenderer.SetPosition(1, endPosition);
         dot.transform.position = endPosition;
     }
-
-    private RaycastHit CreateForwardRaycast()
-    {
-        Ray ray = new Ray(transform.position, hand.transform.forward);
-        Physics.Raycast(ray, out RaycastHit hit, defaultLength);
-
-        return hit;
-    }
 }
 
 

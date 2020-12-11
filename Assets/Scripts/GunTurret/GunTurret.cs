@@ -4,6 +4,8 @@ public class GunTurret : MonoBehaviour
 {
     public GunTurretPosition turretPosition;
     public float defaultLength;
+    
+    public float minY;
 
     [Header("Prefabs")]
     public Projectile projectilePrefab;
@@ -28,7 +30,11 @@ public class GunTurret : MonoBehaviour
 
     void Update()
     {
-        gameObject.transform.LookAt(laser.dot.transform);
+        float dotY = laser.dot.transform.position.y;
+        if (dotY > minY)
+        {
+            gameObject.transform.LookAt(laser.dot.transform);
+        }
     }
 
     void OnShoot()
