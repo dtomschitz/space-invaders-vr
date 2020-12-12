@@ -10,7 +10,7 @@ public class GunTurretLaser : MonoBehaviour
     public GameObject dot;
     public XRRayInteractor rayInteractor;
 
-    private LineRenderer lineRenderer;
+    LineRenderer lineRenderer;
 
     void Awake()
     {

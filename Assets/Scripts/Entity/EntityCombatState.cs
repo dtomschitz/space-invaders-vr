@@ -2,5 +2,4 @@
 {
     Idle,
     Shooting,
-    Blocking
 }

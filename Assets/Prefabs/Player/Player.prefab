@@ -923,7 +923,7 @@ GameObject:
   - component: {fileID: 1509435544659711183}
   - component: {fileID: 1509435544659711152}
   - component: {fileID: 1509435544659711153}
-  - component: {fileID: 1509435544659711154}
+  - component: {fileID: 718492306394783020}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -991,7 +991,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 1509435544659711153}
-  combat: {fileID: 1509435544659711154}
+  combat: {fileID: 718492306394783020}
   controls: {fileID: 1509435544659711152}
   leftHand: {fileID: 843819129993604584}
   rightHand: {fileID: 3274274702770460614}
@@ -1021,7 +1021,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   damage: 20
---- !u!114 &1509435544659711154
+--- !u!114 &718492306394783020
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1030,11 +1030,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1509435544659711158}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae356a99f1612d94fb649e73c97faaf2, type: 3}
+  m_Script: {fileID: 11500000, guid: 8d33bf09c8f75604981b72d40b77d663, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shieldRegenerationAmount: 0
-  shieldRegenerationSpeed: 0
 --- !u!1 &1509435544711839656
 GameObject:
   m_ObjectHideFlags: 0

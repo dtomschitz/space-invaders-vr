@@ -1,26 +1,55 @@
 ﻿using System;
 using UnityEngine;
 
-public class PlayerCombat : EntityCombat
+public class Shield : MonoBehaviour
 {
-    [Header("Shield")]
+    #region Singelton
+
+    public static Shield instance;
+
+    void Awake()
+    {
+        instance = this;
+    }
+
+    #endregion;
+
+    [Header("Shield Stats")]
     public const int maxShieldPower = 100;
     public float shieldRegenerationAmount;
     public float shieldRegenerationSpeed;
+
+    [Header("Shield Button")]
+    public ShieldButton shieldButton;
 
     public event Action OnShieldPowerUsed;
     public event Action OnShieldPowerAdded;
 
     public float CurrentShieldPower { get; protected set; }
+    public bool IsShieldEnabled { get; protected set; }
 
+    void Start()
+    {
+        shieldButton.OnButtonPress += OnShieldButtonPress;
+    }
 
     void Update()
     {
-        if (!IsBlocking)
+        if (!IsShieldEnabled)
         {
             AddShieldPower(shieldRegenerationAmount * Time.deltaTime / shieldRegenerationSpeed);
+        } else
+        {
+            // UseShieldPower()
         }
     }
+
+    void OnShieldButtonPress()
+    {
+        IsShieldEnabled = !IsShieldEnabled;
+        Debug.Log("Shield Button Pressed");
+    }
+
 
     /// <summary>
     /// This method adds a set ammount of shield power to the player and calls the
@@ -53,7 +82,5 @@ public class PlayerCombat : EntityCombat
     {
         get { return CurrentShieldPower / maxShieldPower; }
     }
-
-
 }
 

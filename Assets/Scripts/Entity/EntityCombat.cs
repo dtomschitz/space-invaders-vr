@@ -10,7 +10,7 @@ public class EntityCombat : MonoBehaviour
 {
     public EntityCombatState State { get; protected set; }
 
-    private EntityStats stats;
+    EntityStats stats;
 
     protected virtual void Start()
     {
@@ -52,10 +52,5 @@ public class EntityCombat : MonoBehaviour
     public bool IsShooting
     {
         get { return State == EntityCombatState.Shooting; }
-    }
-
-    public bool IsBlocking
-    {
-        get { return State == EntityCombatState.Blocking; }
     }
 }

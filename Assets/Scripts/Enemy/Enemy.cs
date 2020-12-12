@@ -29,7 +29,7 @@ public class Enemy : Entity
     {
         base.OnDeath();
         GetComponent<SphereCollider>().enabled = false;
-        (Player.instance.combat as PlayerCombat).AddShieldPower(10f);
+        // (Player.instance.combat as PlayerCombat).AddShieldPower(10f);
         Statistics.instance.AddKill();
 
         ShowExplosion();
