@@ -19,10 +19,21 @@ public class Player : Entity
     public Hand leftHand;
     public Hand rightHand;
 
-    public override void OnDeath()
+    public delegate void NearDeath();
+    public event NearDeath OnNearDeath;
+
+    protected override void OnDeath()
     {
         base.OnDeath();
         GameState.instance.SetState(GameStateType.GameOver);
+    }
+
+    protected override void OnDamaged(float damage)
+    {
+        if (CurrentHealth > 20f)
+        {
+            OnNearDeath?.Invoke();
+        }
     }
 
     public void HideHands()

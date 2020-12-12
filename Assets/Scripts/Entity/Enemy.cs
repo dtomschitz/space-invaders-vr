@@ -25,11 +25,11 @@ public class Enemy : Entity
         State = EnemyState.Seek;
     }
 
-    public override void OnDeath()
+    protected override void OnDeath()
     {
         base.OnDeath();
         GetComponent<SphereCollider>().enabled = false;
-        // (Player.instance.combat as PlayerCombat).AddShieldPower(10f);
+        Shield.instance.AddShieldPower(10f);
         Statistics.instance.AddKill();
 
         ShowExplosion();

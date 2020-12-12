@@ -1532,6 +1532,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Emergency Light
       objectReference: {fileID: 0}
+    - target: {fileID: 8731559066002205809, guid: 3d5a78109a883974e835272fd68523b2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8731559066002205810, guid: 3d5a78109a883974e835272fd68523b2,
         type: 3}
       propertyPath: m_LocalPosition.x

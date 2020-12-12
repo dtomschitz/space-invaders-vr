@@ -29,7 +29,7 @@ public class Projectile : MonoBehaviour
             Enemy enemy = collision.gameObject.GetComponent<Enemy>();
             if (enemy != null)
             {
-                Player.instance.combat.Attack(enemy.stats);
+                Player.instance.Attack(enemy);
             }
         }
 

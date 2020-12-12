@@ -11,10 +11,8 @@ GameObject:
   - component: {fileID: 355432488247405070}
   - component: {fileID: 3693343542657263019}
   - component: {fileID: 1487757067753181537}
-  - component: {fileID: -7756062370878489358}
-  - component: {fileID: 5742012470646228225}
-  - component: {fileID: 4364347624682269291}
   - component: {fileID: 4099573124397901284}
+  - component: {fileID: -7756062370878489358}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -85,49 +83,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &-7756062370878489358
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1127429720928874676}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 528d4a94210079641af862549d17859e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stats: {fileID: 5742012470646228225}
-  combat: {fileID: 4364347624682269291}
-  defaultMaterial: {fileID: 2100000, guid: bd0bb729cb6159b4ab21c5f62cad24ee, type: 3}
-  highlightMaterial: {fileID: 2100000, guid: 669025377795b574da66d9bb2472fcab, type: 2}
-  explosionPrefab: {fileID: 100006, guid: a49596ebf788acd4ab1281bffea444b1, type: 3}
---- !u!114 &5742012470646228225
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1127429720928874676}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e05e66e0d78a4134da4369748df3f7ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 100
-  damage: 0
---- !u!114 &4364347624682269291
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1127429720928874676}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d33bf09c8f75604981b72d40b77d663, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!135 &4099573124397901284
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -141,3 +96,20 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.11
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-7756062370878489358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1127429720928874676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 528d4a94210079641af862549d17859e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 40
+  damage: 0
+  defaultMaterial: {fileID: 2100000, guid: bd0bb729cb6159b4ab21c5f62cad24ee, type: 3}
+  highlightMaterial: {fileID: 2100000, guid: 669025377795b574da66d9bb2472fcab, type: 2}
+  explosionPrefab: {fileID: 100006, guid: a49596ebf788acd4ab1281bffea444b1, type: 3}
