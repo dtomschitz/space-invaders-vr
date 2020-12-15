@@ -57,6 +57,7 @@ public class ShieldButton : XRBaseInteractable
     {
         hoverInteractor = interactor;
         previousHandHeight = GetLocalYPosition(interactor.transform.position);
+        Player.instance.HideHands();
     }
 
     void EndPress(XRBaseInteractor interactor)
@@ -66,6 +67,7 @@ public class ShieldButton : XRBaseInteractable
         previousePress = false;
 
         SetYPosition(yMax);
+        Player.instance.ShowHands();
     }
 
     void SetMinMax()
