@@ -56,7 +56,9 @@ public class GameState : MonoBehaviour
     /// </summary>
     void TogglePauseMenu()
     {
-        // TODO: Toggle game paused menu
+        //UIManager.instance.SetGameOverMenuActive(false);
+        //UIManager.instance.SetPauseMenuActive(true);
+
     }
 
     /// <summary>
@@ -65,7 +67,10 @@ public class GameState : MonoBehaviour
     /// </summary>
     void ToggleGameOver()
     {
-        // TODO: Toggle game over screen
+        //UIManager.instance.SetPauseMenuActive(false);
+
+        //StartCoroutine(OpenGameOverMenu());
+
     }
 
     /// <summary>
