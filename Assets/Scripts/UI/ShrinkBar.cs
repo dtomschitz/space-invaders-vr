@@ -17,6 +17,6 @@ public class ShrinkBar : MonoBehaviour
     protected void SetFillAmount(float amount)
     {
         slider.value = amount;
-        fill.color = gradient.Evaluate(amount);
+        fill.color = gradient.Evaluate(slider.normalizedValue);
     }
 }
