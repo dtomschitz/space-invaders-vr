@@ -10,12 +10,12 @@ PrefabInstance:
     - target: {fileID: 5073371976492204930, guid: 8b8baf28672e1484584f52bdcb65a432,
         type: 3}
       propertyPath: m_Name
-      value: GunTurret
+      value: GunTurret Left
       objectReference: {fileID: 0}
     - target: {fileID: 5073371976492204933, guid: 8b8baf28672e1484584f52bdcb65a432,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.537
+      value: -1.6
       objectReference: {fileID: 0}
     - target: {fileID: 5073371976492204933, guid: 8b8baf28672e1484584f52bdcb65a432,
         type: 3}
@@ -66,6 +66,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 5157544808449232020, guid: 8b8baf28672e1484584f52bdcb65a432,
+        type: 3}
+      propertyPath: enemyTag
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 5157544808449232020, guid: 8b8baf28672e1484584f52bdcb65a432,
+        type: 3}
+      propertyPath: hand
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5157544808449232020, guid: 8b8baf28672e1484584f52bdcb65a432,
+        type: 3}
+      propertyPath: rayInteractor
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b8baf28672e1484584f52bdcb65a432, type: 3}

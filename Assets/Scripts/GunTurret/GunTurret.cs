@@ -16,6 +16,10 @@ public class GunTurret : MonoBehaviour
     public GameObject hand;
     public GameObject firePoint;
 
+    [Header("Gun Objects")]
+    public GameObject gun;
+    public GameObject anchor;
+
     void Start()
     {
         if (turretPosition == GunTurretPosition.LEFT)
@@ -33,7 +37,8 @@ public class GunTurret : MonoBehaviour
         float dotY = laser.dot.transform.position.y;
         if (dotY > minY)
         {
-            gameObject.transform.LookAt(laser.dot.transform);
+            firePoint.transform.LookAt(laser.dot.transform);
+            gun.transform.LookAt(laser.dot.transform);
         }
     }
 
