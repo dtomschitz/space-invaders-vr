@@ -4,16 +4,12 @@ public class EmergencyLight : MonoBehaviour
 {
     void Start()
     {
-        Player.instance.OnNearDeath += Enable;
+        Player.instance.OnNearDeath += () => Toggle(true);
+        Player.instance.OnEntityDied += () => Toggle(false);
     }
 
-    public void Enable()
+    public void Toggle(bool active)
     {
-        gameObject.SetActive(true);
-    }
-
-    public void Disable()
-    {
-        gameObject.SetActive(false);
+        gameObject.SetActive(active);
     }
 }

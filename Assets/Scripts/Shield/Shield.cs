@@ -47,7 +47,6 @@ public class Shield : MonoBehaviour
     void OnShieldButtonPress()
     {
         IsShieldEnabled = !IsShieldEnabled;
-        Debug.Log("Shield Button Pressed");
     }
 
 

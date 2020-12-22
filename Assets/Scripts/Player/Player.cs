@@ -22,6 +22,11 @@ public class Player : Entity
     public delegate void NearDeath();
     public event NearDeath OnNearDeath;
 
+    protected override void Start()
+    {
+        base.Start();
+    }
+
     protected override void OnDeath()
     {
         base.OnDeath();
