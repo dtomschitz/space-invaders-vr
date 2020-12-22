@@ -17,10 +17,10 @@ public class Entity : MonoBehaviour
     public delegate void EntityDied();
     public event EntityDied OnEntityDied;
 
-    public delegate void EntityDamaged(float damage);
+    public delegate void EntityDamaged(float damage, float currentNormalizedHealth);
     public event EntityDamaged OnEntityDamaged;
 
-    public delegate void EntityHealed(float amount);
+    public delegate void EntityHealed(float amount, float currentNormalizedHealth);
     public event EntityHealed OnEntityHealed;
 
     protected virtual void Start()
@@ -51,7 +51,7 @@ public class Entity : MonoBehaviour
     /// <param name="damage">The ammount of damage the entity received.</param>
     protected virtual void OnDamaged(float damage)
     {
-        OnEntityDamaged?.Invoke(damage);
+        OnEntityDamaged?.Invoke(damage, HealthNormalized);
     }
 
     /// <summary>
@@ -71,7 +71,7 @@ public class Entity : MonoBehaviour
     {
         CurrentHealth += amount;
         CurrentHealth = Mathf.Clamp(CurrentHealth, 0, maxHealth);
-        OnEntityHealed?.Invoke(amount);
+        OnEntityHealed?.Invoke(amount, HealthNormalized);
     }
 
     /// <summary>

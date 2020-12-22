@@ -22,8 +22,12 @@ public class Shield : MonoBehaviour
     [Header("Shield Button")]
     public ShieldButton shieldButton;
 
-    public event Action OnShieldPowerUsed;
-    public event Action OnShieldPowerAdded;
+    public delegate void ShieldPowerUsed(float amount, float currentNormalizedShieldPower);
+    public event ShieldPowerUsed OnShieldPowerUsed;
+
+    public delegate void ShieldPowerAdded(float amount, float currentNormalizedShieldPower);
+    public event ShieldPowerAdded OnShieldPowerAdded;
+
 
     public float CurrentShieldPower { get; protected set; }
     public bool IsShieldEnabled { get; protected set; }
@@ -59,7 +63,7 @@ public class Shield : MonoBehaviour
     {
         CurrentShieldPower += amount;
         CurrentShieldPower = Mathf.Clamp(CurrentShieldPower, 0f, maxShieldPower);
-        OnShieldPowerAdded?.Invoke();
+        OnShieldPowerAdded?.Invoke(amount, ShieldPowerNormalized);
     }
 
     /// <summary>
@@ -70,7 +74,7 @@ public class Shield : MonoBehaviour
     public void UseShieldPower(float amount = 1f)
     {
         CurrentShieldPower -= amount;
-        OnShieldPowerUsed?.Invoke();
+        OnShieldPowerUsed?.Invoke(amount, ShieldPowerNormalized);
     }
 
     /// <summary>
