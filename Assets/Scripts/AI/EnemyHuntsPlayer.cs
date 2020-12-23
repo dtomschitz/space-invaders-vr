@@ -15,28 +15,41 @@ public class EnemyHuntsPlayer : MonoBehaviour
 
     //Attacking
     public float timeBetweenAttacks;
+    public float startTimeBtwAttacks;
     bool alreadyAttacked;
 
     public float attackRange;
     public bool playerInAttackRange;
 
+    public GameObject projectile;
+
     private void Awake()
     {
         player = GameObject.Find("Body").transform;
         agent = GetComponent<NavMeshAgent>();
+        
+    }
+
+    void Start(){
+       
+        timeBetweenAttacks = startTimeBtwAttacks;
+        
     }
 
     private void Update()
     {
+
+        
         if(transform.position.z <= 0){
             Destroy(agent.gameObject);
+            
         }
         //Check for attack range
         transform.LookAt(player.position);
-        print(Vector3.Distance(player.position, transform.position));
-        playerInAttackRange = (Vector3.Distance(player.position, transform.position)<= attackRange);
-
-        if(playerInAttackRange)
+        //print((Vector3.Distance(player.position, transform.position)));
+        
+        
+        if((Vector3.Distance(player.position, transform.position) <= attackRange))
         {
             agent.speed = 0;
             AttackPlayer();
@@ -58,22 +71,19 @@ public class EnemyHuntsPlayer : MonoBehaviour
     private void AttackPlayer()
     {
         //Make sure enemy doesn't move
-        agent.SetDestination(transform.position);
+        
+        if(timeBetweenAttacks <= 0){
+            Instantiate(projectile, transform.position, Quaternion.identity);
+            timeBetweenAttacks = startTimeBtwAttacks;
+        }else{
+            timeBetweenAttacks -= Time.deltaTime;
+        }
+        
 
-        transform.LookAt(player);
+        
 
         ///attackcode here
 
-        if (!alreadyAttacked)
-        {
-            alreadyAttacked = true;
-            Invoke(nameof(ResetAttack), timeBetweenAttacks);
-        }
-    }
-
-    private void ResetAttack()
-    {
-        alreadyAttacked = false;
     }
 
 }
