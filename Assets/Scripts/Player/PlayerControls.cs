@@ -47,6 +47,7 @@ public class PlayerControls : MonoBehaviour
         inputActions.LeftHand.Activate.performed += ctx => OnLeftTriggerButtonPressed?.Invoke();
         inputActions.LeftHand.Trigger.performed += ctx => OnLeftTriggerButton?.Invoke(ctx.ReadValue<float>());
         inputActions.LeftHand.Grip.performed += ctx => OnLeftGripButton?.Invoke(ctx.ReadValue<float>());
+        inputActions.LeftHand.UIPress.performed += PauseGame;
     }
 
     void InitializeRightHandActions()
