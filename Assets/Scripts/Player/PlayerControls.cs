@@ -25,6 +25,10 @@ public class PlayerControls : MonoBehaviour
     public delegate void RightTriggerButtonPressed();
     public event RightTriggerButtonPressed OnRightTriggerButtonPressed;
 
+    public delegate void PausedButtonPressed();
+    public event PausedButtonPressed OnPausedButtonPressed;
+
+
     void Awake()
     {
         inputActions = new PlayerInputActions();
@@ -47,7 +51,7 @@ public class PlayerControls : MonoBehaviour
         inputActions.LeftHand.Activate.performed += ctx => OnLeftTriggerButtonPressed?.Invoke();
         inputActions.LeftHand.Trigger.performed += ctx => OnLeftTriggerButton?.Invoke(ctx.ReadValue<float>());
         inputActions.LeftHand.Grip.performed += ctx => OnLeftGripButton?.Invoke(ctx.ReadValue<float>());
-        inputActions.LeftHand.UIPress.performed += PauseGame;
+        inputActions.LeftHand.UIPress.performed += ctx => OnPausedButtonPressed?.Invoke();
     }
 
     void InitializeRightHandActions()
@@ -56,9 +60,5 @@ public class PlayerControls : MonoBehaviour
         inputActions.RightHand.Trigger.performed += ctx => OnRightTriggerButton?.Invoke(ctx.ReadValue<float>());
         inputActions.RightHand.Grip.performed += ctx => OnRightGripButton?.Invoke(ctx.ReadValue<float>());
     }
-
-    void PauseGame(CallbackContext ctx)
-    {
-        GameState.instance.SetState(GameStateType.GamePaused);
-    }
 }
+

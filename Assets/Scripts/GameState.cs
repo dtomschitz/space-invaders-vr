@@ -24,6 +24,11 @@ public class GameState : MonoBehaviour
 
     public GameStateType State { get; protected set; } = GameStateType.TargetAcquisition;
 
+    public void Start()
+    {
+        Player.instance.controls.OnPausedButtonPressed += () => SetState(GameStateType.GamePaused);
+    }
+
     public void SetState(GameStateType newState)
     {
         if (State == newState) return;

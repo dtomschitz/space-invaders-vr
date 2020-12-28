@@ -1,9 +1,10 @@
-﻿using System.Collections;
+﻿/*using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 
-/*
+
 /// <summary>
 /// Class HUDManager is used to centralize all management classes of visual
 /// relevant informations the player could see in the game. From here the
@@ -22,15 +23,12 @@ public class UIManager : MonoBehaviour
 
     #endregion;
 
-    public HUDManager hud;
-    public Canvas shopCanvas;
     public Canvas gameOverCanvas;
     public PauseMenu pauseMenu;
 
     void Start()
     {
-        if (hud == null) throw new NullReferenceException("HUDManager class cannot be null");
-        if (shopCanvas == null) throw new NullReferenceException("Shop canavas cannot be null");
+
         if (gameOverCanvas == null) throw new NullReferenceException("GameOver canvas cannot be null");
         if (pauseMenu == null) throw new NullReferenceException("PauseMenu class cannot be null");
     }
