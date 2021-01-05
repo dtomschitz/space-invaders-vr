@@ -10,10 +10,6 @@ public enum EnemyState
 
 public class Enemy : Entity
 {
-    [Header("Materials")]
-    public Material defaultMaterial;
-    public Material highlightMaterial;
-
     [Header("Explosion")]
     public GameObject explosionPrefab;
 

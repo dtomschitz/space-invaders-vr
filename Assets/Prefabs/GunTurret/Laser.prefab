@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 8283091215285151412}
   - component: {fileID: 3289102198753661330}
   m_Layer: 0
-  m_Name: GunTurretLaser
+  m_Name: Laser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -159,7 +159,7 @@ LineRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0
+        time: 0.0019646366
         value: 0.01623872
         inSlope: 0
         outSlope: 0

@@ -172,7 +172,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""name"": ""Trigger"",
                     ""type"": ""Value"",
                     ""id"": ""3ac1b990-77df-4c08-8c81-97f59b0718df"",
-                    ""expectedControlType"": """",
+                    ""expectedControlType"": ""Button"",
                     ""processors"": ""Normalize(max=1),Clamp(max=1)"",
                     ""interactions"": """"
                 },
@@ -410,7 +410,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""name"": ""Trigger"",
                     ""type"": ""Value"",
                     ""id"": ""247e0f2c-ca60-457e-b19b-c1fb2a7ee401"",
-                    ""expectedControlType"": """",
+                    ""expectedControlType"": ""Button"",
                     ""processors"": ""Normalize(max=1),Clamp(max=1)"",
                     ""interactions"": """"
                 },

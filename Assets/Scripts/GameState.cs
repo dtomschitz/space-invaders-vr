@@ -26,7 +26,7 @@ public class GameState : MonoBehaviour
 
     public void Start()
     {
-        Player.instance.controls.OnPausedButtonPressed += () => SetState(GameStateType.GamePaused);
+        // Player.instance.controls.OnPausedButtonPressed += () => SetState(GameStateType.GamePaused);
     }
 
     public void SetState(GameStateType newState)
