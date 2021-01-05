@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1487757067753181537}
   - component: {fileID: -4203428355859120683}
   - component: {fileID: 1461668171241979213}
+  - component: {fileID: -8691707106032958222}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -98,7 +99,7 @@ NavMeshAgent:
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
+  m_AutoTraverseOffMeshLink: 0
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 0.16
@@ -123,8 +124,30 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   timeBetweenAttacks: 0
-  startTimeBtwAttacks: 1
+  startTimeBtwAttacks: 3
   attackRange: 10
   playerInAttackRange: 0
+  attacktime: 0
+  dodgetime: 0
   projectile: {fileID: 2102622015436079093, guid: e0069de11ab56e547b2207c3d67d5e26,
     type: 3}
+--- !u!114 &-8691707106032958222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1127429720928874676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c94ba02406fed334986cca17e7cf5e59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 0}
+  player: {fileID: 0}
+  whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 0
+  dodgestart: 20
+  dodgetime: 1
+  dodgerange: 3

@@ -17,9 +17,14 @@ public class EnemyHuntsPlayer : MonoBehaviour
     public float timeBetweenAttacks;
     public float startTimeBtwAttacks;
     bool alreadyAttacked;
-
+    
     public float attackRange;
     public bool playerInAttackRange;
+
+    public float attacktime;
+    public float dodgetime;
+
+
 
     public GameObject projectile;
 
@@ -49,35 +54,30 @@ public class EnemyHuntsPlayer : MonoBehaviour
         //print((Vector3.Distance(player.position, transform.position)));
         
         
-        if((Vector3.Distance(player.position, transform.position) <= attackRange))
-        {
-            agent.speed = 0;
+
+        if(timeBetweenAttacks <= 0){
+
             AttackPlayer();
+
         }else{
-            agent.speed = 10;
-            ChaseEntity(player.position);
+            timeBetweenAttacks -= Time.deltaTime;
         }
         
         
 
     }
 
+ 
+
    
-    private void ChaseEntity(Vector3 position)
-    {
-        agent.SetDestination(position);
-    }
+
 
     private void AttackPlayer()
     {
         //Make sure enemy doesn't move
         
-        if(timeBetweenAttacks <= 0){
-            Instantiate(projectile, transform.position, Quaternion.identity);
-            timeBetweenAttacks = startTimeBtwAttacks;
-        }else{
-            timeBetweenAttacks -= Time.deltaTime;
-        }
+        Instantiate(projectile, transform.position, Quaternion.identity);
+        timeBetweenAttacks = startTimeBtwAttacks;
         
 
         
