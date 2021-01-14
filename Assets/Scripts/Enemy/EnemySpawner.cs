@@ -2,7 +2,7 @@
 
 public class EnemySpawner : MonoBehaviour
 {
-    public Enemy enemyPrefab;
+    public Enemy[] enemyPrefabs;
 
     [Header("Spawn Settings")]
     public int startAmount = 5;
@@ -31,14 +31,15 @@ public class EnemySpawner : MonoBehaviour
         }
     } 
 
-    public void SpawnEnemy()
+    void SpawnEnemy()
     {
-        Vector3  pos = center + new Vector3(
+        Vector3  position = center + new Vector3(
             Random.Range(-size.x / 2, size.x / 2), 
             Random.Range(-size.y / 2, size.y / 2), 
             Random.Range(-size.z / 2, size.z / 2));
-     
-        Instantiate(enemyPrefab, pos, Quaternion.identity);
+
+        Enemy enemyPrefab = enemyPrefabs[Random.Range(0, enemyPrefabs.Length - 1)];
+        Instantiate(enemyPrefab, position, Quaternion.identity);
     }
 
     

@@ -43,8 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06ebb8b7ad2ef8548bb140eab5c228b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: -7756062370878489358, guid: 6ab2a551ea45dd34eb1e72191ef183db,
-    type: 3}
+  enemyPrefabs:
+  - {fileID: -7756062370878489358, guid: 6ab2a551ea45dd34eb1e72191ef183db, type: 3}
+  - {fileID: 4924582933594308613, guid: 41e3c4f9b1bc22d4a967ca82d3737f60, type: 3}
   startAmount: 5
   center: {x: 0, y: 0.55, z: 8.58}
   size: {x: 15, y: 15, z: 15}
