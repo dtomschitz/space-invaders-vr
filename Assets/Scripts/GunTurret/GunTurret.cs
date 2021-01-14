@@ -52,6 +52,8 @@ public class GunTurret : MonoBehaviour
                 Projectile projectile = Instantiate(projectilePrefab, firePoint.transform.position, Quaternion.identity);
                 projectile.transform.localRotation = firePoint.transform.rotation;
             }
+
+            AudioManager.instance.PlaySound(Sound.Shoot, firePoint.transform.position);
         }
     }
 }
