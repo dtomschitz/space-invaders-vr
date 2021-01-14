@@ -8,6 +8,7 @@ public class EnemySpawner : MonoBehaviour
     public int startAmount = 5;
     public Vector3 center;
     public Vector3 size;
+
     public float period = 10.0f;
 
     private float nextActionTime = 3.0f;
@@ -41,9 +42,9 @@ public class EnemySpawner : MonoBehaviour
     }
 
     
-    private void OnDrawGizmosSelected()
+    void OnDrawGizmosSelected()
     {
         Gizmos.color = new Color(1, 0, 0, 0.5f);
-        Gizmos.DrawCube(transform.localPosition + center, size);
+        Gizmos.DrawCube(center, size);
     }
 }

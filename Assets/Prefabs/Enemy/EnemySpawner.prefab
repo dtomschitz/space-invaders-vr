@@ -47,5 +47,5 @@ MonoBehaviour:
     type: 3}
   startAmount: 5
   center: {x: 0, y: 0.55, z: 8.58}
-  size: {x: 19.95, y: 1.02, z: 2.24}
+  size: {x: 15, y: 15, z: 15}
   period: 3
