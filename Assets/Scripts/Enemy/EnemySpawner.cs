@@ -38,7 +38,7 @@ public class EnemySpawner : MonoBehaviour
             Random.Range(-size.y / 2, size.y / 2), 
             Random.Range(-size.z / 2, size.z / 2));
 
-        Enemy enemyPrefab = enemyPrefabs[Random.Range(0, enemyPrefabs.Length - 1)];
+        Enemy enemyPrefab = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)];
         Instantiate(enemyPrefab, position, Quaternion.identity);
     }
 
