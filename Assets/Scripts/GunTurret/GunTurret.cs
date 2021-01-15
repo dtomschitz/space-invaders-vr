@@ -19,26 +19,48 @@ public class GunTurret : MonoBehaviour
     [Header("Gun Objects")]
     public GameObject gun;
 
+    [Header("Settings")]
+    public float rate = 10f;
+
+    private float shootingTimer;
+    private bool shooting;
+
     void Start()
     {
+        shootingTimer = 0f;
+
         if (turretPosition == GunTurretPosition.LEFT)
         {
-            Player.instance.controls.OnLeftTriggerButtonPressed += OnShoot;
+            Player.instance.controls.OnLeftTriggerButtonPressed += () => shooting = true;
+            Player.instance.controls.OnLeftTriggerButtonPressCanceled += () => shooting = false;
+
         }
         else
         {
-            Player.instance.controls.OnRightTriggerButtonPressed += OnShoot;
+            Player.instance.controls.OnRightTriggerButtonPressed += () => shooting = true;
+            Player.instance.controls.OnRightTriggerButtonPressCanceled += () => shooting = false;
+
         }
     }
 
     void Update()
     {
+        shootingTimer -= Time.deltaTime;
+
         //firePoint.transform.LookAt(laser.dot.transform);
         gun.transform.LookAt(laser.dot.transform);
-    }
 
-    void OnShoot()
+        if (shootingTimer <= 0 && shooting)
+        {
+            Shoot();
+            shootingTimer = .2f;
+        }
+    } 
+
+    void Shoot()
     {
+        Debug.Log("DWad");
+
         if (GameState.instance.IsInTargetAcquisition)
         {   
             if (muzzlePrefab != null)

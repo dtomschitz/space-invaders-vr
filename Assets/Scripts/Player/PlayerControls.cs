@@ -10,11 +10,14 @@ public class PlayerControls : MonoBehaviour
     public delegate void LeftTriggerButton(float value);
     public event LeftTriggerButton OnLeftTriggerButton;
 
-    public delegate void LeftGripButton(float value);
-    public event LeftGripButton OnLeftGripButton;
-
     public delegate void LeftTriggerButtonPressed();
     public event LeftTriggerButtonPressed OnLeftTriggerButtonPressed;
+
+    public delegate void LeftTriggerButtonPressCanceled();
+    public event LeftTriggerButtonPressCanceled OnLeftTriggerButtonPressCanceled;
+
+    public delegate void LeftGripButton(float value);
+    public event LeftGripButton OnLeftGripButton;
 
     public delegate void RightTriggerButton(float value);
     public event RightTriggerButton OnRightTriggerButton;
@@ -24,6 +27,9 @@ public class PlayerControls : MonoBehaviour
 
     public delegate void RightTriggerButtonPressed();
     public event RightTriggerButtonPressed OnRightTriggerButtonPressed;
+
+    public delegate void RightTriggerButtonPressCanceled();
+    public event RightTriggerButtonPressCanceled OnRightTriggerButtonPressCanceled;
 
     public delegate void PausedButtonPressed();
     public event PausedButtonPressed OnPausedButtonPressed;
@@ -49,6 +55,8 @@ public class PlayerControls : MonoBehaviour
     void InitializeLeftHandActions()
     {
         inputActions.LeftHand.Activate.performed += ctx => OnLeftTriggerButtonPressed?.Invoke();
+        inputActions.LeftHand.Activate.canceled += ctx => OnLeftTriggerButtonPressCanceled?.Invoke();
+
         inputActions.LeftHand.Trigger.performed += ctx => OnLeftTriggerButton?.Invoke(ctx.ReadValue<float>());
         inputActions.LeftHand.Grip.performed += ctx => OnLeftGripButton?.Invoke(ctx.ReadValue<float>());
         inputActions.LeftHand.UIPress.performed += ctx => OnPausedButtonPressed?.Invoke();
@@ -57,6 +65,9 @@ public class PlayerControls : MonoBehaviour
     void InitializeRightHandActions()
     {
         inputActions.RightHand.Activate.performed += ctx => OnRightTriggerButtonPressed?.Invoke();
+        inputActions.RightHand.Activate.canceled += ctx => OnRightTriggerButtonPressCanceled?.Invoke();
+
+
         inputActions.RightHand.Trigger.performed += ctx => OnRightTriggerButton?.Invoke(ctx.ReadValue<float>());
         inputActions.RightHand.Grip.performed += ctx => OnRightGripButton?.Invoke(ctx.ReadValue<float>());
     }
