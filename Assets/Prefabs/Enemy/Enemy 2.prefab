@@ -135,7 +135,8 @@ MonoBehaviour:
   damage: 0
   agent: {fileID: -2496398563373545617}
   explosionPrefab: {fileID: 100006, guid: a49596ebf788acd4ab1281bffea444b1, type: 3}
-  projectilePrefab: {fileID: 0}
+  projectilePrefab: {fileID: 8632014744314210586, guid: d27d00a2d2729b743a9500efee2378be,
+    type: 3}
   timeBetweenAttacks: 0
   startTimeBtwAttacks: 3
   attackTime: 0

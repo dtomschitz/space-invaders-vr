@@ -92,5 +92,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: LeftGunLaser
       objectReference: {fileID: 0}
+    - target: {fileID: 5968527552280462655, guid: 8b8baf28672e1484584f52bdcb65a432,
+        type: 3}
+      propertyPath: projectilePrefab
+      value: 
+      objectReference: {fileID: -5537723530687638372, guid: 5dd2c16189797cc49ac6934c3c2eafb8,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b8baf28672e1484584f52bdcb65a432, type: 3}

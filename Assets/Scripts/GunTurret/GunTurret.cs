@@ -34,6 +34,7 @@ public class GunTurret : MonoBehaviour
 
     void Update()
     {
+        firePoint.transform.LookAt(laser.dot.transform);
         gun.transform.LookAt(laser.dot.transform);
 
         shootingTimer -= Time.deltaTime;

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2148973389559613016}
   - component: {fileID: -7756062370878489358}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Enemy 1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -135,7 +135,8 @@ MonoBehaviour:
   damage: 0
   agent: {fileID: 2148973389559613016}
   explosionPrefab: {fileID: 100006, guid: a49596ebf788acd4ab1281bffea444b1, type: 3}
-  projectilePrefab: {fileID: 0}
+  projectilePrefab: {fileID: 8632014744314210586, guid: d27d00a2d2729b743a9500efee2378be,
+    type: 3}
   timeBetweenAttacks: 0
   startTimeBtwAttacks: 3
   attackTime: 0
