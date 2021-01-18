@@ -95,7 +95,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.11
+  m_Radius: 12
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!195 &2148973389559613016
 NavMeshAgent:
@@ -135,7 +135,7 @@ MonoBehaviour:
   damage: 0
   agent: {fileID: 2148973389559613016}
   explosionPrefab: {fileID: 100006, guid: a49596ebf788acd4ab1281bffea444b1, type: 3}
-  projectilePrefab: {fileID: 8632014744314210586, guid: d27d00a2d2729b743a9500efee2378be,
+  projectilePrefab: {fileID: 2066787335936455852, guid: 147a7a9a805f6eb43b7cd4b9d351e8ed,
     type: 3}
   timeBetweenAttacks: 0
   startTimeBtwAttacks: 3

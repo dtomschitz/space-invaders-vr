@@ -3,9 +3,10 @@ using UnityEngine;
 public class EnemyProjectile : MonoBehaviour{
 
     public float speed;
-    public float damage;
+    public GameObject[] hitPrefabs;
 
-    private GameObject player;
+    float damage;
+    GameObject player;
 
     void Start()
     {
@@ -19,17 +20,28 @@ public class EnemyProjectile : MonoBehaviour{
 
     void OnCollisionEnter(Collision collision)
     {
-        speed = 0;
-
-        if (collision.gameObject.CompareTag("Player"))
+        if (hitPrefabs?.Length != 0)
         {
-            Enemy enemy = collision.gameObject.GetComponent<Enemy>();
-            if (enemy != null)
-            {
-                Player.instance.Attack(enemy);
-            }
+            GameObject hitPrefab = hitPrefabs[Random.Range(0, hitPrefabs.Length)];
+            ContactPoint contact = collision.contacts[0];
+            Quaternion rotation = Quaternion.FromToRotation(Vector3.up, contact.normal);
+            GameObject hit = Instantiate(hitPrefab, contact.point, rotation);
+            Destroy(hit, 3f);
         }
 
-        Destroy(gameObject);
+
+        if (collision.gameObject.CompareTag("Spaceship"))
+        {
+            speed = 0;
+            Player.instance.Damage(damage);
+            Destroy(gameObject);
+        }
+
+        Destroy(gameObject, 5f);
+    }
+
+    public void SetDamage(float damage)
+    {
+        this.damage = damage;
     }
 }

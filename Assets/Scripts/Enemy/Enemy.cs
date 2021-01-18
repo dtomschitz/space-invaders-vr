@@ -108,7 +108,7 @@ public class Enemy : Entity
         //Make sure enemy doesn't move
 
         EnemyProjectile projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
-        projectile.damage = damage;
+        projectile.SetDamage(damage);
         timeBetweenAttacks = startTimeBtwAttacks;
         ///attackcode here
     }

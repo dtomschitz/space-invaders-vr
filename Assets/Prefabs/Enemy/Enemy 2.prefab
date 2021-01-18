@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4924582933594308613}
   m_Layer: 0
   m_Name: Enemy 2
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -135,7 +135,7 @@ MonoBehaviour:
   damage: 0
   agent: {fileID: -2496398563373545617}
   explosionPrefab: {fileID: 100006, guid: a49596ebf788acd4ab1281bffea444b1, type: 3}
-  projectilePrefab: {fileID: 8632014744314210586, guid: d27d00a2d2729b743a9500efee2378be,
+  projectilePrefab: {fileID: 2066787335936455852, guid: 147a7a9a805f6eb43b7cd4b9d351e8ed,
     type: 3}
   timeBetweenAttacks: 0
   startTimeBtwAttacks: 3
