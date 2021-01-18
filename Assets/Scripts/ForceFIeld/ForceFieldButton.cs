@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
-public class ShieldButton : XRBaseInteractable
+public class ForceFieldButton : XRBaseInteractable
 {
     public event Action OnButtonPress;
 

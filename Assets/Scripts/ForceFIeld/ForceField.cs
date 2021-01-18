@@ -19,7 +19,7 @@ public class ForceField : MonoBehaviour
     public float shieldRegenerationSpeed;
 
     [Header("Shield Button")]
-    public ShieldButton shieldButton;
+    public ForceFieldButton shieldButton;
 
     public delegate void ShieldPowerUsed(float amount, float currentNormalizedShieldPower);
     public event ShieldPowerUsed OnShieldPowerUsed;

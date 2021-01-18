@@ -16,7 +16,8 @@ public class GunTurret : MonoBehaviour
     public GameObject gun;
 
     [Header("Settings")]
-    public float rate = 10f;
+    public float rate = .2f;
+    public float minY;
 
     GameObject hand;
     GunTurretLaser laser;
@@ -30,18 +31,22 @@ public class GunTurret : MonoBehaviour
 
         InitializeEvents(turretPosition);
         FindGameObjects(turretPosition);
-    }
+    } 
 
     void Update()
     {
-        firePoint.transform.LookAt(laser.dot.transform);
-        gun.transform.LookAt(laser.dot.transform);
+        float y = gun.transform.position.y;
+        if (y > 0 && y >= minY || y < 0 && y <= minY)
+        {
+            firePoint.transform.LookAt(laser.dot.transform);
+            gun.transform.LookAt(laser.dot.transform);
+        }
 
         shootingTimer -= Time.deltaTime;
         if (shootingTimer <= 0 && shooting)
         {
             Shoot();
-            shootingTimer = .2f;
+            shootingTimer = rate;
         }
     } 
 
