@@ -1,11 +1,10 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Shield : MonoBehaviour
+public class ForceField : MonoBehaviour
 {
     #region Singelton
 
-    public static Shield instance;
+    public static ForceField instance;
 
     void Awake()
     {
@@ -44,6 +43,7 @@ public class Shield : MonoBehaviour
             AddShieldPower(shieldRegenerationAmount * Time.deltaTime / shieldRegenerationSpeed);
         } else
         {
+            UseShieldPower(1f * Time.deltaTime);
             // UseShieldPower()
         }
     }

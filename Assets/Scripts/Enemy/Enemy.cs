@@ -95,7 +95,7 @@ public class Enemy : Entity
     {
         base.OnDeath();
         GetComponent<SphereCollider>().enabled = false;
-        Shield.instance.AddShieldPower(10f);
+        // ForceField.instance.AddShieldPower(10f);
         Statistics.instance.AddKill();
 
         ShowExplosion();
