@@ -14852,7 +14852,7 @@ GameObject:
   - component: {fileID: 198302984453370694}
   - component: {fileID: 65138394354385980}
   - component: {fileID: 54780134100305680}
-  - component: {fileID: 2066787335936455852}
+  - component: {fileID: 2591900824676839440}
   m_Layer: 0
   m_Name: Enemy Projectile
   m_TagString: Untagged
@@ -19751,7 +19751,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &2066787335936455852
+--- !u!114 &2591900824676839440
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -19763,6 +19763,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02db02c72570f1a4b88b4ee82dfffcd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 50
+  speed: 20
   hitPrefabs:
-  - {fileID: 1351045683517926, guid: 4bcbe60149b2a6d43851d4f3224a71c4, type: 3}
+  - {fileID: 1351045683517926, guid: f120eb28a1ca7b84088699ed9242f4a4, type: 3}
