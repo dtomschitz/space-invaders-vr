@@ -6,6 +6,14 @@ TagManager:
   tags:
   - Enemy
   - FxTemporaire
+  - LeftHand
+  - RightHand
+  - LeftHandController
+  - RightHandController
+  - LeftGun
+  - LeftGunLaser
+  - RightGun
+  - RightGunLaser
   layers:
   - Default
   - TransparentFX

@@ -5,15 +5,11 @@ public class GunTurret : MonoBehaviour
     public GunTurretPosition turretPosition;
     public float defaultLength;
     
-    public float minY;
-
     [Header("Prefabs")]
     public Projectile projectilePrefab;
     public GameObject muzzlePrefab;
 
     [Header("Default GameObjects")]
-    public GunTurretLaser laser;
-    public GameObject hand;
     public GameObject firePoint;
 
     [Header("Gun Objects")]
@@ -22,34 +18,25 @@ public class GunTurret : MonoBehaviour
     [Header("Settings")]
     public float rate = 10f;
 
-    private float shootingTimer;
-    private bool shooting;
+    GameObject hand;
+    GunTurretLaser laser;
+
+    float shootingTimer;
+    bool shooting;
 
     void Start()
     {
         shootingTimer = 0f;
 
-        if (turretPosition == GunTurretPosition.LEFT)
-        {
-            Player.instance.controls.OnLeftTriggerButtonPressed += () => shooting = true;
-            Player.instance.controls.OnLeftTriggerButtonPressCanceled += () => shooting = false;
-
-        }
-        else
-        {
-            Player.instance.controls.OnRightTriggerButtonPressed += () => shooting = true;
-            Player.instance.controls.OnRightTriggerButtonPressCanceled += () => shooting = false;
-
-        }
+        InitializeEvents(turretPosition);
+        FindGameObjects(turretPosition);
     }
 
     void Update()
     {
-        shootingTimer -= Time.deltaTime;
-
-        //firePoint.transform.LookAt(laser.dot.transform);
         gun.transform.LookAt(laser.dot.transform);
 
+        shootingTimer -= Time.deltaTime;
         if (shootingTimer <= 0 && shooting)
         {
             Shoot();
@@ -59,8 +46,6 @@ public class GunTurret : MonoBehaviour
 
     void Shoot()
     {
-        Debug.Log("DWad");
-
         if (GameState.instance.IsInTargetAcquisition)
         {   
             if (muzzlePrefab != null)
@@ -77,5 +62,31 @@ public class GunTurret : MonoBehaviour
 
             AudioManager.instance.PlaySound(Sound.Shoot, firePoint.transform.position);
         }
+    }
+
+    void FindGameObjects(GunTurretPosition position) 
+    {
+        hand = GameObject.FindGameObjectWithTag(position == GunTurretPosition.LEFT ? "LeftHand" : "RightHand");
+        laser = GameObject.FindGameObjectWithTag(position == GunTurretPosition.LEFT ? "LeftGunLaser" : "RightGunLaser").GetComponent<GunTurretLaser>();
+    }
+
+    void InitializeEvents(GunTurretPosition position)
+    {
+        if (position == GunTurretPosition.LEFT)
+        {
+            Player.instance.controls.OnLeftTriggerButtonPressed += () => shooting = true;
+            Player.instance.controls.OnLeftTriggerButtonPressCanceled += () => shooting = false;
+
+        }
+        else
+        {
+            Player.instance.controls.OnRightTriggerButtonPressed += () => shooting = true;
+            Player.instance.controls.OnRightTriggerButtonPressCanceled += () => shooting = false;
+        }
+    }
+
+    public GameObject Hand
+    {
+        get => hand;
     }
 }

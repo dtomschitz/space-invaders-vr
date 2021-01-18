@@ -6,15 +6,22 @@ public class GunTurretLaser : MonoBehaviour
     public float defaultLength = 15.0f;
     public string enemyTag;
 
-    public GameObject hand;
     public GameObject dot;
     public XRRayInteractor rayInteractor;
 
+    GunTurret gun;
+    GameObject hand;
     LineRenderer lineRenderer;
 
     void Awake()
     {
         lineRenderer = GetComponent<LineRenderer>();
+    }
+
+    void Start()
+    {
+        gun = gameObject.GetComponentInParent<GunTurret>();
+        hand = gun.Hand;
     }
 
     void Update()

@@ -1,7 +1,5 @@
 ﻿
 using UnityEngine;
-using static UnityEngine.InputSystem.InputAction;
-
 
 public class PlayerControls : MonoBehaviour
 {
