@@ -35,6 +35,8 @@ public class Player : Entity
 
     protected override void OnDamaged(float damage)
     {
+        base.OnDamaged(damage);
+
         if (CurrentHealth > 20f)
         {
             OnNearDeath?.Invoke();

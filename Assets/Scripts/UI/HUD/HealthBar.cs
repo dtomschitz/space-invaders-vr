@@ -2,9 +2,8 @@
 {
     void Start()
     {
-        Player player = Player.instance;
-        player.OnEntityDamaged += OnEntityDamaged;
-        player.OnEntityHealed += OnEntityHealed;
+        Player.instance.OnEntityHealed += OnEntityHealed;
+        Player.instance.OnEntityDamaged += OnEntityDamaged;
     }
 
     /// <summary>

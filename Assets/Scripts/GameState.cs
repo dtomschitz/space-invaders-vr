@@ -31,6 +31,8 @@ public class GameState : MonoBehaviour
 
     public void SetState(GameStateType newState)
     {
+        Debug.Log(newState);
+
         if (State == newState) return;
         State = newState;
 

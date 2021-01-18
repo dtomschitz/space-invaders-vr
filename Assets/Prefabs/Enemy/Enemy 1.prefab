@@ -132,7 +132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 40
-  damage: 0
+  damage: 5
   agent: {fileID: 2148973389559613016}
   explosionPrefab: {fileID: 100006, guid: a49596ebf788acd4ab1281bffea444b1, type: 3}
   projectilePrefab: {fileID: 2591900824676839440, guid: f261eef93809e0d4a8add87b46009ce2,
