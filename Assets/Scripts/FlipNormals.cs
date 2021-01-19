@@ -5,30 +5,28 @@ public class FlipNormals : MonoBehaviour
 {
     void Start()
     {
-        /*Mesh mesh = this.GetComponent<MeshFilter>().mesh;
+		MeshFilter filter = GetComponent(typeof(MeshFilter)) as MeshFilter;
 
-        Vector3[] normals = mesh.normals;
-        for (int i = 0; i < normals.Length; i++)
-        {
-            normals[i] = -1 * normals[i];
-        }
+		if (filter != null)
+		{
+			Mesh mesh = filter.mesh;
 
-        mesh.normals = normals;
+			Vector3[] normals = mesh.normals;
+			for (int i = 0; i < normals.Length; i++)
+				normals[i] = -normals[i];
+			mesh.normals = normals;
 
-        for (int i = 0; i < mesh.subMeshCount; i++)
-        {
-            int[] triangles = mesh.GetTriangles(i);
-            for (int j = 0; j < triangles.Length; j += 3)
-            {
-                int temp = triangles[i];
-                triangles[j] = triangles[j + 1];
-                triangles[j + 1] = temp;
-            }
-
-            mesh.SetTriangles(triangles, i);
-        }*/
-
-        Mesh mesh = GetComponent<MeshFilter>().mesh;
-        mesh.triangles = mesh.triangles.Reverse().ToArray();
-    }
+			for (int m = 0; m < mesh.subMeshCount; m++)
+			{
+				int[] triangles = mesh.GetTriangles(m);
+				for (int i = 0; i < triangles.Length; i += 3)
+				{
+					int temp = triangles[i + 0];
+					triangles[i + 0] = triangles[i + 1];
+					triangles[i + 1] = temp;
+				}
+				mesh.SetTriangles(triangles, m);
+			}
+		}
+	}
 }

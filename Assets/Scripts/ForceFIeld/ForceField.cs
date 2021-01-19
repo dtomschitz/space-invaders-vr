@@ -51,6 +51,7 @@ public class ForceField : MonoBehaviour
     void OnShieldButtonPress()
     {
         IsShieldEnabled = !IsShieldEnabled;
+        gameObject.SetActive(true);
     }
 
 

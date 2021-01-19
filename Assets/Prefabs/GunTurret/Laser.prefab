@@ -270,7 +270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0438026ab07b2d429bb5966bc18e533, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultLength: 30
+  defaultLength: 40
   enemyTag: 
   dot: {fileID: 3492501668869697793}
   rayInteractor: {fileID: 0}

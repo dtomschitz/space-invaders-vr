@@ -15,6 +15,7 @@ TagManager:
   - RightGun
   - RightGunLaser
   - Spaceship
+  - ForceField
   layers:
   - Default
   - TransparentFX

@@ -10,7 +10,8 @@ public class EnemyProjectile : MonoBehaviour{
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");       
+        player = GameObject.FindGameObjectWithTag("Player");
+        Destroy(gameObject, 5f);
     }
 
     void Update()
@@ -20,24 +21,26 @@ public class EnemyProjectile : MonoBehaviour{
 
     void OnCollisionEnter(Collision collision)
     {
-        if (hitPrefabs?.Length != 0)
-        {
-            GameObject hitPrefab = hitPrefabs[Random.Range(0, hitPrefabs.Length)];
-            ContactPoint contact = collision.contacts[0];
-            Quaternion rotation = Quaternion.FromToRotation(Vector3.up, contact.normal);
-            GameObject hit = Instantiate(hitPrefab, contact.point, rotation);
-            Destroy(hit, 3f);
-        }
+        bool isSpaceship = collision.gameObject.CompareTag("Spaceship");
+        bool isForceField = collision.gameObject.CompareTag("ForceField");
 
-
-        if (collision.gameObject.CompareTag("Spaceship"))
+        if (isSpaceship || isForceField)
         {
+            if (hitPrefabs?.Length != 0) SpawnHitIndicator(collision);
             speed = 0;
-            Player.instance.Damage(damage);
             Destroy(gameObject);
-        }
 
-        Destroy(gameObject, 5f);
+            if (isSpaceship) Player.instance.Damage(damage);
+        }
+    }
+
+    void SpawnHitIndicator(Collision collision)
+    {
+        GameObject hitPrefab = hitPrefabs[Random.Range(0, hitPrefabs.Length)];
+        ContactPoint contact = collision.contacts[0];
+        Quaternion rotation = Quaternion.FromToRotation(Vector3.up, contact.normal);
+        GameObject hit = Instantiate(hitPrefab, contact.point, rotation);
+        Destroy(hit, 3f);
     }
 
     public void SetDamage(float damage)

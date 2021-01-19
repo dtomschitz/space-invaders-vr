@@ -5,6 +5,11 @@ public class Projectile : MonoBehaviour
     public float speed;
     public GameObject[] hitPrefabs;
 
+    void Start()
+    {
+        Destroy(gameObject, 5f);
+    }
+
     void Update()
     {
         transform.position += transform.forward * (speed * Time.deltaTime);

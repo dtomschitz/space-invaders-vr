@@ -131,15 +131,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 528d4a94210079641af862549d17859e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 40
+  maxHealth: 100
   damage: 5
-  agent: {fileID: 2148973389559613016}
   explosionPrefab: {fileID: 100006, guid: a49596ebf788acd4ab1281bffea444b1, type: 3}
   projectilePrefab: {fileID: 2591900824676839440, guid: f261eef93809e0d4a8add87b46009ce2,
     type: 3}
-  timeBetweenAttacks: 0
-  startTimeBtwAttacks: 3
-  attackTime: 0
+  damagePopupPrefab: {fileID: 7806195711954838535, guid: 54bbe2a4ef0275147bd1e831758d1f80,
+    type: 3}
+  timeBetweenAttacks: 3
+  startTimeBtwAttacks: 2
+  attackTime: 10
+  disableAttack: 0
   dodgeRange: 3
   dodgeStart: 20
   dodgeTime: 1

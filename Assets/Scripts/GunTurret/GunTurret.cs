@@ -16,19 +16,13 @@ public class GunTurret : MonoBehaviour
     public GameObject gun;
 
     [Header("Settings")]
-    public float rate = .2f;
     public float minY;
 
     GameObject hand;
     GunTurretLaser laser;
 
-    float shootingTimer;
-    bool shooting;
-
     void Start()
     {
-        shootingTimer = 0f;
-
         InitializeEvents(turretPosition);
         FindGameObjects(turretPosition);
     } 
@@ -44,12 +38,6 @@ public class GunTurret : MonoBehaviour
 
         firePoint.transform.LookAt(laser.dot.transform);
         gun.transform.LookAt(laser.dot.transform);
-
-        shootingTimer -= Time.deltaTime;
-        if (shootingTimer <= 0 && shooting)
-        {
-            Shoot();
-        }
     } 
 
     void Shoot()
@@ -69,7 +57,6 @@ public class GunTurret : MonoBehaviour
             }
 
             AudioManager.instance.PlaySound(Sound.Shoot, firePoint.transform.position);
-            shootingTimer = rate;
         }
     }
 
@@ -83,14 +70,11 @@ public class GunTurret : MonoBehaviour
     {
         if (position == GunTurretPosition.LEFT)
         {
-            Player.instance.controls.OnLeftTriggerButtonPressed += () => shooting = true;
-            Player.instance.controls.OnLeftTriggerButtonPressCanceled += () => shooting = false;
-
+            Player.instance.controls.OnLeftTriggerButtonPressed += Shoot;
         }
         else
         {
-            Player.instance.controls.OnRightTriggerButtonPressed += () => shooting = true;
-            Player.instance.controls.OnRightTriggerButtonPressCanceled += () => shooting = false;
+            Player.instance.controls.OnRightTriggerButtonPressed += Shoot;
         }
     }
 

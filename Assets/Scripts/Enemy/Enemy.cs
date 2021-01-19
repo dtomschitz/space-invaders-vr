@@ -17,29 +17,32 @@ public enum DodgeDirection
 
 public class Enemy : Entity
 {
-    public NavMeshAgent agent;
+    [Header("Prefabs")]
     public GameObject explosionPrefab;
     public EnemyProjectile projectilePrefab;
+    public DamagePopup damagePopupPrefab;
 
     [Header("Attack Settings")]
     public float timeBetweenAttacks;
     public float startTimeBtwAttacks;
     public float attackTime;
+    public bool disableAttack;
 
     [Header("Dodge Settings")]
     public int dodgeRange;
     public float dodgeStart;
     public float dodgeTime;
 
-    private DodgeDirection dodgeDirection;
-
     public EnemyState State { get; protected set; }
 
-    private GameObject player;
+    DodgeDirection dodgeDirection;
+    NavMeshAgent agent;
+    GameObject player;
 
     protected override void Start()
     {
         base.Start();
+        agent = GetComponent<NavMeshAgent>();
         State = EnemyState.Seek;
 
         player = GameObject.FindGameObjectWithTag("Player");
@@ -59,13 +62,16 @@ public class Enemy : Entity
 
         transform.LookAt(player.transform.position);
 
-        if (timeBetweenAttacks <= 0)
+        if (!disableAttack)
         {
-            AttackPlayer();
-        }
-        else
-        {
-            timeBetweenAttacks -= Time.deltaTime;
+            if (timeBetweenAttacks <= 0)
+            {
+                AttackPlayer();
+            }
+            else
+            {
+                timeBetweenAttacks -= Time.deltaTime;
+            }
         }
 
         if (dodgeTime <= 0)
@@ -103,17 +109,22 @@ public class Enemy : Entity
         Destroy(gameObject);
     }
 
+    protected override void OnDamaged(float damage)
+    {
+        base.OnDamaged(damage);
+
+        if (damagePopupPrefab) ShowDamagePopup();
+        Statistics.instance.AddDamage(damage);
+    }
+
     private void AttackPlayer()
     {
-        //Make sure enemy doesn't move
-
         EnemyProjectile projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
         projectile.SetDamage(damage);
         timeBetweenAttacks = startTimeBtwAttacks;
-        ///attackcode here
     }
 
-    private void Dodge(int range)
+    void Dodge(int range)
     {
         Vector3 destination = agent.transform.position;
         destination.x += range;
@@ -121,7 +132,7 @@ public class Enemy : Entity
         dodgeDirection = dodgeDirection == DodgeDirection.LEFT ? DodgeDirection.RIGHT : DodgeDirection.LEFT;
     }
 
-    private void MoveToPosition(Vector3 position)
+    void MoveToPosition(Vector3 position)
     {
         agent.SetDestination(position);
         if (agent.transform.position == position)
@@ -130,9 +141,15 @@ public class Enemy : Entity
         }
     }
 
-    private void ShowExplosion()
+    void ShowExplosion()
     {
         GameObject hit = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
         Destroy(hit, 3f);
+    }
+
+    void ShowDamagePopup()
+    {
+        DamagePopup popup = Instantiate(damagePopupPrefab, transform.position, Quaternion.identity, transform);
+        popup.GetComponent<TextMesh>().text = damage.ToString();
     }
 }
