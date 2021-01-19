@@ -9,7 +9,7 @@ public class GunTurretLaser : MonoBehaviour
     public GameObject dot;
     public XRRayInteractor rayInteractor;
 
-    GunTurret gun;
+    GameObject player;
     GameObject hand;
     LineRenderer lineRenderer;
 
@@ -20,8 +20,8 @@ public class GunTurretLaser : MonoBehaviour
 
     void Start()
     {
-        gun = gameObject.GetComponentInParent<GunTurret>();
-        hand = gun.Hand;
+        player = Player.instance.gameObject;
+        hand = gameObject.GetComponentInParent<GunTurret>().Hand;
     }
 
     void Update()
@@ -31,17 +31,14 @@ public class GunTurretLaser : MonoBehaviour
 
         if (hit.collider)
         {
-            if (hit.collider.tag == enemyTag)
-            {
-                Debug.Log("Hit " + hit.transform.tag);
-            }
-
             endPosition = hit.point;
         }
 
         lineRenderer.SetPosition(0, transform.position);
         lineRenderer.SetPosition(1, endPosition);
         dot.transform.position = endPosition;
+
+        dot.transform.LookAt(player.transform);
     }
 }
 

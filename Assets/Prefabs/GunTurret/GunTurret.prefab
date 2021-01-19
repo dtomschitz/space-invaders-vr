@@ -54,7 +54,7 @@ MonoBehaviour:
   firePoint: {fileID: 5769545804999575016}
   gun: {fileID: 4780113757167304218}
   rate: 0.2
-  minX: 0
+  minY: 0
 --- !u!1 &5769545804999575016
 GameObject:
   m_ObjectHideFlags: 0
@@ -327,17 +327,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: b72372fc120df9a4aab45e53ba2c6484,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.8
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b72372fc120df9a4aab45e53ba2c6484,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.8
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b72372fc120df9a4aab45e53ba2c6484,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.8
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: b72372fc120df9a4aab45e53ba2c6484,
         type: 3}

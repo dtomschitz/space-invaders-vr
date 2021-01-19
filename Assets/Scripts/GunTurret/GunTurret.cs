@@ -35,18 +35,20 @@ public class GunTurret : MonoBehaviour
 
     void Update()
     {
-        float y = gun.transform.position.y;
+        /*float y = gun.transform.position.y;
         if (y > 0 && y >= minY || y < 0 && y <= minY)
         {
             firePoint.transform.LookAt(laser.dot.transform);
             gun.transform.LookAt(laser.dot.transform);
-        }
+        }*/
+
+        firePoint.transform.LookAt(laser.dot.transform);
+        gun.transform.LookAt(laser.dot.transform);
 
         shootingTimer -= Time.deltaTime;
         if (shootingTimer <= 0 && shooting)
         {
             Shoot();
-            shootingTimer = rate;
         }
     } 
 
@@ -67,6 +69,7 @@ public class GunTurret : MonoBehaviour
             }
 
             AudioManager.instance.PlaySound(Sound.Shoot, firePoint.transform.position);
+            shootingTimer = rate;
         }
     }
 
