@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
-    public string levelToLoad = "Main";
+    public string levelToLoad = "MainLevel";
 
     public SceneFader sceneFader;
 
