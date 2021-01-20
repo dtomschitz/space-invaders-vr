@@ -44,7 +44,6 @@ public class ForceField : MonoBehaviour
         } else
         {
             UseShieldPower(1f * Time.deltaTime);
-            // UseShieldPower()
         }
     }
 
