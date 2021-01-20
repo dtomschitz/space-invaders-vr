@@ -3,25 +3,19 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class GunTurretLaser : MonoBehaviour
 {
-    public float defaultLength = 15.0f;
-    public string enemyTag;
-
+    public GunTurretPosition gunPosition;
+    public float defaultLength = 40f;
     public GameObject dot;
-    public XRRayInteractor rayInteractor;
 
     GameObject player;
     GameObject hand;
-    LineRenderer lineRenderer;
-
-    void Awake()
-    {
-        lineRenderer = GetComponent<LineRenderer>();
-    }
+    XRRayInteractor rayInteractor;
 
     void Start()
     {
         player = Player.instance.gameObject;
-        hand = gameObject.GetComponentInParent<GunTurret>().Hand;
+        hand = GameObject.FindGameObjectWithTag(gunPosition == GunTurretPosition.LEFT ? "LeftHand" : "RightHand");
+        rayInteractor = GameObject.FindGameObjectWithTag(gunPosition == GunTurretPosition.LEFT ? "LeftHandController" : "RightHandController").GetComponent<XRRayInteractor>();
     }
 
     void Update()
@@ -34,10 +28,7 @@ public class GunTurretLaser : MonoBehaviour
             endPosition = hit.point;
         }
 
-        lineRenderer.SetPosition(0, transform.position);
-        lineRenderer.SetPosition(1, endPosition);
         dot.transform.position = endPosition;
-
         dot.transform.LookAt(player.transform);
     }
 }
