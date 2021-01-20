@@ -787,7 +787,7 @@ GameObject:
   - component: {fileID: 573763192728940862}
   - component: {fileID: 573763192728940801}
   - component: {fileID: 573763192060454923}
-  - component: {fileID: 573763192728940803}
+  - component: {fileID: 3709218376322646302}
   - component: {fileID: 5822975495704885085}
   m_Layer: 9
   m_Name: Hand Right
@@ -846,7 +846,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &573763192728940803
+--- !u!65 &3709218376322646302
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -854,7 +854,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 573763192728940802}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.1, y: 0.05, z: 0.15}

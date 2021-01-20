@@ -37,7 +37,7 @@ public class Enemy : Entity
 
     DodgeDirection dodgeDirection;
     NavMeshAgent agent;
-    GameObject player;
+    GameObject attackPoint;
 
     protected override void Start()
     {
@@ -45,7 +45,9 @@ public class Enemy : Entity
         agent = GetComponent<NavMeshAgent>();
         State = EnemyState.Seek;
 
-        player = GameObject.FindGameObjectWithTag("Player");
+        GameObject[] attackPonints = GameObject.FindGameObjectsWithTag("AttackPoint");
+        attackPoint = attackPonints[Random.Range(0, attackPonints.Length)];
+
         agent.speed = 1;
         agent.acceleration = 10;
 
@@ -60,7 +62,7 @@ public class Enemy : Entity
             Destroy(agent.gameObject);
         }
 
-        transform.LookAt(player.transform.position);
+        transform.LookAt(attackPoint.transform.position);
 
         if (!disableAttack)
         {
@@ -101,10 +103,8 @@ public class Enemy : Entity
     {
         base.OnDeath();
         GetComponent<SphereCollider>().enabled = false;
-        // ForceField.instance.AddShieldPower(10f);
-        Statistics.instance.AddKill();
-
         ShowExplosion();
+        Statistics.instance.AddKill();
 
         Destroy(gameObject);
     }
