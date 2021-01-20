@@ -953,6 +953,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SceneFader
       objectReference: {fileID: 0}
+    - target: {fileID: 8777770557341323724, guid: 85944533619738a4bbc5c5c0af0428a0,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 720438310}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 85944533619738a4bbc5c5c0af0428a0, type: 3}
 --- !u!114 &1943993762 stripped
