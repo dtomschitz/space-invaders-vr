@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 5073371976492204930, guid: 8b8baf28672e1484584f52bdcb65a432,
         type: 3}
       propertyPath: m_Name
-      value: GunTurret Left
+      value: Gun Left
       objectReference: {fileID: 0}
     - target: {fileID: 5073371976492204930, guid: 8b8baf28672e1484584f52bdcb65a432,
         type: 3}
@@ -20,12 +20,7 @@ PrefabInstance:
     - target: {fileID: 5073371976492204933, guid: 8b8baf28672e1484584f52bdcb65a432,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5073371976492204933, guid: 8b8baf28672e1484584f52bdcb65a432,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 5073371976492204933, guid: 8b8baf28672e1484584f52bdcb65a432,
         type: 3}

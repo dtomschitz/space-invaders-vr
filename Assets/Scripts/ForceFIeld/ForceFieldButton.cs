@@ -1,8 +1,48 @@
-﻿using System;
-using UnityEngine;
-using UnityEngine.XR.Interaction.Toolkit;
+﻿using UnityEngine;
+using UnityEngine.Events;
 
-public class ForceFieldButton : XRBaseInteractable
+public class ForceFieldButton : MonoBehaviour
+{
+    public event UnityAction OnButtonPress;
+    public float pressLength;
+
+    bool pressed;
+    Vector3 startPosition;
+
+    void Start()
+    {
+        startPosition = transform.position;
+    }
+
+    void Update()
+    {
+        float distance = Mathf.Abs(transform.position.y - startPosition.y);
+        if (distance >= pressLength)
+        {
+            transform.position = new Vector3(transform.position.x, startPosition.y - pressLength, transform.position.z);
+            if (!pressed)
+            {
+                pressed = true;
+                OnButtonPress?.Invoke();
+            }
+        } else
+        {
+            pressed = false;
+        }
+
+        if (transform.position.y > startPosition.y)
+        {
+            transform.position = new Vector3(transform.position.x, startPosition.y, transform.position.z);
+        }
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("DWADda");    
+    }
+}
+
+/*public class ForceFieldButton : MonoBehaviour
 {
     public event Action OnButtonPress;
 
@@ -13,7 +53,7 @@ public class ForceFieldButton : XRBaseInteractable
     float previousHandHeight = 0f;
     XRBaseInteractor hoverInteractor;
 
-    protected override void Awake()
+    void Awake()
     {
         base.Awake();
         onHoverEntered.AddListener(StartPress);
@@ -25,12 +65,14 @@ public class ForceFieldButton : XRBaseInteractable
         SetMinMax();
     }
 
-    protected override void OnDestroy()
+     void OnDestroy()
     {
         base.OnDestroy();
         onHoverEntered.RemoveListener(StartPress);
         onHoverExited.RemoveListener(EndPress);
     }
+
+
 
     public override void ProcessInteractable(XRInteractionUpdateOrder.UpdatePhase updatePhase)
     {
@@ -96,3 +138,4 @@ public class ForceFieldButton : XRBaseInteractable
         return transform.localPosition.y == range;
     }
 }
+*/
