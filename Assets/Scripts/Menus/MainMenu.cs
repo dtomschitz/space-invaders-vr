@@ -1,17 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 
 public class MainMenu : MonoBehaviour
 {
-    public string levelToLoad = "MainLevel";
+    public string level = "MainLevel";
 
     public SceneFader sceneFader;
 
     public void Play()
     {
-        sceneFader.FadeTo(levelToLoad);
+        sceneFader.FadeTo(level);
     }
 
     public void Quit()

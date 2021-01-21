@@ -20,7 +20,6 @@ public class Enemy : Entity
     [Header("Prefabs")]
     public GameObject explosionPrefab;
     public EnemyProjectile projectilePrefab;
-    public DamagePopup damagePopupPrefab;
 
     [Header("Attack Settings")]
     public float timeBetweenAttacks;
@@ -112,8 +111,6 @@ public class Enemy : Entity
     protected override void OnDamaged(float damage)
     {
         base.OnDamaged(damage);
-
-        if (damagePopupPrefab) ShowDamagePopup();
         Statistics.instance.AddDamage(damage);
     }
 
@@ -145,11 +142,5 @@ public class Enemy : Entity
     {
         GameObject hit = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
         Destroy(hit, 3f);
-    }
-
-    void ShowDamagePopup()
-    {
-        DamagePopup popup = Instantiate(damagePopupPrefab, transform.position, Quaternion.identity, transform);
-        popup.GetComponent<TextMesh>().text = damage.ToString();
     }
 }

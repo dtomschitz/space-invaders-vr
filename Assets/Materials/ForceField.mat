@@ -23,9 +23,9 @@ Material:
   m_Name: ForceField
   m_Shader: {fileID: 4800000, guid: 534a0777ec461d242b67dc7ed9c48fe9, type: 3}
   m_ShaderKeywords: 
-  m_LightmapFlags: 2
-  m_EnableInstancingVariants: 1
-  m_DoubleSidedGI: 1
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
@@ -119,21 +119,21 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     - _enableFillTexture: 1
-    - _enableIntersection: 1
-    - _enableRimGlow: 1
-    - _enableRipple: 1
+    - _enableIntersection: 0
+    - _enableRimGlow: 0
+    - _enableRipple: 0
     - _enableScanLine: 1
     - _fill: 0.05
     - _impactRippleAmplitude: 0.001
     - _impactRippleMaxRadius: 0.2
     - _impactRippleSpeed: 20
-    - _intersectionMultiplier: 19.7
-    - _intersectionOffset: 0.556
+    - _intersectionMultiplier: 0
+    - _intersectionOffset: 0.3
     - _rimGlowNoiseDensity: 1
     - _rimGlowNoiseSpeed: 1
     - _rimPulseSpeed: 3
-    - _scanSize: 0.406
-    - _scanSpeed: 0.3
+    - _scanSize: 1
+    - _scanSpeed: 0.4
     m_Colors:
     - Color_4113B2A7: {r: 0.01401742, g: 0.990566, b: 0.1985787, a: 0}
     - Color_81C3CAB7: {r: 0, g: 15.37255, b: 16, a: 0}
@@ -151,10 +151,10 @@ Material:
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _baseColor: {r: 0.9882353, g: 0.09122467, b: 0, a: 1}
-    - _fillOffset: {r: 0.04, g: -0.03, b: 0, a: 0}
+    - _fillOffset: {r: 0, g: 0, b: 0, a: 0}
     - _fillTiling: {r: 30, g: 20, b: 0, a: 0}
-    - _impactPoint: {r: 0.06, g: 0.1483, b: 0, a: 0}
+    - _impactPoint: {r: 0, g: 0, b: 0, a: 0}
     - _impactRippleDirection: {r: 1, g: 0, b: 0, a: 0}
-    - _rimColor: {r: 7.999999, g: 4.434431, b: 0.209424, a: 0}
+    - _rimColor: {r: 2.9960785, g: 1.6627451, b: 0.078431375, a: 0}
     - _rimPower: {r: 3, g: 3, b: 0, a: 0}
   m_BuildTextureStacks: []
