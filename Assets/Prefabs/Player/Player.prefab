@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1509435543168254134}
-  - component: {fileID: 4181084904653507521}
   - component: {fileID: 1509435543168254132}
+  - component: {fileID: 2799937582741610142}
   - component: {fileID: 1509435543168254131}
   - component: {fileID: 1509435543168254130}
   - component: {fileID: 1509435543168254133}
@@ -36,19 +36,6 @@ Transform:
   m_Father: {fileID: 1509435543701675884}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &4181084904653507521
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1509435543168254135}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.08
-  m_Center: {x: -0.04, y: -0.03, z: 0}
 --- !u!120 &1509435543168254132
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -154,6 +141,19 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
+--- !u!135 &2799937582741610142
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1509435543168254135}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.1
+  m_Center: {x: -0.03, y: -0.03, z: 0}
 --- !u!114 &1509435543168254131
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -461,8 +461,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1509435543185371929}
-  - component: {fileID: 1272261908847857805}
   - component: {fileID: 1509435543185371927}
+  - component: {fileID: 2420619822311839393}
   - component: {fileID: 1509435543185371926}
   - component: {fileID: 1509435543185371925}
   - component: {fileID: 1509435543185371928}
@@ -488,19 +488,6 @@ Transform:
   m_Father: {fileID: 1509435543701675884}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &1272261908847857805
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1509435543185371930}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.08
-  m_Center: {x: 0.04, y: -0.03, z: 0}
 --- !u!120 &1509435543185371927
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -606,6 +593,19 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
+--- !u!135 &2420619822311839393
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1509435543185371930}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.1
+  m_Center: {x: 0.03, y: -0.03, z: 0}
 --- !u!114 &1509435543185371926
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1135,7 +1135,7 @@ Camera:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1509435545008084438}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}

@@ -27,13 +27,13 @@ public class ForceField : MonoBehaviour
     public delegate void ShieldPowerAdded(float amount, float currentNormalizedShieldPower);
     public event ShieldPowerAdded OnShieldPowerAdded;
 
-
     public float CurrentShieldPower { get; protected set; }
     public bool IsShieldEnabled { get; protected set; }
 
     void Start()
     {
         shieldButton.OnButtonPress += OnShieldButtonPress;
+        gameObject.SetActive(false);
     }
 
     void Update()
@@ -50,7 +50,7 @@ public class ForceField : MonoBehaviour
     void OnShieldButtonPress()
     {
         IsShieldEnabled = !IsShieldEnabled;
-        gameObject.SetActive(true);
+        gameObject.SetActive(IsShieldEnabled);
     }
 
 

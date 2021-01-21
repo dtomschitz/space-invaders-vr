@@ -1,100 +1,23 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.XR.Interaction.Toolkit;
 
-public class ForceFieldButton : XRBaseInteractable
+public class ForceFieldButton : MonoBehaviour
 {
+
+    public Material defaultMaterial;
+    public Material highlightMaterial;
+
     public event UnityAction OnButtonPress;
 
-    float yMin = 0f;
-    float yMax = 0f;
-    bool previousePress = false;
+    bool pressed;
 
-    float previousHandHeight = 0f;
-    XRBaseInteractor hoverInteractor;
-
-    void Awake()
+    void OnTriggerEnter(Collider other)
     {
-        base.Awake();
-        onHoverEntered.AddListener(StartPress);
-        onHoverExited.AddListener(EndPress);
-    }
-
-    void Start()
-    {
-        SetMinMax();
-    }
-
-     void OnDestroy()
-    {
-        base.OnDestroy();
-        onHoverEntered.RemoveListener(StartPress);
-        onHoverExited.RemoveListener(EndPress);
-    }
-
-
-
-    public override void ProcessInteractable(XRInteractionUpdateOrder.UpdatePhase updatePhase)
-    {
-        if (hoverInteractor)
+        if (other.tag == "LeftHandController" || other.tag == "RightHandController")
         {
-            float newHandHeight = GetLocalYPosition(hoverInteractor.transform.position);
-            float handDifference = previousHandHeight - newHandHeight;
-            previousHandHeight = newHandHeight;
-
-            float newPosition = transform.localPosition.y - handDifference;
-            SetYPosition(newPosition);
-
-            bool inPosition = InPosition();
-            if (inPosition && inPosition != previousePress)
-            {
-                OnButtonPress?.Invoke();
-            }
-
-            previousePress = inPosition;
+            GetComponent<Renderer>().material = pressed ? defaultMaterial : highlightMaterial;
+            pressed = !pressed;
+            if (pressed) OnButtonPress?.Invoke();
         }
-    }
-
-    void StartPress(XRBaseInteractor interactor)
-    {
-        hoverInteractor = interactor;
-        previousHandHeight = GetLocalYPosition(interactor.transform.position);
-        Player.instance.HideHands();
-    }
-
-    void EndPress(XRBaseInteractor interactor)
-    {
-        hoverInteractor = null;
-        previousHandHeight = 0f;
-        previousePress = false;
-
-        SetYPosition(yMax);
-        Player.instance.ShowHands();
-    }
-
-    void SetMinMax()
-    {
-        Collider collider = GetComponent<Collider>();
-        yMin = transform.localPosition.y - (collider.bounds.size.y * 0.5f);
-        yMax = transform.localPosition.y;
-    }
-
-    void SetYPosition(float position)
-    {
-        Vector3 newPosition = transform.localPosition;
-        newPosition.y = Mathf.Clamp(position, yMin, yMax);
-        transform.localPosition = newPosition;
-    }
-
-    float GetLocalYPosition(Vector3 position)
-    {
-        Vector3 localPosition = transform.root.InverseTransformPoint(position);
-        return localPosition.y;
-    }
-
-    bool InPosition()
-    {
-        float range = Mathf.Clamp(transform.localPosition.y, yMin, yMax + 0.1f);
-        return transform.localPosition.y == range;
     }
 }
