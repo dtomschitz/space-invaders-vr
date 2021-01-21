@@ -27,8 +27,7 @@ public class ForceField : MonoBehaviour
     public delegate void ShieldPowerAdded(float amount, float currentNormalizedShieldPower);
     public event ShieldPowerAdded OnShieldPowerAdded;
 
-    public float CurrentShieldPower { get; protected set; }
-    public bool IsShieldEnabled { get; protected set; }
+    bool isForceFieldEnabled;
 
     void Start()
     {
@@ -38,7 +37,7 @@ public class ForceField : MonoBehaviour
 
     void Update()
     {
-        if (!IsShieldEnabled)
+        if (!IsForceFieldEnabled)
         {
             AddShieldPower(shieldRegenerationAmount * Time.deltaTime / shieldRegenerationSpeed);
         } else
@@ -49,8 +48,7 @@ public class ForceField : MonoBehaviour
 
     void OnShieldButtonPress()
     {
-        IsShieldEnabled = !IsShieldEnabled;
-        gameObject.SetActive(IsShieldEnabled);
+        IsForceFieldEnabled = !IsForceFieldEnabled;
     }
 
 
@@ -84,6 +82,19 @@ public class ForceField : MonoBehaviour
     public float ShieldPowerNormalized
     {
         get { return CurrentShieldPower / maxShieldPower; }
+    }
+
+    public float CurrentShieldPower { get; protected set; }
+
+    public bool IsForceFieldEnabled
+    {
+        set
+        {
+            isForceFieldEnabled = value;
+            gameObject.SetActive(value);
+        }
+
+        get => isForceFieldEnabled;
     }
 }
 

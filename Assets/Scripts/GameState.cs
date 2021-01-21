@@ -24,9 +24,9 @@ public class GameState : MonoBehaviour
 
     public GameStateType State { get; protected set; } = GameStateType.TargetAcquisition;
 
-    public void Start()
+    void Start()
     {
-        // Player.instance.controls.OnPausedButtonPressed += () => SetState(GameStateType.GamePaused);
+        Player.instance.controls.OnPausedButtonPressed += () => SetState(GameStateType.GamePaused);
     }
 
     public void SetState(GameStateType newState)
@@ -63,9 +63,9 @@ public class GameState : MonoBehaviour
     /// </summary>
     void TogglePauseMenu()
     {
-        //UIManager.instance.SetGameOverMenuActive(false);
-        //UIManager.instance.SetPauseMenuActive(true);
-
+        UIManager.instance.ShowPauseMenu(true);
+        UIManager.instance.ShowMainMenu(false);
+        UIManager.instance.ShowHologram(false);
     }
 
     /// <summary>
@@ -74,10 +74,8 @@ public class GameState : MonoBehaviour
     /// </summary>
     void ToggleGameOver()
     {
-        //UIManager.instance.SetPauseMenuActive(false);
-
-        //StartCoroutine(OpenGameOverMenu());
-
+        UIManager.instance.ShowMainMenu(false);
+        UIManager.instance.ShowPauseMenu(false);
     }
 
     /// <summary>
@@ -86,6 +84,9 @@ public class GameState : MonoBehaviour
     /// </summary>
     void ToggleIngame()
     {
+        UIManager.instance.ShowHologram(true);
+        UIManager.instance.ShowMainMenu(false);
+        UIManager.instance.ShowPauseMenu(false);
     }
 
     void ToggleTargetAcquisition()

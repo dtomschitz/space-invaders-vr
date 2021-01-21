@@ -111,6 +111,7 @@ GameObject:
   - component: {fileID: 6339816167304240567}
   - component: {fileID: 6339816167304240566}
   - component: {fileID: 6339816167304240565}
+  - component: {fileID: 7173798943403110537}
   m_Layer: 0
   m_Name: Holo Display
   m_TagString: Untagged
@@ -182,6 +183,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &7173798943403110537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6339816167304240563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea58e6dc8e0f1824eb27645dec94b1f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  forceFieldBar: {fileID: 1488261896162085231}
+  healthBar: {fileID: 2323838710549050688}
 --- !u!1001 &7830040091572573599
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -277,6 +292,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 7830040091572573599}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2323838710549050688 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5518612708025688287, guid: 219ec223c2aed434fa2c58f5dc8a05f8,
+    type: 3}
+  m_PrefabInstance: {fileID: 7830040091572573599}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 635e4a9384d7ea64face3e94234a9530, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &9117367141771888819
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -377,3 +404,15 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 9117367141771888819}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1488261896162085231 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -1576194640949001764, guid: 2c15b005089a85946a8dfd5c6a74e4fb,
+    type: 3}
+  m_PrefabInstance: {fileID: 9117367141771888819}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 588c862aa997a6a469584f3caac2d514, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

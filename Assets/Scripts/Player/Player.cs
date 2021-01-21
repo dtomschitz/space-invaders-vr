@@ -30,6 +30,7 @@ public class Player : Entity
     protected override void OnDeath()
     {
         base.OnDeath();
+        ForceField.instance.IsForceFieldEnabled = false;
         GameState.instance.SetState(GameStateType.GameOver);
     }
 

@@ -53,15 +53,21 @@ public enum FadeDirection
     FadeOut
 }
 
-public class SceneFader : MonoBehaviour
+public class VRFader : MonoBehaviour
 {
     public Volume globalVolume;
 
     ColorParameter colorParameter;
     IEnumerator coroutine;
 
+    #region Singelton
+
+    public static VRFader instance;
+
     void Awake()
     {
+        instance = this;
+
         if (!globalVolume.profile.TryGet(out ColorAdjustments colorAdjustments))
         {
             Debug.LogWarning("No color adjustments found!");
@@ -72,19 +78,14 @@ public class SceneFader : MonoBehaviour
         }
     }
 
-    public void FadeTo(string scene)
-    {
-        SceneFadeOut();
-        SceneManager.LoadScene(scene);
-        SceneFadeIn();
-    }
+    #endregion;
 
-    void SceneFadeOut(float time = 2f)
+    public void SceneFadeOut(float time = 2f)
     {
         DoFade(FadeDirection.FadeOut, time);
     }
 
-    void SceneFadeIn(float time = 2f)
+    public void SceneFadeIn(float time = 2f)
     {
         DoFade(FadeDirection.FadeIn, time);
     }

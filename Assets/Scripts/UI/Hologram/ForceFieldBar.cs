@@ -1,4 +1,4 @@
-﻿public class ForceFieldBar : ShrinkBar
+﻿public class ForceFieldBar : SlideBar
 {
     void Start()
     {

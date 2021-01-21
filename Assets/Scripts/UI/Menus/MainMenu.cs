@@ -2,13 +2,11 @@
 
 public class MainMenu : MonoBehaviour
 {
-    public string level = "MainLevel";
-
-    public SceneFader sceneFader;
+    public VRFader sceneFader;
 
     public void Play()
     {
-        sceneFader.FadeTo(level);
+      // sceneFader.FadeTo(level);
     }
 
     public void Quit()

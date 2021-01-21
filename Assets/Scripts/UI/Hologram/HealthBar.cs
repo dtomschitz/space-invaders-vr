@@ -1,4 +1,4 @@
-﻿public class HealthBar : ShrinkBar
+﻿public class HealthBar : SlideBar
 {
     void Start()
     {

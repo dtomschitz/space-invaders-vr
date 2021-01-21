@@ -17,6 +17,7 @@ TagManager:
   - Spaceship
   - ForceField
   - AttackPoint
+  - VRFade
   layers:
   - Default
   - TransparentFX
