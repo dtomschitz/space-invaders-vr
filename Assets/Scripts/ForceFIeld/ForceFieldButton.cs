@@ -1,50 +1,10 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.XR.Interaction.Toolkit;
 
-public class ForceFieldButton : MonoBehaviour
+public class ForceFieldButton : XRBaseInteractable
 {
     public event UnityAction OnButtonPress;
-    public float pressLength;
-
-    bool pressed;
-    Vector3 startPosition;
-
-    void Start()
-    {
-        startPosition = transform.position;
-    }
-
-    void Update()
-    {
-        float distance = Mathf.Abs(transform.position.y - startPosition.y);
-        if (distance >= pressLength)
-        {
-            transform.position = new Vector3(transform.position.x, startPosition.y - pressLength, transform.position.z);
-            if (!pressed)
-            {
-                pressed = true;
-                OnButtonPress?.Invoke();
-            }
-        } else
-        {
-            pressed = false;
-        }
-
-        if (transform.position.y > startPosition.y)
-        {
-            transform.position = new Vector3(transform.position.x, startPosition.y, transform.position.z);
-        }
-    }
-
-    void OnCollisionEnter(Collision collision)
-    {
-        Debug.Log("DWADda");    
-    }
-}
-
-/*public class ForceFieldButton : MonoBehaviour
-{
-    public event Action OnButtonPress;
 
     float yMin = 0f;
     float yMax = 0f;
@@ -138,4 +98,3 @@ public class ForceFieldButton : MonoBehaviour
         return transform.localPosition.y == range;
     }
 }
-*/
