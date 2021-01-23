@@ -692,11 +692,6 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1737860502775841555, guid: ad1d9ef0accd7482abfdabd5678f0e2d,
-        type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 3552049327469069641, guid: ad1d9ef0accd7482abfdabd5678f0e2d,
         type: 3}
       propertyPath: shieldButton
