@@ -80,13 +80,8 @@ public class Hand : MonoBehaviour
         }
     }
 
-    public void Hide()
+    public void EnableHand(bool value)
     {
-        gameObject.SetActive(false);
-    }
-
-    public void Show()
-    {
-        gameObject.SetActive(true);
+        gameObject.SetActive(value);
     }
 }

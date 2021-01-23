@@ -17,27 +17,23 @@ public class Projectile : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        speed = 0;
-
-        if (hitPrefabs?.Length != 0)
+        if (collision.gameObject.CompareTag("Enemy"))
         {
-            GameObject hitPrefab = hitPrefabs[Random.Range(0, hitPrefabs.Length)];
-            ContactPoint contact = collision.contacts[0];
-            Quaternion rotation = Quaternion.FromToRotation(Vector3.up, contact.normal);
-            GameObject hit = Instantiate(hitPrefab, contact.point, rotation);
-            Destroy(hit, 3f);
-        }
-        
+            speed = 0;
 
-        if (collision.gameObject.tag == "Enemy")
-        {
-            Enemy enemy = collision.gameObject.GetComponent<Enemy>();
-            if (enemy != null)
+            if (hitPrefabs?.Length != 0)
             {
-                Player.instance.Attack(enemy);
+                GameObject hitPrefab = hitPrefabs[Random.Range(0, hitPrefabs.Length)];
+                ContactPoint contact = collision.contacts[0];
+                Quaternion rotation = Quaternion.FromToRotation(Vector3.up, contact.normal);
+                GameObject hit = Instantiate(hitPrefab, contact.point, rotation);
+                Destroy(hit, 3f);
             }
-        }
 
-        Destroy(gameObject);
+            Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+            if (enemy != null) Player.instance.Attack(enemy);
+
+            Destroy(gameObject);
+        }
     }
 }

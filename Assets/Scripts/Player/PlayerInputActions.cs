@@ -183,6 +183,14 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""expectedControlType"": """",
                     ""processors"": ""Normalize(max=1),Clamp(max=1)"",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""27834fd1-97ec-4bb8-8d77-f5a93e4895ec"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -381,6 +389,17 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": ""Generic XR Controller"",
                     ""action"": ""Grip"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e19b800e-0b15-4a0e-84d6-548fd1dcac15"",
+                    ""path"": ""<XRController>{LeftHand}/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Generic XR Controller"",
+                    ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -784,6 +803,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
         m_LeftHand_TranslateAnchor = m_LeftHand.FindAction("Translate Anchor", throwIfNotFound: true);
         m_LeftHand_Trigger = m_LeftHand.FindAction("Trigger", throwIfNotFound: true);
         m_LeftHand_Grip = m_LeftHand.FindAction("Grip", throwIfNotFound: true);
+        m_LeftHand_Pause = m_LeftHand.FindAction("Pause", throwIfNotFound: true);
         // RightHand
         m_RightHand = asset.FindActionMap("RightHand", throwIfNotFound: true);
         m_RightHand_Position = m_RightHand.FindAction("Position", throwIfNotFound: true);
@@ -906,6 +926,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
     private readonly InputAction m_LeftHand_TranslateAnchor;
     private readonly InputAction m_LeftHand_Trigger;
     private readonly InputAction m_LeftHand_Grip;
+    private readonly InputAction m_LeftHand_Pause;
     public struct LeftHandActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -925,6 +946,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
         public InputAction @TranslateAnchor => m_Wrapper.m_LeftHand_TranslateAnchor;
         public InputAction @Trigger => m_Wrapper.m_LeftHand_Trigger;
         public InputAction @Grip => m_Wrapper.m_LeftHand_Grip;
+        public InputAction @Pause => m_Wrapper.m_LeftHand_Pause;
         public InputActionMap Get() { return m_Wrapper.m_LeftHand; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -979,6 +1001,9 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                 @Grip.started -= m_Wrapper.m_LeftHandActionsCallbackInterface.OnGrip;
                 @Grip.performed -= m_Wrapper.m_LeftHandActionsCallbackInterface.OnGrip;
                 @Grip.canceled -= m_Wrapper.m_LeftHandActionsCallbackInterface.OnGrip;
+                @Pause.started -= m_Wrapper.m_LeftHandActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_LeftHandActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_LeftHandActionsCallbackInterface.OnPause;
             }
             m_Wrapper.m_LeftHandActionsCallbackInterface = instance;
             if (instance != null)
@@ -1028,6 +1053,9 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                 @Grip.started += instance.OnGrip;
                 @Grip.performed += instance.OnGrip;
                 @Grip.canceled += instance.OnGrip;
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
             }
         }
     }
@@ -1226,6 +1254,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
         void OnTranslateAnchor(InputAction.CallbackContext context);
         void OnTrigger(InputAction.CallbackContext context);
         void OnGrip(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
     public interface IRightHandActions
     {

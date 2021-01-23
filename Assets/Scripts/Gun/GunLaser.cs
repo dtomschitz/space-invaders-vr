@@ -22,7 +22,7 @@ public class GunLaser : MonoBehaviour
 
     void Update()
     {
-        if (isEnabled)
+        if (IsEnabled)
         {
             rayInteractor.GetCurrentRaycastHit(out RaycastHit hit);
             Vector3 endPosition = hand.transform.position + (hand.transform.forward * defaultLength);
@@ -42,7 +42,7 @@ public class GunLaser : MonoBehaviour
         set
         {
             isEnabled = value;
-            dot.SetActive(isEnabled);
+            dot.SetActive(value);
         }
 
         get => isEnabled;

@@ -170,6 +170,14 @@
                     "expectedControlType": "",
                     "processors": "Normalize(max=1),Clamp(max=1)",
                     "interactions": ""
+                },
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "27834fd1-97ec-4bb8-8d77-f5a93e4895ec",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -368,6 +376,17 @@
                     "processors": "",
                     "groups": "Generic XR Controller",
                     "action": "Grip",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e19b800e-0b15-4a0e-84d6-548fd1dcac15",
+                    "path": "<XRController>{LeftHand}/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Generic XR Controller",
+                    "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

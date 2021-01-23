@@ -44,15 +44,9 @@ public class Player : Entity
         }
     }
 
-    public void HideHands()
+    public void EnableHands(bool value)
     {
-        leftHand.Hide();
-        rightHand.Hide();
-    }
-
-    public void ShowHands()
-    {
-        rightHand.Show();
-        rightHand.Show();
+        leftHand.EnableHand(value);
+        rightHand.EnableHand(value);
     }
 }

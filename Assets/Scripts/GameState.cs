@@ -26,6 +26,8 @@ public class GameState : MonoBehaviour
     public delegate void GameStateChanged(GameStateType state);
     public event GameStateChanged OnGameStateChanged;
 
+    Coroutine countdownCoroutine;
+
     void Start()
     {
         Player.instance.controls.OnPausedButtonPressed += () => SetState(GameStateType.PauseMenu);
@@ -35,6 +37,8 @@ public class GameState : MonoBehaviour
     public void SetState(GameStateType newState)
     {
         if (State == newState) return;
+        if (State == GameStateType.MainMenu && newState == GameStateType.PauseMenu) return;
+
         State = newState;
 
         switch (newState)
@@ -61,8 +65,10 @@ public class GameState : MonoBehaviour
 
     void ToggleMainMenu()
     {
+        Player.instance.EnableHands(true);
         XRManager.instance.EnableXRInteractors(true);
         GunManager.instance.EnableGuns(false);
+        ForceField.instance.EnableForceField(false);
 
         UIManager.instance.ShowMainMenu(true);
         UIManager.instance.ShowPauseMenu(false);
@@ -71,8 +77,11 @@ public class GameState : MonoBehaviour
 
     void TogglePauseMenu()
     {
+        StopCountdown();
+        Player.instance.EnableHands(true);
         XRManager.instance.EnableXRInteractors(true);
         GunManager.instance.EnableGuns(false);
+        ForceField.instance.EnableForceField(false);
 
         UIManager.instance.ShowPauseMenu(true);
         UIManager.instance.ShowMainMenu(false);
@@ -81,8 +90,11 @@ public class GameState : MonoBehaviour
 
     void ToggleGameOver()
     {
+        StopCountdown();
+        Player.instance.EnableHands(true);
         XRManager.instance.EnableXRInteractors(true);
         GunManager.instance.EnableGuns(false);
+        ForceField.instance.EnableForceField(false);
 
         UIManager.instance.ShowMainMenu(false);
         UIManager.instance.ShowPauseMenu(false);
@@ -90,26 +102,51 @@ public class GameState : MonoBehaviour
 
     void TogglePreInGame()
     {
+        StopCountdown();
+        Player.instance.EnableHands(false);
         XRManager.instance.EnableXRInteractors(false);
         GunManager.instance.EnableGuns(true);
+        ForceField.instance.EnableForceField(true);
 
         UIManager.instance.ShowHologram(true);
         UIManager.instance.ShowMainMenu(false);
         UIManager.instance.ShowPauseMenu(false);
 
-        StartCoroutine(UIManager.instance.StartCountdown(() => {
+        countdownCoroutine = StartCoroutine(UIManager.instance.StartCountdown(5f, () => {
             SetState(GameStateType.InGame);
         }));
+    }
+
+    void StopCountdown()
+    {
+        if (countdownCoroutine != null)
+        {
+            UIManager.instance.StopCountdown();
+            StopCoroutine(countdownCoroutine);
+            countdownCoroutine = null;
+        }
     }
 
     /// <summary>
     /// This method checks if the player is currently in game.
     /// </summary>
     /// <returns>True if the current game state is equals to
-    /// <see cref="GameStateType.InGame"/> and <see cref="GameStateType.TargetAcquisition"/>;
+    /// <see cref="GameStateType.InGame"/>;
     /// otherwise, false.
     /// </returns>
     public bool IsInGame
+    {
+        get { return State == GameStateType.InGame; }
+    }
+
+    /// <summary>
+    /// This method checks if the player is currently pre in game.
+    /// </summary>
+    /// <returns>True if the current game state is equals to
+    /// <see cref="GameStateType.PreInGame"/>;
+    /// otherwise, false.
+    /// </returns>
+    public bool IsPreInGame
     {
         get { return State == GameStateType.InGame; }
     }
@@ -119,5 +156,4 @@ public class GameState : MonoBehaviour
     /// </summary>
     /// <returns>The current game state.</returns>
     public GameStateType State { get; protected set; }
-
 }

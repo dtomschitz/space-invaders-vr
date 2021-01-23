@@ -19,7 +19,7 @@ public class ForceField : MonoBehaviour
     public float shieldRegenerationSpeed;
 
     [Header("Shield Button")]
-    public ForceFieldButton shieldButton;
+    public ForceFieldButton button;
 
     public delegate void ShieldPowerUsed(float amount, float currentNormalizedShieldPower);
     public event ShieldPowerUsed OnShieldPowerUsed;
@@ -27,28 +27,34 @@ public class ForceField : MonoBehaviour
     public delegate void ShieldPowerAdded(float amount, float currentNormalizedShieldPower);
     public event ShieldPowerAdded OnShieldPowerAdded;
 
-    bool isForceFieldEnabled;
+    bool isEnabled;
 
     void Start()
     {
-        shieldButton.OnButtonPress += OnShieldButtonPress;
+        button.OnButtonPress += OnShieldButtonPress;
         gameObject.SetActive(false);
     }
 
     void Update()
     {
-        if (!IsForceFieldEnabled)
+        if (IsEnabled)
         {
-            AddShieldPower(shieldRegenerationAmount * Time.deltaTime / shieldRegenerationSpeed);
-        } else
-        {
-            UseShieldPower(1f * Time.deltaTime);
+            if (!IsForceFieldEnabled)
+            {
+                AddShieldPower(shieldRegenerationAmount * Time.deltaTime / shieldRegenerationSpeed);
+            }
+            else
+            {
+                UseShieldPower(1f * Time.deltaTime);
+            }
         }
     }
 
     void OnShieldButtonPress()
     {
         IsForceFieldEnabled = !IsForceFieldEnabled;
+        gameObject.SetActive(IsForceFieldEnabled);
+        GunManager.instance.EnableShooting(!IsForceFieldEnabled);
     }
 
 
@@ -75,6 +81,17 @@ public class ForceField : MonoBehaviour
         OnShieldPowerUsed?.Invoke(amount, ShieldPowerNormalized);
     }
 
+    public void EnableForceField(bool value)
+    {
+        if (!value)
+        {
+            IsForceFieldEnabled = false;
+        }
+
+        IsEnabled = value;
+        button.IsEnabled = value;
+    }
+
     /// <summary>
     /// This method calculates the normalized shield power.
     /// </summary>
@@ -86,15 +103,16 @@ public class ForceField : MonoBehaviour
 
     public float CurrentShieldPower { get; protected set; }
 
-    public bool IsForceFieldEnabled
-    {
+    public bool IsForceFieldEnabled { set; get; } = false;
+
+    public bool IsEnabled {
         set
         {
-            isForceFieldEnabled = value;
+            isEnabled = value;
             gameObject.SetActive(value);
         }
 
-        get => isForceFieldEnabled;
+        get => isEnabled;
     }
 }
 

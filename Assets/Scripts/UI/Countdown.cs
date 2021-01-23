@@ -5,11 +5,12 @@ using TMPro;
 
 public class Countdown : MonoBehaviour
 {
-    public float time;
     public TextMeshProUGUI countdownText;
 
-    public IEnumerator StartCountdown(Action callback)
+    public IEnumerator StartCountdown(float time, Action callback)
     {
+        gameObject.SetActive(true);
+
         while (time > 0)
         {
             countdownText.text = time.ToString();
@@ -20,6 +21,12 @@ public class Countdown : MonoBehaviour
         countdownText.text = "GO!";
         callback();
         yield return new WaitForSeconds(1f);
-        countdownText.gameObject.SetActive(false);
+        StopCountdown();
+    }
+
+    public void StopCountdown()
+    {
+        countdownText.text = "";
+        gameObject.SetActive(false);
     }
 }

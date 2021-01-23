@@ -21,4 +21,10 @@ public class GunManager : MonoBehaviour
         this.leftGun.IsEnabled = value;
         this.rightGun.IsEnabled = value;
     }
+
+    public void EnableShooting(bool value)
+    {
+        this.leftGun.IsShootingEnabled = value;
+        this.rightGun.IsShootingEnabled = value;
+    }
 }

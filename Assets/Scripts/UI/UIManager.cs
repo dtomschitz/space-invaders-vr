@@ -43,5 +43,8 @@ public class UIManager : MonoBehaviour
     /// <param name="active">True if the the pause menu should be displayed; otherwise false.</param>
     public void ShowPauseMenu(bool active) => pauseMenu.gameObject.SetActive(active);
 
-    public IEnumerator StartCountdown(Action callback) => countdown.StartCountdown(callback);
+    public IEnumerator StartCountdown(float time, Action callback) => countdown.StartCountdown(time, callback);
+
+    public void StopCountdown() => countdown.StopCountdown();
+
 }

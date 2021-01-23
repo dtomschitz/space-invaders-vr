@@ -18,6 +18,7 @@ public class Gun : MonoBehaviour
     [Header("Settings")]
     public float minY;
 
+    bool isShootingEnabled = true;
     bool isEnabled = false;
 
     void Start()
@@ -34,7 +35,7 @@ public class Gun : MonoBehaviour
 
     void Update()
     {
-        if (isEnabled)
+        if (IsEnabled)
         {
             firePoint.transform.LookAt(laser.dot.transform);
             gun.transform.LookAt(laser.dot.transform);
@@ -43,7 +44,7 @@ public class Gun : MonoBehaviour
 
     void Shoot()
     {
-        if (GameState.instance.IsInGame)
+        if (IsShootingEnabled && (GameState.instance.IsInGame || GameState.instance.IsPreInGame))
         {   
             if (muzzlePrefab != null)
             {
@@ -61,12 +62,23 @@ public class Gun : MonoBehaviour
         }
     }
 
+    public bool IsShootingEnabled
+    {
+        set
+        {
+            isShootingEnabled = value;
+            laser.dot.SetActive(value);
+        }
+
+        get => isShootingEnabled;
+    }
+
     public bool IsEnabled
     {
         set
         {
             isEnabled = value;
-            laser.IsEnabled = false;
+            laser.IsEnabled = value;
         }
 
         get => isEnabled;
