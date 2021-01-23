@@ -40,7 +40,6 @@ public class SoundClip
 /// </summary>
 public class AudioManager : MonoBehaviour
 {
-
     #region Singelton
 
     public static AudioManager instance;
@@ -61,7 +60,6 @@ public class AudioManager : MonoBehaviour
     }
 
     #endregion;
-
 
     public SoundClip[] soundClips;
     private Dictionary<Sound, float> soundTimer;
@@ -88,8 +86,6 @@ public class AudioManager : MonoBehaviour
     {
         if (CanPlay(sound))
         {
-            
-
             GameObject soundGameObject = new GameObject("Sound");
             soundGameObject.transform.position = position;
 

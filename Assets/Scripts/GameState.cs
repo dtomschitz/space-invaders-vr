@@ -2,12 +2,13 @@
 
 public enum GameStateType
 {
-    GamePaused,
+    Initial,
+    MainMenu,
+    PauseMenu,
     GameOver,
+    PreInGame,
     InGame,
-    TargetAcquisition
 }
-
 
 public class GameState : MonoBehaviour
 {
@@ -22,23 +23,27 @@ public class GameState : MonoBehaviour
 
     #endregion
 
-    public GameStateType State { get; protected set; } = GameStateType.TargetAcquisition;
+    public delegate void GameStateChanged(GameStateType state);
+    public event GameStateChanged OnGameStateChanged;
 
     void Start()
     {
-        Player.instance.controls.OnPausedButtonPressed += () => SetState(GameStateType.GamePaused);
+        Player.instance.controls.OnPausedButtonPressed += () => SetState(GameStateType.PauseMenu);
+        SetState(GameStateType.MainMenu);
     }
 
     public void SetState(GameStateType newState)
     {
-        Debug.Log(newState);
-
         if (State == newState) return;
         State = newState;
 
         switch (newState)
         {
-            case GameStateType.GamePaused:
+            case GameStateType.MainMenu:
+                ToggleMainMenu();
+                break;
+
+            case GameStateType.PauseMenu:
                 TogglePauseMenu();
                 break;
 
@@ -46,55 +51,56 @@ public class GameState : MonoBehaviour
                 ToggleGameOver();
                 break;
 
-            case GameStateType.InGame:
-                ToggleIngame();
+            case GameStateType.PreInGame:
+                TogglePreInGame();
                 break;
-
-            case GameStateType.TargetAcquisition:
-                ToggleTargetAcquisition();
-                break;
-
         }
+
+        OnGameStateChanged?.Invoke(State);
     }
 
-    /// <summary>
-    /// Toggles the game state <see cref="GameStateType.GamePaused"/> and hides
-    /// all unrelevant information.
-    /// </summary>
+    void ToggleMainMenu()
+    {
+        XRManager.instance.EnableXRInteractors(true);
+        GunManager.instance.EnableGuns(false);
+
+        UIManager.instance.ShowMainMenu(true);
+        UIManager.instance.ShowPauseMenu(false);
+        UIManager.instance.ShowHologram(false);
+    }
+
     void TogglePauseMenu()
     {
+        XRManager.instance.EnableXRInteractors(true);
+        GunManager.instance.EnableGuns(false);
+
         UIManager.instance.ShowPauseMenu(true);
         UIManager.instance.ShowMainMenu(false);
         UIManager.instance.ShowHologram(false);
     }
 
-    /// <summary>
-    /// Toggles the game state <see cref="GameStateType.GameOver"/> and hides
-    /// all unrelevant information.
-    /// </summary>
     void ToggleGameOver()
     {
+        XRManager.instance.EnableXRInteractors(true);
+        GunManager.instance.EnableGuns(false);
+
         UIManager.instance.ShowMainMenu(false);
         UIManager.instance.ShowPauseMenu(false);
     }
 
-    /// <summary>
-    /// Disables the game state <see cref="GameStateType.InGame"/> and displays
-    /// the game relevant informations.
-    /// </summary>
-    void ToggleIngame()
+    void TogglePreInGame()
     {
+        XRManager.instance.EnableXRInteractors(false);
+        GunManager.instance.EnableGuns(true);
+
         UIManager.instance.ShowHologram(true);
         UIManager.instance.ShowMainMenu(false);
         UIManager.instance.ShowPauseMenu(false);
+
+        StartCoroutine(UIManager.instance.StartCountdown(() => {
+            SetState(GameStateType.InGame);
+        }));
     }
-
-    void ToggleTargetAcquisition()
-    {
-    }
-
-
-
 
     /// <summary>
     /// This method checks if the player is currently in game.
@@ -105,19 +111,13 @@ public class GameState : MonoBehaviour
     /// </returns>
     public bool IsInGame
     {
-        get { return State == GameStateType.InGame || State == GameStateType.TargetAcquisition; }
+        get { return State == GameStateType.InGame; }
     }
 
     /// <summary>
-    /// This method checks if the player is currently in target acquisition mode.
+    /// This method returns the current game state.
     /// </summary>
-    /// <returns>True if the current game state is equals to
-    /// <see cref="GameStateType.TargetAcquisition"/>; otherwise, false.
-    /// </returns>
-    public bool IsInTargetAcquisition
-    {
-        get { return State == GameStateType.TargetAcquisition; }
-    }
-
+    /// <returns>The current game state.</returns>
+    public GameStateType State { get; protected set; }
 
 }

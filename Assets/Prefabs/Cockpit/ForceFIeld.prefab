@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2664466124143171084}
   - component: {fileID: 224866187963359942}
   - component: {fileID: 4952462745504768269}
-  - component: {fileID: 6172530942125360546}
+  - component: {fileID: 3552049327469069641}
   m_Layer: 0
   m_Name: ForceFIeld
   m_TagString: ForceField
@@ -96,7 +96,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 9.92656
   m_Center: {x: 0, y: 0, z: -0.0000042915344}
---- !u!114 &6172530942125360546
+--- !u!114 &3552049327469069641
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -1,18 +1,14 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using TMPro;
 
-public class CountdownController : MonoBehaviour
+public class Countdown : MonoBehaviour
 {
     public float time;
     public TextMeshProUGUI countdownText;
 
-    private void Start()
-    {
-        StartCoroutine(Countdown());
-    }
-
-    IEnumerator Countdown()
+    public IEnumerator StartCountdown(Action callback)
     {
         while (time > 0)
         {
@@ -22,8 +18,7 @@ public class CountdownController : MonoBehaviour
         }
 
         countdownText.text = "GO!";
-        GameState.instance.SetState(GameStateType.InGame);
-
+        callback();
         yield return new WaitForSeconds(1f);
         countdownText.gameObject.SetActive(false);
     }

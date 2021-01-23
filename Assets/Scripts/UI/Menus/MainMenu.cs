@@ -6,7 +6,7 @@ public class MainMenu : MonoBehaviour
 
     public void Play()
     {
-      // sceneFader.FadeTo(level);
+        GameState.instance.SetState(GameStateType.PreInGame);
     }
 
     public void Quit()

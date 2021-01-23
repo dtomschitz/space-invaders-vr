@@ -46,7 +46,8 @@ MonoBehaviour:
   enemyPrefabs:
   - {fileID: -7756062370878489358, guid: 6ab2a551ea45dd34eb1e72191ef183db, type: 3}
   - {fileID: 4924582933594308613, guid: 41e3c4f9b1bc22d4a967ca82d3737f60, type: 3}
+  isSpawningEnabled: 0
   startAmount: 5
-  center: {x: 0, y: 0.55, z: 8.58}
-  size: {x: 15, y: 15, z: 15}
-  period: 3
+  center: {x: 0, y: 0, z: 30}
+  size: {x: 100, y: 50, z: 20}
+  period: 100

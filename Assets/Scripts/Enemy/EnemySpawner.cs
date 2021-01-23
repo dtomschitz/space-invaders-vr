@@ -3,33 +3,44 @@
 public class EnemySpawner : MonoBehaviour
 {
     public Enemy[] enemyPrefabs;
+    public bool isSpawningEnabled;
 
     [Header("Spawn Settings")]
     public int startAmount = 5;
     public Vector3 center;
     public Vector3 size;
-
     public float period = 10.0f;
 
-    private float nextActionTime = 3.0f;
+    float nextActionTime = 3.0f;
 
     void Start()
     {
-        for (int i = 0; i < startAmount - 1; i++)
+        GameState.instance.OnGameStateChanged += ToggleSpawner;
+
+      /*  for (int i = 0; i < startAmount - 1; i++)
         {
             SpawnEnemy();
-        }
+        }*/
     } 
 
     
     void Update()
     {
-        if (Time.time > nextActionTime ) {
-            this.nextActionTime += period;
-            SpawnEnemy();
-            // execute block of code here
+        if (isSpawningEnabled)
+        {
+            if (Time.time > nextActionTime)
+            {
+                this.nextActionTime += period;
+                SpawnEnemy();
+                // execute block of code here
+            }
         }
     } 
+
+    void ToggleSpawner(GameStateType state)
+    {
+        isSpawningEnabled = state == GameStateType.InGame;
+    }
 
     void SpawnEnemy()
     {
@@ -42,7 +53,6 @@ public class EnemySpawner : MonoBehaviour
         Instantiate(enemyPrefab, position, Quaternion.identity);
     }
 
-    
     void OnDrawGizmosSelected()
     {
         Gizmos.color = new Color(1, 0, 0, 0.5f);
