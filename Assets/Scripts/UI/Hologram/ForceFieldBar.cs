@@ -2,8 +2,8 @@
 {
     void Start()
     {
-        ForceField.instance.OnShieldPowerAdded += OnShieldPowerAdded;
-        ForceField.instance.OnShieldPowerUsed += OnShieldPowerUsed;
+        ForceField.instance.OnForceFieldPowerAdded += OnShieldPowerAdded;
+        ForceField.instance.OnForceFieldPowerUsed += OnShieldPowerUsed;
     }
 
     /// <summary>

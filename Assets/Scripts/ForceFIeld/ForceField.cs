@@ -13,7 +13,7 @@ public class ForceField : MonoBehaviour
 
     #endregion;
 
-    public int maxShieldPower = 100;
+    public int maxForceFieldPower = 100;
     public GameObject sphere;
 
     [Header("Shield Regeneration")]
@@ -27,20 +27,19 @@ public class ForceField : MonoBehaviour
     [Header("Shield Button")]
     public ForceFieldButton button;
 
-    public delegate void ShieldPowerUsed(float amount, float currentNormalizedShieldPower);
-    public event ShieldPowerUsed OnShieldPowerUsed;
+    public delegate void ForceFieldPowerUsed(float amount, float currentNormalizedShieldPower);
+    public event ForceFieldPowerUsed OnForceFieldPowerUsed;
 
-    public delegate void ShieldPowerAdded(float amount, float currentNormalizedShieldPower);
-    public event ShieldPowerAdded OnShieldPowerAdded;
+    public delegate void ForceFieldPowerAdded(float amount, float currentNormalizedShieldPower);
+    public event ForceFieldPowerAdded OnForceFieldPowerAdded;
 
-    public delegate void ShieldPowerConsumed();
-    public event ShieldPowerConsumed OnShieldPowerConsumed;
-
-    bool isEnabled;
+    public delegate void ForceFieldPowerConsumed();
+    public event ForceFieldPowerConsumed OnForceFieldPowerConsumed;
 
     void Start()
     {
         button.OnButtonPress += OnShieldButtonPress;
+        CurrentForceFieldPower = maxForceFieldPower;
         sphere.SetActive(false);
     }
 
@@ -50,11 +49,11 @@ public class ForceField : MonoBehaviour
         {
             if (!IsForceFieldEnabled)
             {
-                AddShieldPower(shieldRegenerationAmount * Time.deltaTime / shieldRegenerationSpeed);
+                AddForceFieldPower(shieldRegenerationAmount * Time.deltaTime / shieldRegenerationSpeed);
             }
             else
             {
-                UseShieldPower(shieldConsumptionAmount * Time.deltaTime / shielConsumptionSpeed);
+                UseForceFieldPower(shieldConsumptionAmount * Time.deltaTime / shielConsumptionSpeed);
             }
         }
     }
@@ -63,39 +62,36 @@ public class ForceField : MonoBehaviour
     {
         IsForceFieldEnabled = !IsForceFieldEnabled;
         sphere.SetActive(IsForceFieldEnabled);
-        //GunManager.instance.EnableShooting(!IsForceFieldEnabled);
     }
 
 
     /// <summary>
     /// This method adds a set ammount of shield power to the player and calls the
-    /// <see cref="OnShieldPowerAdded"/> event.
+    /// <see cref="OnForceFieldPowerAdded"/> event.
     /// </summary>
     /// <param name="amount">The ammount of shield power the player received.</param>
-    public void AddShieldPower(float amount)
+    public void AddForceFieldPower(float amount)
     {
-        CurrentShieldPower += amount;
-        CurrentShieldPower = Mathf.Clamp(CurrentShieldPower, 0f, maxShieldPower);
-        OnShieldPowerAdded?.Invoke(amount, ShieldPowerNormalized);
+        CurrentForceFieldPower += amount;
+        CurrentForceFieldPower = Mathf.Clamp(CurrentForceFieldPower, 0f, maxForceFieldPower);
+        OnForceFieldPowerAdded?.Invoke(amount, ForceFieldPowerNormalized);
     }
 
     /// <summary>
     /// This method reduces a set ammount of shield power from the player and calls the
-    /// <see cref="OnShieldPowerUsed"/> event.
+    /// <see cref="OnForceFieldPowerUsed"/> event.
     /// </summary>
     /// <param name="amount">The ammount of shield power the player lost.</param>
-    public void UseShieldPower(float amount)
+    public void UseForceFieldPower(float amount)
     {
-        CurrentShieldPower -= amount;
-        OnShieldPowerUsed?.Invoke(amount, ShieldPowerNormalized);
+        CurrentForceFieldPower -= amount;
+        OnForceFieldPowerUsed?.Invoke(amount, ForceFieldPowerNormalized);
 
-        if (CurrentShieldPower <= 0)
+        if (CurrentForceFieldPower <= 0)
         {
             sphere.SetActive(false);
             IsForceFieldEnabled = false;
-            //GunManager.instance.EnableShooting(true);
-
-            OnShieldPowerConsumed?.Invoke();
+            OnForceFieldPowerConsumed?.Invoke();
         }
     }
 
@@ -114,23 +110,15 @@ public class ForceField : MonoBehaviour
     /// This method calculates the normalized shield power.
     /// </summary>
     /// <returns>The normalized shield power.</returns>
-    public float ShieldPowerNormalized
+    public float ForceFieldPowerNormalized
     {
-        get => CurrentShieldPower / maxShieldPower;
+        get => CurrentForceFieldPower / maxForceFieldPower;
     }
 
-    public float CurrentShieldPower { get; protected set; }
+    public float CurrentForceFieldPower { get; protected set; }
 
     public bool IsForceFieldEnabled { set; get; } = false;
 
-    public bool IsEnabled {
-        set
-        {
-            isEnabled = value;
-            sphere.SetActive(value);
-        }
-
-        get => isEnabled;
-    }
+    public bool IsEnabled { set; get; }
 }
 

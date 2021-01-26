@@ -15,7 +15,7 @@ public class GameData {
     public GameData (Player player, ForceField forceField, Enemy enemy)
     {
         health = player.CurrentHealth;
-        shieldHealth = forceField.CurrentShieldPower;
+        shieldHealth = forceField.CurrentForceFieldPower;
 
         enemyHealth = enemy.CurrentHealth;
         enemyPosition = new float[3];

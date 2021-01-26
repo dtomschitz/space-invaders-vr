@@ -12,7 +12,7 @@ public class ForceFieldButton : MonoBehaviour
 
     void Start()
     {
-        ForceField.instance.OnShieldPowerConsumed += () => ToggleButton(false);
+        ForceField.instance.OnForceFieldPowerConsumed += () => ToggleButton(false);
     }
 
     void OnTriggerEnter(Collider other)
