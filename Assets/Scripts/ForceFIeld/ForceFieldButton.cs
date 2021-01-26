@@ -10,14 +10,24 @@ public class ForceFieldButton : MonoBehaviour
 
     bool pressed;
 
+    void Start()
+    {
+        ForceField.instance.OnShieldPowerConsumed += () => ToggleButton(false);
+    }
+
     void OnTriggerEnter(Collider other)
     {
-        if (IsEnabled && (other.tag == "LeftHandController" || other.tag == "RightHandController"))
+        if (IsEnabled && (other.CompareTag("LeftHandController") || other.CompareTag("RightHandController")))
         {
-            GetComponent<Renderer>().material = pressed ? defaultMaterial : highlightMaterial;
-            pressed = !pressed;
+            ToggleButton(!pressed);
             OnButtonPress?.Invoke();
         }
+    }
+
+    void ToggleButton(bool value)
+    {
+        GetComponent<Renderer>().material = pressed ? defaultMaterial : highlightMaterial;
+        pressed = value;
     }
 
     public bool IsEnabled { set; get; } = false;

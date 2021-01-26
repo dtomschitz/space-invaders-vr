@@ -15,8 +15,14 @@ public class ForceField : MonoBehaviour
 
     [Header("Shield Stats")]
     public const int maxShieldPower = 100;
+
+    [Header("Shield Regeneration")]
     public float shieldRegenerationAmount;
     public float shieldRegenerationSpeed;
+
+    [Header("Shield Consumption")]
+    public float shieldConsumptionAmount;
+    public float shielConsumptionSpeed;
 
     [Header("Shield Button")]
     public ForceFieldButton button;
@@ -26,6 +32,9 @@ public class ForceField : MonoBehaviour
 
     public delegate void ShieldPowerAdded(float amount, float currentNormalizedShieldPower);
     public event ShieldPowerAdded OnShieldPowerAdded;
+
+    public delegate void ShieldPowerConsumed();
+    public event ShieldPowerConsumed OnShieldPowerConsumed;
 
     bool isEnabled;
 
@@ -45,7 +54,7 @@ public class ForceField : MonoBehaviour
             }
             else
             {
-                UseShieldPower(1f * Time.deltaTime);
+                UseShieldPower(shieldConsumptionAmount * Time.deltaTime / shielConsumptionSpeed);
             }
         }
     }
@@ -75,10 +84,19 @@ public class ForceField : MonoBehaviour
     /// <see cref="OnShieldPowerUsed"/> event.
     /// </summary>
     /// <param name="amount">The ammount of shield power the player lost.</param>
-    public void UseShieldPower(float amount = 1f)
+    public void UseShieldPower(float amount)
     {
         CurrentShieldPower -= amount;
         OnShieldPowerUsed?.Invoke(amount, ShieldPowerNormalized);
+
+        if (CurrentShieldPower <= 0)
+        {
+            //gameObject.SetActive(false);
+            IsForceFieldEnabled = false;
+            GunManager.instance.EnableShooting(true);
+
+            OnShieldPowerConsumed?.Invoke();
+        }
     }
 
     public void EnableForceField(bool value)
@@ -98,7 +116,7 @@ public class ForceField : MonoBehaviour
     /// <returns>The normalized shield power.</returns>
     public float ShieldPowerNormalized
     {
-        get { return CurrentShieldPower / maxShieldPower; }
+        get => CurrentShieldPower / maxShieldPower;
     }
 
     public float CurrentShieldPower { get; protected set; }
