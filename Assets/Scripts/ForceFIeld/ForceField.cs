@@ -13,8 +13,8 @@ public class ForceField : MonoBehaviour
 
     #endregion;
 
-    [Header("Shield Stats")]
-    public const int maxShieldPower = 100;
+    public int maxShieldPower = 100;
+    public GameObject sphere;
 
     [Header("Shield Regeneration")]
     public float shieldRegenerationAmount;
@@ -41,7 +41,7 @@ public class ForceField : MonoBehaviour
     void Start()
     {
         button.OnButtonPress += OnShieldButtonPress;
-        gameObject.SetActive(false);
+        sphere.SetActive(false);
     }
 
     void Update()
@@ -62,8 +62,8 @@ public class ForceField : MonoBehaviour
     void OnShieldButtonPress()
     {
         IsForceFieldEnabled = !IsForceFieldEnabled;
-        gameObject.SetActive(IsForceFieldEnabled);
-        GunManager.instance.EnableShooting(!IsForceFieldEnabled);
+        sphere.SetActive(IsForceFieldEnabled);
+        //GunManager.instance.EnableShooting(!IsForceFieldEnabled);
     }
 
 
@@ -91,9 +91,9 @@ public class ForceField : MonoBehaviour
 
         if (CurrentShieldPower <= 0)
         {
-            //gameObject.SetActive(false);
+            sphere.SetActive(false);
             IsForceFieldEnabled = false;
-            GunManager.instance.EnableShooting(true);
+            //GunManager.instance.EnableShooting(true);
 
             OnShieldPowerConsumed?.Invoke();
         }
@@ -127,7 +127,7 @@ public class ForceField : MonoBehaviour
         set
         {
             isEnabled = value;
-            gameObject.SetActive(value);
+            sphere.SetActive(value);
         }
 
         get => isEnabled;
