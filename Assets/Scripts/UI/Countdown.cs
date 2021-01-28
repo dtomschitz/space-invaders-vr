@@ -18,7 +18,7 @@ public class Countdown : MonoBehaviour
             time--;
         }
 
-        countdownText.text = "GO!";
+        countdownText.text = "GO";
         callback();
         yield return new WaitForSeconds(1f);
         StopCountdown();

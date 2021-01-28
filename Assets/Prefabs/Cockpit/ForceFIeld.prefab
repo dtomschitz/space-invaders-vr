@@ -139,10 +139,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae356a99f1612d94fb649e73c97faaf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxShieldPower: 100
+  maxForceFieldPower: 100
   sphere: {fileID: 419376196250587681}
-  shieldRegenerationAmount: 0
-  shieldRegenerationSpeed: 0
-  shieldConsumptionAmount: 0
-  shielConsumptionSpeed: 0
+  shieldRegenerationAmount: 5
+  shieldRegenerationSpeed: 1
+  shieldConsumptionAmount: 8
+  shielConsumptionSpeed: 1
   button: {fileID: 0}

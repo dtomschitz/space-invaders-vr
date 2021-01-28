@@ -23,8 +23,6 @@ public class HealthBar : SlideBar
     /// <param name="amount">The amount of damage the player took.</param>
     void OnEntityDamaged(float damage, float currentNormalizedHealth)
     {
-        Debug.Log("Dawd");
-
         SetFillAmount(currentNormalizedHealth);
     }
 }

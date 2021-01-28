@@ -44,7 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 282646edef0739b499ede0f3112d5066, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  time: 5
   countdownText: {fileID: 8070145682658074302}
 --- !u!1 &8070145682658074272
 GameObject:
@@ -138,7 +137,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 46
+  m_fontSize: 36
   m_fontSizeBase: 46
   m_fontWeight: 400
   m_enableAutoSizing: 0
