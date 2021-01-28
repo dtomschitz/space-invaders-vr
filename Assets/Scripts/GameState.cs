@@ -72,6 +72,7 @@ public class GameState : MonoBehaviour
 
         UIManager.instance.ShowMainMenu(true);
         UIManager.instance.ShowPauseMenu(false);
+        UIManager.instance.ShowGameOverMenu(false);
         UIManager.instance.ShowHologram(false);
     }
 
@@ -85,6 +86,7 @@ public class GameState : MonoBehaviour
 
         UIManager.instance.ShowPauseMenu(true);
         UIManager.instance.ShowMainMenu(false);
+        UIManager.instance.ShowGameOverMenu(false);
         UIManager.instance.ShowHologram(false);
     }
 
@@ -96,6 +98,8 @@ public class GameState : MonoBehaviour
         GunManager.instance.EnableGuns(false);
         ForceField.instance.EnableForceField(false);
 
+        UIManager.instance.ShowGameOverMenu(true);
+        UIManager.instance.ShowHologram(false);
         UIManager.instance.ShowMainMenu(false);
         UIManager.instance.ShowPauseMenu(false);
     }
@@ -111,6 +115,7 @@ public class GameState : MonoBehaviour
         UIManager.instance.ShowHologram(true);
         UIManager.instance.ShowMainMenu(false);
         UIManager.instance.ShowPauseMenu(false);
+        UIManager.instance.ShowGameOverMenu(false);
 
         countdownCoroutine = StartCoroutine(UIManager.instance.StartCountdown(5f, () => {
             SetState(GameStateType.InGame);

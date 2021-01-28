@@ -18,6 +18,7 @@ public class UIManager : MonoBehaviour
     public HologramMananger hologram;
     public MainMenu mainMenu;
     public PauseMenu pauseMenu;
+    public GameOverMenu gameOverMenu;
 
     public Countdown countdown;
 
@@ -42,6 +43,12 @@ public class UIManager : MonoBehaviour
     /// </summary>
     /// <param name="active">True if the the pause menu should be displayed; otherwise false.</param>
     public void ShowPauseMenu(bool active) => pauseMenu.gameObject.SetActive(active);
+
+    /// <summary>
+    /// Enables or disables the gameover menu based on the given value.
+    /// </summary>
+    /// <param name="active">True if the the gameover menu should be displayed; otherwise false.</param>
+    public void ShowGameOverMenu(bool active) => gameOverMenu.gameObject.SetActive(active);
 
     public IEnumerator StartCountdown(float time, Action callback) => countdown.StartCountdown(time, callback);
 

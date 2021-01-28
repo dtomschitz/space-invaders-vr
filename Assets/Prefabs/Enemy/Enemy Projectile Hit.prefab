@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4656527698493470}
   - component: {fileID: 198217153230244416}
   - component: {fileID: 199182802719444562}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: ElectricHit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4845,7 +4845,7 @@ GameObject:
   - component: {fileID: 4404602957824872}
   - component: {fileID: 198172752555811048}
   - component: {fileID: 199305371297999028}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Beam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9679,7 +9679,7 @@ GameObject:
   - component: {fileID: 4833025370294184}
   - component: {fileID: 198099967500579518}
   - component: {fileID: 199411586722069366}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: BlackMark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14512,7 +14512,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4385837655662908}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Enemy Projectile Hit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14549,7 +14549,7 @@ GameObject:
   - component: {fileID: 4424153070013434}
   - component: {fileID: 198631962155145480}
   - component: {fileID: 199479604501635558}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19384,7 +19384,7 @@ GameObject:
   - component: {fileID: 5690363937115735673}
   - component: {fileID: 6119203570932481458}
   - component: {fileID: 2166990858301286081}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Beam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
