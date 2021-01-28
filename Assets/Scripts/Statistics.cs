@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 
 /// <summary>
 /// Class <c>Statistics</c> is used to store different values which can increas
@@ -18,24 +19,36 @@ public class Statistics : MonoBehaviour
 
     #endregion;
 
+    public UnityAction<int> OnEnemyKilled;
+
     float time;
-    bool timer = false;
+    bool isTimerEnabled = false;
 
     void Update()
     {
-        if (timer)
+        if (isTimerEnabled)
         {
             time += Time.deltaTime * 1f;
         }
     }
 
-    public void AddKill() => Kills++;
+    public void AddKill() 
+    {
+        Kills++;
+        OnEnemyKilled?.Invoke(Kills);
+    }
 
     public void AddDamage(float damage) => DamageCaused += damage;
 
     public void ToggleTimer(bool value)
     {
-        timer = value;
+        isTimerEnabled = value;
+    }
+
+    public void ResetTimer()
+    {
+        ToggleTimer(false);
+        time = 0f;
     }
 
     /// <summary>
@@ -50,12 +63,6 @@ public class Statistics : MonoBehaviour
 
     public string PlayedTime
     {
-        get {
-            string hours = ((time % 216000) / 3600).ToString("00");
-            string minutes = ((time % 3600) / 60).ToString("00");
-            string seconds = (time % 60).ToString("00");
-
-            return hours + ":" + minutes + ":" + seconds;
-        }
+        get => ((time % 3600) / 60).ToString("00") + ":" + (time % 60).ToString("00");
     }
 }

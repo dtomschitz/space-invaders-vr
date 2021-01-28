@@ -65,6 +65,8 @@ public class GameState : MonoBehaviour
 
     void ToggleMainMenu()
     {
+        Statistics.instance.ResetTimer();
+
         //Player.instance.EnableHands(true);
         XRManager.instance.EnableXRInteractors(true);
         GunManager.instance.EnableGuns(false);
@@ -78,6 +80,8 @@ public class GameState : MonoBehaviour
 
     void TogglePauseMenu()
     {
+        Statistics.instance.ToggleTimer(false);
+
         StopCountdown();
         //Player.instance.EnableHands(true);
         XRManager.instance.EnableXRInteractors(true);
@@ -92,6 +96,7 @@ public class GameState : MonoBehaviour
 
     void ToggleGameOver()
     {
+        Statistics.instance.ToggleTimer(false);
         StopCountdown();
        // Player.instance.EnableHands(true);
         XRManager.instance.EnableXRInteractors(true);
@@ -106,6 +111,8 @@ public class GameState : MonoBehaviour
 
     void TogglePreInGame()
     {
+        Statistics.instance.ToggleTimer(true);
+
         StopCountdown();
         //Player.instance.EnableHands(false);
         XRManager.instance.EnableXRInteractors(false);

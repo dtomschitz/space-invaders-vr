@@ -310,6 +310,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 358228135}
     m_Modifications:
+    - target: {fileID: 1996403024218175853, guid: 1a4107088e1012a47967e8c53fa29fd0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.0000000037107
+      objectReference: {fileID: 0}
+    - target: {fileID: 1996403024218175853, guid: 1a4107088e1012a47967e8c53fa29fd0,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.23
+      objectReference: {fileID: 0}
+    - target: {fileID: 1996403024218175853, guid: 1a4107088e1012a47967e8c53fa29fd0,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1996403024218175853, guid: 1a4107088e1012a47967e8c53fa29fd0,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0.72069997
+      objectReference: {fileID: 0}
     - target: {fileID: 5878300281607382626, guid: 1a4107088e1012a47967e8c53fa29fd0,
         type: 3}
       propertyPath: m_Name
@@ -369,6 +389,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8988384509245433789, guid: 1a4107088e1012a47967e8c53fa29fd0,
+        type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8988384509245433789, guid: 1a4107088e1012a47967e8c53fa29fd0,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8988384509245433789, guid: 1a4107088e1012a47967e8c53fa29fd0,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 0.15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a4107088e1012a47967e8c53fa29fd0, type: 3}

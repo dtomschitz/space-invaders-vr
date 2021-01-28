@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1996403024218175853}
   - component: {fileID: 4192170583487207121}
   - component: {fileID: 8988384509245433789}
+  - component: {fileID: 4925052389342969177}
   m_Layer: 2
   m_Name: Text
   m_TagString: Untagged
@@ -134,6 +135,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &4925052389342969177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2819346067299893347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6925ebfef0c7f074a949926a9ccd3599, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeText: {fileID: 8988384509245433789}
 --- !u!1 &4938556069237832202
 GameObject:
   m_ObjectHideFlags: 0
@@ -204,7 +218,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 45f450d1c9f17e1408ffc744f6618a0b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.7019608}
   m_FlipX: 0
