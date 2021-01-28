@@ -73,7 +73,7 @@ public class GameState : MonoBehaviour
         UIManager.instance.ShowMainMenu(true);
         UIManager.instance.ShowPauseMenu(false);
         UIManager.instance.ShowGameOverMenu(false);
-        UIManager.instance.ShowHologram(false);
+        UIManager.instance.ShowHolograms(false);
     }
 
     void TogglePauseMenu()
@@ -87,7 +87,7 @@ public class GameState : MonoBehaviour
         UIManager.instance.ShowPauseMenu(true);
         UIManager.instance.ShowMainMenu(false);
         UIManager.instance.ShowGameOverMenu(false);
-        UIManager.instance.ShowHologram(false);
+        UIManager.instance.ShowHolograms(false);
     }
 
     void ToggleGameOver()
@@ -99,7 +99,7 @@ public class GameState : MonoBehaviour
         ForceField.instance.EnableForceField(false);
 
         UIManager.instance.ShowGameOverMenu(true);
-        UIManager.instance.ShowHologram(false);
+        UIManager.instance.ShowHolograms(false);
         UIManager.instance.ShowMainMenu(false);
         UIManager.instance.ShowPauseMenu(false);
     }
@@ -112,7 +112,7 @@ public class GameState : MonoBehaviour
         GunManager.instance.EnableGuns(true);
         ForceField.instance.EnableForceField(true);
 
-        UIManager.instance.ShowHologram(true);
+        UIManager.instance.ShowHolograms(true);
         UIManager.instance.ShowMainMenu(false);
         UIManager.instance.ShowPauseMenu(false);
         UIManager.instance.ShowGameOverMenu(false);

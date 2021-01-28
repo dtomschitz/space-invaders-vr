@@ -18,6 +18,9 @@ TagManager:
   - ForceField
   - AttackPoint
   - VRFade
+  - StatsHologram
+  - KillsHologram
+  - TimeHologram
   layers:
   - Default
   - TransparentFX

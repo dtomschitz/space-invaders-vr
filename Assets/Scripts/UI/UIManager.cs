@@ -23,13 +23,12 @@ public class UIManager : MonoBehaviour
     public Countdown countdown;
 
     /// <summary>
-    /// Enables or disables the hologram.
+    /// Enables or disables the holograms.
     /// </summary>
     /// <param name="active">True if the the hud should be displayed; otherwise false.</param>
-    public void ShowHologram(bool active)
+    public void ShowHolograms(bool active)
     {
-        hologram.ShowForceFieldBar(active);
-        hologram.ShowHealthBar(active);
+        hologram.ToggleHologram(active);
     }
 
     /// <summary>
