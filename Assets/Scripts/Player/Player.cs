@@ -38,7 +38,7 @@ public class Player : Entity
     {
         base.OnDamaged(damage);
 
-        if (CurrentHealth > 20f)
+        if (CurrentHealth <= 20f)
         {
             OnNearDeath?.Invoke();
         }

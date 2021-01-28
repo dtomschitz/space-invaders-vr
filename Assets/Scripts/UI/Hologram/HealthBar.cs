@@ -1,4 +1,6 @@
-﻿public class HealthBar : SlideBar
+﻿using UnityEngine;
+
+public class HealthBar : SlideBar
 {
     void Start()
     {
@@ -21,6 +23,8 @@
     /// <param name="amount">The amount of damage the player took.</param>
     void OnEntityDamaged(float damage, float currentNormalizedHealth)
     {
+        Debug.Log("Dawd");
+
         SetFillAmount(currentNormalizedHealth);
     }
 }
