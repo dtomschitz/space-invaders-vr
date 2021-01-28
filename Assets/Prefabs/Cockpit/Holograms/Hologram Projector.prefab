@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8728314595043895410}
   - component: {fileID: 5580035735077123481}
   - component: {fileID: 8038467921144723939}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,8 +92,7 @@ GameObject:
   - component: {fileID: 1597537692376248762}
   - component: {fileID: 6179025558541560163}
   - component: {fileID: 7551756368843049934}
-  - component: {fileID: 1495688459829618516}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Hologram Projector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -164,16 +163,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &1495688459829618516
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8339388904036274892}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}

@@ -7,10 +7,12 @@ public class Hologram : MonoBehaviour
 
     public GameObject projectorLight;
     public GameObject hologram;
+    public Animator animator;
 
     public void ToggleHologram(bool value)
     {
         projectorLight.GetComponent<MeshRenderer>().material = value ? lightOnMaterial : lightOffMaterial;
-        gameObject.SetActive(value);
+        hologram.SetActive(value);
+        animator.SetTrigger(value ? "On" : "Off");
     }
 }

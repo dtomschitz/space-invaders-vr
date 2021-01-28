@@ -67,7 +67,6 @@ public class GameState : MonoBehaviour
     {
         Statistics.instance.ResetTimer();
 
-        //Player.instance.EnableHands(true);
         XRManager.instance.EnableXRInteractors(true);
         GunManager.instance.EnableGuns(false);
         ForceField.instance.EnableForceField(false);
@@ -81,9 +80,8 @@ public class GameState : MonoBehaviour
     void TogglePauseMenu()
     {
         Statistics.instance.ToggleTimer(false);
-
         StopCountdown();
-        //Player.instance.EnableHands(true);
+
         XRManager.instance.EnableXRInteractors(true);
         GunManager.instance.EnableGuns(false);
         ForceField.instance.EnableForceField(false);
@@ -98,7 +96,7 @@ public class GameState : MonoBehaviour
     {
         Statistics.instance.ToggleTimer(false);
         StopCountdown();
-       // Player.instance.EnableHands(true);
+
         XRManager.instance.EnableXRInteractors(true);
         GunManager.instance.EnableGuns(false);
         ForceField.instance.EnableForceField(false);
@@ -111,21 +109,20 @@ public class GameState : MonoBehaviour
 
     void TogglePreInGame()
     {
-        Statistics.instance.ToggleTimer(true);
-
         StopCountdown();
-        //Player.instance.EnableHands(false);
+
         XRManager.instance.EnableXRInteractors(false);
         GunManager.instance.EnableGuns(true);
         ForceField.instance.EnableForceField(true);
 
-        UIManager.instance.ShowHolograms(true);
         UIManager.instance.ShowMainMenu(false);
         UIManager.instance.ShowPauseMenu(false);
         UIManager.instance.ShowGameOverMenu(false);
 
         countdownCoroutine = StartCoroutine(UIManager.instance.StartCountdown(5f, () => {
             SetState(GameStateType.InGame);
+            Statistics.instance.ToggleTimer(true);
+            UIManager.instance.ShowHolograms(true);
         }));
     }
 
