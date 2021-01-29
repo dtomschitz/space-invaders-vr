@@ -158,5 +158,7 @@ MonoBehaviour:
   attackTime: 10
   disableAttack: 0
   dodgeRange: 3
-  dodgeStart: 20
+  dodgeStart: 5
   dodgeTime: 1
+  waypoints: []
+  speed: 0
