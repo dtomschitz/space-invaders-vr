@@ -40,6 +40,11 @@ public class EnemyProjectile : MonoBehaviour{
         ContactPoint contact = collision.contacts[0];
         Quaternion rotation = Quaternion.FromToRotation(Vector3.up, contact.normal);
         GameObject hit = Instantiate(hitPrefab, contact.point, rotation);
+
+        AudioManager.instance.PlaySound(
+            ForceField.instance.IsForceFieldEnabled ? Sound.ForceFieldImpact : Sound.Explosion, 
+            collision.transform.position);
+
         Destroy(hit, 3f);
     }
 

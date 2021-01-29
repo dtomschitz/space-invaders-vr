@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -19,17 +20,19 @@ public class AudioManager : MonoBehaviour
 
     #endregion;
 
-    SoundClip[] soundClips;
-    Dictionary<Sound, float> soundTimer;
+    SoundAsset[] soundAssets;
 
     GameObject oneShotGameObject;
     AudioSource oneShotAudioSource;
 
+    Dictionary<Sound, float> soundTimer;
+    Dictionary<Sound, GameObject> loopingAudio;
+
     void Start()
     {
-        soundClips = Resources.LoadAll<SoundClip>("SoundClips");
-        Debug.Log(soundClips.Length);
+        soundAssets = Resources.LoadAll<SoundAsset>("SoundAssets");
         soundTimer = new Dictionary<Sound, float>();
+        loopingAudio = new Dictionary<Sound, GameObject>();
     }
 
     /// <summary>
@@ -55,6 +58,7 @@ public class AudioManager : MonoBehaviour
             SetAudioSourceConfig(audioSource, soundClip);
             audioSource.Play();
 
+            if (soundClip.loop) loopingAudio.Add(sound, soundGameObject);
             if (!soundClip.loop) Destroy(soundGameObject, audioSource.clip.length);
         }
     }
@@ -68,7 +72,6 @@ public class AudioManager : MonoBehaviour
     /// the method will find the associated <see cref="SoundClip"/>.
     /// </summary>
     /// <param name="sound">The sound which should get played.</param>
-    /// <param name="position">The position where the sound should be played.</param>
     public void PlaySound(Sound sound)
     {
         if (CanPlay(sound))
@@ -86,6 +89,20 @@ public class AudioManager : MonoBehaviour
                 oneShotAudioSource.PlayOneShot(oneShotAudioSource.clip);
             }
  
+        }
+    }
+
+    /// <summary>
+    /// Stops the specific <see cref="SoundClip"/>.
+    /// </summary>
+    /// <param name="sound">The sound which should get stopped.</param>
+    public void StopSound(Sound sound)
+    {
+        if (loopingAudio.ContainsKey(sound))
+        {
+            GameObject soundGameObject = loopingAudio[sound];
+            loopingAudio.Remove(sound);
+            Destroy(soundGameObject);
         }
     }
 
@@ -115,7 +132,8 @@ public class AudioManager : MonoBehaviour
     /// <returns></returns>
     private SoundClip GetSoundClip(Sound sound)
     {
-        SoundClip[] clips = soundClips.Where(soundClip => soundClip.sound == sound).ToArray();
+        //SoundClip[] clips = soundAssets.Find(soundAsset => soundAsset.sound == sound).clips.ToArray();
+        SoundClip[] clips = Array.Find(soundAssets, (soundAsset) => soundAsset.sound == sound).clips.ToArray();
         if (clips == null || clips.Length == 0)
         {
             return null;
@@ -126,7 +144,7 @@ public class AudioManager : MonoBehaviour
             return clips[0];
         }
 
-        return clips[Random.Range(0, clips.Length)];
+        return clips[UnityEngine.Random.Range(0, clips.Length)];
     }
 
     /// <summary>

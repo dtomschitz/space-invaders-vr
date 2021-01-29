@@ -1,7 +1,12 @@
 ﻿
 public enum Sound
 {
-    Laser,
+    Projectile,
+    EnemyProjectile,
+    Explosion,
     ForceField,
-    Explosion
+    ForceFieldImpact,
+    ForceFieldStart,
+    ForceFieldStop,
+    Engine
 }

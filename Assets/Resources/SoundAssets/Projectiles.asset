@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a268ac05b86a6124aa40444183680735, type: 3}
+  m_Name: Projectiles
+  m_EditorClassIdentifier: 
+  sound: 0
+  clips:
+  - clip: {fileID: 8300000, guid: 097d00ee959de3d42a08b100a24f42c0, type: 3}
+    maxTimer: 0
+    volume: 0.1
+    pitch: 0
+    loop: 0
+    spatialBlend: 0
+    maxDistance: 0
+  - clip: {fileID: 8300000, guid: bd216d2c198592845a3bb8274d949eaa, type: 3}
+    maxTimer: 0
+    volume: 0.1
+    pitch: 0
+    loop: 0
+    spatialBlend: 0
+    maxDistance: 0
+  - clip: {fileID: 8300000, guid: 607b881ec0cf84c4c81bdc0aef32c118, type: 3}
+    maxTimer: 0
+    volume: 0.1
+    pitch: 0
+    loop: 0
+    spatialBlend: 0
+    maxDistance: 0
+  - clip: {fileID: 8300000, guid: 4a776527997071f46a7ef2e2839a56d8, type: 3}
+    maxTimer: 0
+    volume: 0.1
+    pitch: 0
+    loop: 0
+    spatialBlend: 0
+    maxDistance: 0

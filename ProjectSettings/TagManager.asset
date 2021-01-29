@@ -21,6 +21,7 @@ TagManager:
   - StatsHologram
   - KillsHologram
   - TimeHologram
+  - EnemyProjectile
   layers:
   - Default
   - TransparentFX

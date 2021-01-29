@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class ForceField : MonoBehaviour
 {
@@ -36,6 +37,8 @@ public class ForceField : MonoBehaviour
     public delegate void ForceFieldPowerConsumed();
     public event ForceFieldPowerConsumed OnForceFieldPowerConsumed;
 
+    Coroutine soundCoroutine;
+
     void Start()
     {
         button.OnButtonPress += OnShieldButtonPress;
@@ -62,9 +65,25 @@ public class ForceField : MonoBehaviour
     {
         IsForceFieldEnabled = !IsForceFieldEnabled;
         sphere.SetActive(IsForceFieldEnabled);
-        AudioManager.instance.PlaySound(Sound.ForceField, gameObject.transform.position);
+
+        if (soundCoroutine != null) StopCoroutine(soundCoroutine);
+        soundCoroutine = StartCoroutine(ToggleForceFieldSound(IsForceFieldEnabled));
     }
 
+    IEnumerator ToggleForceFieldSound(bool active)
+    {
+        if (active)
+        {
+            AudioManager.instance.PlaySound(Sound.ForceFieldStart, gameObject.transform.position);
+            yield return new WaitForSeconds(2f);
+            AudioManager.instance.PlaySound(Sound.ForceField, gameObject.transform.position);
+        }
+        else
+        {
+            AudioManager.instance.StopSound(Sound.ForceField);
+            AudioManager.instance.PlaySound(Sound.ForceFieldStop, gameObject.transform.position);
+        }
+    }
 
     /// <summary>
     /// This method adds a set ammount of shield power to the player and calls the
@@ -92,6 +111,10 @@ public class ForceField : MonoBehaviour
         {
             sphere.SetActive(false);
             IsForceFieldEnabled = false;
+
+            if (soundCoroutine != null) StopCoroutine(soundCoroutine);
+            soundCoroutine = StartCoroutine(ToggleForceFieldSound(false));
+
             OnForceFieldPowerConsumed?.Invoke();
         }
     }

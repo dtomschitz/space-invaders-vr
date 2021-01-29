@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a268ac05b86a6124aa40444183680735, type: 3}
+  m_Name: ForceFieldImpact
+  m_EditorClassIdentifier: 
+  sound: 4
+  clips:
+  - clip: {fileID: 8300000, guid: 4a2c18b35e82a954c85487c47fbdc8db, type: 3}
+    maxTimer: 0
+    volume: 0.1
+    pitch: 0
+    loop: 0
+    spatialBlend: 0
+    maxDistance: 0
+  - clip: {fileID: 8300000, guid: 2adff82f95b95e7408106aa587757182, type: 3}
+    maxTimer: 0
+    volume: 0.1
+    pitch: 0
+    loop: 0
+    spatialBlend: 0
+    maxDistance: 0
+  - clip: {fileID: 8300000, guid: 74ad357a6e9aa6e429ef48c663f72cf7, type: 3}
+    maxTimer: 0
+    volume: 0.1
+    pitch: 0
+    loop: 0
+    spatialBlend: 0
+    maxDistance: 0
+  - clip: {fileID: 8300000, guid: e56dcaa3d76c64d40974e5fdf27257dd, type: 3}
+    maxTimer: 0
+    volume: 0.1
+    pitch: 0
+    loop: 0
+    spatialBlend: 0
+    maxDistance: 0

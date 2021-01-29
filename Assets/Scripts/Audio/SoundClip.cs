@@ -8,10 +8,8 @@
 /// again.
 /// </summary>
 [System.Serializable]
-[CreateAssetMenu(fileName = "New SoundClip", menuName = "Audio/SoundClip")]
-public class SoundClip : ScriptableObject
+public class SoundClip
 {
-    public Sound sound;
     public AudioClip clip;
     public float maxTimer;
 

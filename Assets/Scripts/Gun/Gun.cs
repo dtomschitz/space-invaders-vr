@@ -58,7 +58,7 @@ public class Gun : MonoBehaviour
                 projectile.transform.localRotation = firePoint.transform.rotation;
             }
 
-            AudioManager.instance.PlaySound(Sound.Laser, firePoint.transform.position);
+            AudioManager.instance.PlaySound(Sound.Projectile, firePoint.transform.position);
         }
     }
 
