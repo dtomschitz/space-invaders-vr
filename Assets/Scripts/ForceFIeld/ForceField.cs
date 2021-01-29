@@ -62,6 +62,7 @@ public class ForceField : MonoBehaviour
     {
         IsForceFieldEnabled = !IsForceFieldEnabled;
         sphere.SetActive(IsForceFieldEnabled);
+        AudioManager.instance.PlaySound(Sound.ForceField, gameObject.transform.position);
     }
 
 

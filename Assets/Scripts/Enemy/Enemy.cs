@@ -103,7 +103,9 @@ public class Enemy : Entity
         base.OnDeath();
         GetComponent<SphereCollider>().enabled = false;
         ShowExplosion();
+        
         Statistics.instance.AddKill();
+        AudioManager.instance.PlaySound(Sound.Explosion, gameObject.transform.position);
 
         Destroy(gameObject);
     }
