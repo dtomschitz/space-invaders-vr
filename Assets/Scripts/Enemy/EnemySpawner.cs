@@ -1,5 +1,10 @@
 ﻿using UnityEngine;
 
+/// <summary>
+/// Class <c>EnemySpawner</c> spawns the Enemys in the Area of given Size Vector3 size.
+/// 
+/// </summary>
+
 public class EnemySpawner : MonoBehaviour
 {
     public Enemy[] enemyPrefabs;
@@ -16,6 +21,11 @@ public class EnemySpawner : MonoBehaviour
     void Start()
     {
         GameState.instance.OnGameStateChanged += ToggleSpawner;
+
+      /*  for (int i = 0; i < startAmount - 1; i++)
+        {
+            SpawnEnemy();
+        }*/
     } 
 
     
@@ -27,6 +37,7 @@ public class EnemySpawner : MonoBehaviour
             {
                 this.nextActionTime += period;
                 SpawnEnemy();
+                // execute block of code here
             }
         }
     } 
@@ -36,6 +47,9 @@ public class EnemySpawner : MonoBehaviour
         isSpawningEnabled = state == GameStateType.InGame;
     }
 
+    /// <summary>
+    /// This method gets called if isSpawningEnabled is true.
+    /// </summary>
     void SpawnEnemy()
     {
         Vector3  position = center + new Vector3(
