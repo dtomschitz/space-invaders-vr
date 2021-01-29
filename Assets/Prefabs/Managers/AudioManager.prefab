@@ -44,10 +44,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundClips:
-  - sound: 0
-    clip: {fileID: 0}
-    maxTimer: 0
-    volume: 0
+  - sound: 1
+    clip: {fileID: 8300000, guid: e4f7b60164fcc1740ac1a44ccc08f0e4, type: 3}
+    maxTimer: 10
+    volume: 0.05
+    pitch: 0
+    loop: 0
+    spatialBlend: 0
+    maxDistance: 0
+  - sound: 1
+    clip: {fileID: 8300000, guid: 6be6d05f12c3bf54790d7a26e4a35b2a, type: 3}
+    maxTimer: 10
+    volume: 0.05
+    pitch: 0
+    loop: 0
+    spatialBlend: 0
+    maxDistance: 0
+  - sound: 1
+    clip: {fileID: 8300000, guid: e4fa54cca7c35804696787836b5d181f, type: 3}
+    maxTimer: 10
+    volume: 0.05
+    pitch: 0
+    loop: 0
+    spatialBlend: 0
+    maxDistance: 0
+  - sound: 1
+    clip: {fileID: 8300000, guid: 0b9840985f25d9140810ef6bc83e6446, type: 3}
+    maxTimer: 10
+    volume: 0.05
     pitch: 0
     loop: 0
     spatialBlend: 0

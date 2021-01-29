@@ -74,7 +74,6 @@ public class GameState : MonoBehaviour
         UIManager.instance.ShowMainMenu(true);
         UIManager.instance.ShowPauseMenu(false);
         UIManager.instance.ShowGameOverMenu(false);
-        UIManager.instance.ShowHolograms(false);
     }
 
     void TogglePauseMenu()
@@ -101,8 +100,9 @@ public class GameState : MonoBehaviour
         GunManager.instance.EnableGuns(false);
         ForceField.instance.EnableForceField(false);
 
-        UIManager.instance.ShowGameOverMenu(true);
         UIManager.instance.ShowHolograms(false);
+
+        UIManager.instance.ShowGameOverMenu(true);
         UIManager.instance.ShowMainMenu(false);
         UIManager.instance.ShowPauseMenu(false);
     }

@@ -6,6 +6,14 @@ public class HologramMananger : MonoBehaviour
     public Hologram killsHologram;
     public Hologram timeHologram;
 
+
+    public void EnableHolograms(bool value)
+    {
+        statsHologram.EnableHologram(value);
+        killsHologram.EnableHologram(value);
+        timeHologram.EnableHologram(value);
+    }
+
     public void ToggleHologram(bool value)
     {
         statsHologram.ToggleHologram(value);

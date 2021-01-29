@@ -1,6 +1,12 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// Class <c>PauseMenu</c> is used to open the pause menu. From here the user
+/// can either restart the current game, go back to the main menu or continue
+/// the current game.
+/// </summary>
+
 public class PauseMenu : MonoBehaviour
 {
     /// <summary>
@@ -8,14 +14,14 @@ public class PauseMenu : MonoBehaviour
     /// </summary>
     public void OnEnable()
     {
-        Time.timeScale = 0f;
+        Statistics.instance.ToggleTimer(false);
     }
     /// <summary>
     /// Unfreezes the game.
     /// </summary>
     public void OnDisable()
     {
-        Time.timeScale = 1f;
+        Statistics.instance.ToggleTimer(true);
     }
 
     /// <summary>
