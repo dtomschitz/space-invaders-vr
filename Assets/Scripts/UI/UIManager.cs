@@ -15,7 +15,7 @@ public class UIManager : MonoBehaviour
 
     #endregion;
 
-    public HologramMananger hologram;
+    public HologramMananger hologramManager;
     public MainMenu mainMenu;
     public PauseMenu pauseMenu;
     public GameOverMenu gameOverMenu;
@@ -28,8 +28,17 @@ public class UIManager : MonoBehaviour
     /// <param name="active">True if the the hud should be displayed; otherwise false.</param>
     public void ShowHolograms(bool active)
     {
-        hologram.ToggleHologram(active);
+        hologramManager.ToggleHologram(active);
     }
+
+    /// <summary>
+    /// Enables or disables the holograms.
+    /// </summary>
+    /// <param name="active">True if the the hud should be displayed; otherwise false.</param>
+    /*public void EnableHolograms(bool active)
+    {
+        hologramManager.EnableHolograms(active);
+    }*/
 
     /// <summary>
     /// Enables or disables the main menu based on the given value.

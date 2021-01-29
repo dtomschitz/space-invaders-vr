@@ -67,7 +67,6 @@ public class GameState : MonoBehaviour
     {
         Statistics.instance.ResetTimer();
 
-        //Player.instance.EnableHands(true);
         XRManager.instance.EnableXRInteractors(true);
         GunManager.instance.EnableGuns(false);
         ForceField.instance.EnableForceField(false);
@@ -75,15 +74,13 @@ public class GameState : MonoBehaviour
         UIManager.instance.ShowMainMenu(true);
         UIManager.instance.ShowPauseMenu(false);
         UIManager.instance.ShowGameOverMenu(false);
-        UIManager.instance.ShowHolograms(false);
     }
 
     void TogglePauseMenu()
     {
         Statistics.instance.ToggleTimer(false);
-
         StopCountdown();
-        //Player.instance.EnableHands(true);
+
         XRManager.instance.EnableXRInteractors(true);
         GunManager.instance.EnableGuns(false);
         ForceField.instance.EnableForceField(false);
@@ -98,34 +95,34 @@ public class GameState : MonoBehaviour
     {
         Statistics.instance.ToggleTimer(false);
         StopCountdown();
-       // Player.instance.EnableHands(true);
+
         XRManager.instance.EnableXRInteractors(true);
         GunManager.instance.EnableGuns(false);
         ForceField.instance.EnableForceField(false);
 
-        UIManager.instance.ShowGameOverMenu(true);
         UIManager.instance.ShowHolograms(false);
+
+        UIManager.instance.ShowGameOverMenu(true);
         UIManager.instance.ShowMainMenu(false);
         UIManager.instance.ShowPauseMenu(false);
     }
 
     void TogglePreInGame()
     {
-        Statistics.instance.ToggleTimer(true);
-
         StopCountdown();
-        //Player.instance.EnableHands(false);
+
         XRManager.instance.EnableXRInteractors(false);
         GunManager.instance.EnableGuns(true);
         ForceField.instance.EnableForceField(true);
 
-        UIManager.instance.ShowHolograms(true);
         UIManager.instance.ShowMainMenu(false);
         UIManager.instance.ShowPauseMenu(false);
         UIManager.instance.ShowGameOverMenu(false);
 
         countdownCoroutine = StartCoroutine(UIManager.instance.StartCountdown(5f, () => {
             SetState(GameStateType.InGame);
+            Statistics.instance.ToggleTimer(true);
+            UIManager.instance.ShowHolograms(true);
         }));
     }
 
