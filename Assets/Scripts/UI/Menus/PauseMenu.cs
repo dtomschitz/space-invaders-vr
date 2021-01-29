@@ -10,17 +10,20 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     /// <summary>
-    /// Freezes the game.
+    /// Freezes the game and stops the currently running timer.
     /// </summary>
     public void OnEnable()
     {
+        Time.timeScale = 0f;
         Statistics.instance.ToggleTimer(false);
     }
+
     /// <summary>
-    /// Unfreezes the game.
+    /// Unfreezes the game and starts the timer.
     /// </summary>
     public void OnDisable()
     {
+        Time.timeScale = 1f;
         Statistics.instance.ToggleTimer(true);
     }
 

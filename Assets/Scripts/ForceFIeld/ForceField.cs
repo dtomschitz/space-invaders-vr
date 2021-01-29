@@ -37,6 +37,9 @@ public class ForceField : MonoBehaviour
     public delegate void ForceFieldPowerConsumed();
     public event ForceFieldPowerConsumed OnForceFieldPowerConsumed;
 
+    public delegate void ForceFieldStateChanged(bool active);
+    public event ForceFieldStateChanged OnForceFieldStateChanged;
+
     Coroutine soundCoroutine;
 
     void Start()
@@ -63,8 +66,13 @@ public class ForceField : MonoBehaviour
 
     void OnShieldButtonPress()
     {
-        IsForceFieldEnabled = !IsForceFieldEnabled;
-        sphere.SetActive(IsForceFieldEnabled);
+        ToggleForceField(!IsForceFieldEnabled);
+    }
+
+    void ToggleForceField(bool active)
+    {
+        IsForceFieldEnabled = active;
+        sphere.SetActive(active);
 
         if (soundCoroutine != null) StopCoroutine(soundCoroutine);
         soundCoroutine = StartCoroutine(ToggleForceFieldSound(IsForceFieldEnabled));
@@ -109,21 +117,16 @@ public class ForceField : MonoBehaviour
 
         if (CurrentForceFieldPower <= 0)
         {
-            sphere.SetActive(false);
-            IsForceFieldEnabled = false;
-
-            if (soundCoroutine != null) StopCoroutine(soundCoroutine);
-            soundCoroutine = StartCoroutine(ToggleForceFieldSound(false));
-
+            ToggleForceField(false);
             OnForceFieldPowerConsumed?.Invoke();
         }
     }
 
     public void EnableForceField(bool value)
     {
-        if (!value)
+        if (!value && IsForceFieldEnabled)
         {
-            IsForceFieldEnabled = false;
+            ToggleForceField(false);
         }
 
         IsEnabled = value;

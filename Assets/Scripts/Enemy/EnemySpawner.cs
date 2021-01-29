@@ -16,11 +16,6 @@ public class EnemySpawner : MonoBehaviour
     void Start()
     {
         GameState.instance.OnGameStateChanged += ToggleSpawner;
-
-      /*  for (int i = 0; i < startAmount - 1; i++)
-        {
-            SpawnEnemy();
-        }*/
     } 
 
     
@@ -32,7 +27,6 @@ public class EnemySpawner : MonoBehaviour
             {
                 this.nextActionTime += period;
                 SpawnEnemy();
-                // execute block of code here
             }
         }
     } 

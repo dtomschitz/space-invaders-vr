@@ -1,14 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
-using System.Collections;
-
-public enum EnemyState
-{
-    Attack,
-    Strafe,
-    Avoid,
-    Seek
-}
 
 public enum DodgeDirection
 {
@@ -37,8 +28,6 @@ public class Enemy : Entity
     float WPradius = 1;
 
 
-    public EnemyState State { get; protected set; }
-
     DodgeDirection dodgeDirection;
     NavMeshAgent agent;
     GameObject attackPoint;
@@ -48,7 +37,6 @@ public class Enemy : Entity
     {
         base.Start();
         agent = GetComponent<NavMeshAgent>();
-        State = EnemyState.Seek;
 
         GameObject[] attackPonints = GameObject.FindGameObjectsWithTag("AttackPoint");
         attackPoint = attackPonints[Random.Range(0, attackPonints.Length)];
@@ -58,7 +46,6 @@ public class Enemy : Entity
 
         timeBetweenAttacks = startTimeBtwAttacks;
         dodgeDirection = (DodgeDirection) Random.Range(0, System.Enum.GetValues(typeof(DodgeDirection)).Length);
-        
     }
 
     private void Update()
@@ -84,28 +71,15 @@ public class Enemy : Entity
 
         if (dodgeTime <= 0)
         {
-            
-          
             dodgeDirection = dodgeDirection == DodgeDirection.LEFT ? DodgeDirection.RIGHT : DodgeDirection.LEFT;
             dodgeTime = dodgeStart;
         }
         else
         {
             dodgeTime -= Time.deltaTime;
-            
         }
 
-        if (dodgeDirection == DodgeDirection.RIGHT)
-        {
-            Dodge(dodgeRange);
-        }
-        else
-        {
-            Dodge(-dodgeRange);
-        }
-
-        
-
+        Dodge(dodgeDirection == DodgeDirection.RIGHT ? dodgeRange : -dodgeRange);
     }
 
     protected override void OnDeath()
@@ -136,15 +110,13 @@ public class Enemy : Entity
     void Dodge(int range)
     {
         Vector3 destination = agent.transform.position;
-        destination.x = destination.x + range;
+        destination.x += range;
         MoveToPosition(destination);
-        
     }
 
     void MoveToPosition(Vector3 position)
     {
         transform.position = Vector3.MoveTowards(transform.position,position, Time.deltaTime * agent.speed);
-        
     }
 
     void ShowExplosion()

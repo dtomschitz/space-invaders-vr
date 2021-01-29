@@ -13,6 +13,10 @@ public class ForceFieldButton : MonoBehaviour
     void Start()
     {
         ForceField.instance.OnForceFieldPowerConsumed += () => ToggleButton(false);
+        GameState.instance.OnGameStateChanged += (state) =>
+        {
+            if (state == GameStateType.PauseMenu) ToggleButton(false);
+        };
     }
 
     void OnTriggerEnter(Collider other)
