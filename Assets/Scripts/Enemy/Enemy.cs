@@ -18,6 +18,7 @@ public class Enemy : Entity
     [Header("Prefabs")]
     public GameObject explosionPrefab;
     public EnemyProjectile projectilePrefab;
+    public GameObject firePoint;
 
     // Doge Settings
     int dodgeRange;
@@ -36,13 +37,10 @@ public class Enemy : Entity
     protected override void Start()
     {
         base.Start();
-        agent = GetComponent<NavMeshAgent>();
+        
 
         GameObject[] attackPonints = GameObject.FindGameObjectsWithTag("AttackPoint");
         attackPoint = attackPonints[Random.Range(0, attackPonints.Length)];
-
-        agent.speed = 1;
-        agent.acceleration = 10;
 
         timeBetweenAttacks = startTimeBetweenAttacks;
         dodgeDirection = (DodgeDirection) Random.Range(0, System.Enum.GetValues(typeof(DodgeDirection)).Length);
@@ -133,7 +131,7 @@ public class Enemy : Entity
     /// </summary>
     void AttackPlayer()
     {
-        EnemyProjectile projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+        EnemyProjectile projectile = Instantiate(projectilePrefab, firePoint.transform.position, Quaternion.identity);
         projectile.SetDamage(damage);
         timeBetweenAttacks = Random.Range(startTimeBetweenAttacks, startTimeBetweenAttacks+3);
     }
