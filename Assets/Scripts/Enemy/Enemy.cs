@@ -1,16 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
-using System.Collections;
 
-
-
-public enum EnemyState
-{
-    Attack,
-    Strafe,
-    Avoid,
-    Seek
-}
 /// <summary>
 /// enum <c>DodgeDirection</c> contains the two options of directions in which the enemy can dodge.
 /// </summary>
@@ -29,31 +19,24 @@ public class Enemy : Entity
     public GameObject explosionPrefab;
     public EnemyProjectile projectilePrefab;
 
-    [Header("Attack Settings")]
-    public float timeBetweenAttacks; //The actual time of the timer between each attack
-    public float startTimeBetweenAttacks; // The start time of the timer between each attack
-    public bool disableAttack; // Toggles if the enemys should attack
+    // Doge Settings
+    int dodgeRange;
+    float startTimeBetweenDodges;
+    float timeBetweenDodges;
 
-    [Header("Dodge Settings")]
-    public int dodgeRange; //The range of the dodges
-    public float startTimeBetweenDodges; // The start time of the timer between each dodge
-    public float timeBetweenDodges; // The actual time of the timer between each dodge
-
-
-    public EnemyState State { get; protected set; }
+    // Attack Settings
+    float timeBetweenAttacks;
+    float startTimeBetweenAttacks;
+    bool disableAttack;
 
     DodgeDirection dodgeDirection;
     NavMeshAgent agent;
     GameObject attackPoint;
 
-
-
-
     protected override void Start()
     {
         base.Start();
         agent = GetComponent<NavMeshAgent>();
-        State = EnemyState.Seek;
 
         GameObject[] attackPonints = GameObject.FindGameObjectsWithTag("AttackPoint");
         attackPoint = attackPonints[Random.Range(0, attackPonints.Length)];
@@ -71,8 +54,7 @@ public class Enemy : Entity
     /// Additionally it will time the attacks of the enemy.
     /// It also times the dodges and the direction of the dodges.
     /// </summary>
-
-    private void Update()
+    void Update()
     {
         if (transform.position.z <= 0)
         {
@@ -95,29 +77,29 @@ public class Enemy : Entity
 
         if (timeBetweenDodges <= 0)
         {
-            
-          
             dodgeDirection = dodgeDirection == DodgeDirection.LEFT ? DodgeDirection.RIGHT : DodgeDirection.LEFT;
             timeBetweenDodges = startTimeBetweenDodges;
         }
         else
         {
             timeBetweenDodges -= Time.deltaTime;
-            
         }
 
-        if (dodgeDirection == DodgeDirection.RIGHT)
-        {
-            Dodge(dodgeRange);
-        }
-        else
-        {
-            Dodge(-dodgeRange);
-            
-        }
+        Dodge(dodgeDirection == DodgeDirection.RIGHT ? dodgeRange : -dodgeRange);
+    }
 
-        
+    public void Init(EnemyConfig config)
+    {
+        maxHealth = config.maxHealth;
+        damage = config.damage;
 
+        dodgeRange = config.dodgeRange;
+        startTimeBetweenDodges = config.startTimeBetweenDodges;
+        timeBetweenDodges = config.timeBetweenDodges;
+
+        timeBetweenAttacks = config.timeBetweenAttacks;
+        startTimeBetweenAttacks = config.startTimeBetweenAttacks;
+        disableAttack = config.disableAttack;
     }
 
     /// <summary>
@@ -149,7 +131,7 @@ public class Enemy : Entity
     /// This method gets called if the Enemy attacks.
     /// It will also set a new random time between the attacks
     /// </summary>
-    private void AttackPlayer()
+    void AttackPlayer()
     {
         EnemyProjectile projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
         projectile.SetDamage(damage);
@@ -162,7 +144,7 @@ public class Enemy : Entity
     void Dodge(int range)
     {
         Vector3 destination = agent.transform.position;
-        destination.x = destination.x + range;
+        destination.x += range;
         MoveToPosition(destination);
         
     }
