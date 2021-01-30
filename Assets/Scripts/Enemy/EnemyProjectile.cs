@@ -1,5 +1,9 @@
 using UnityEngine;
 
+/// <summary>
+/// Class <c>EnemyProjectile</c> manages the enemy projectiles.
+/// </summary>
+
 public class EnemyProjectile : MonoBehaviour{
 
     public float speed;
@@ -14,6 +18,9 @@ public class EnemyProjectile : MonoBehaviour{
         Destroy(gameObject, 5f);
     }
 
+    /// <summary>
+    /// This method lets the projecile move to the player.
+    /// </summary>
     void Update()
     {
         transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);

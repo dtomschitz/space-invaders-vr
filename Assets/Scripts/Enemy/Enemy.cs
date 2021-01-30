@@ -30,15 +30,14 @@ public class Enemy : Entity
     public EnemyProjectile projectilePrefab;
 
     [Header("Attack Settings")]
-    public float timeBetweenAttacks;
-    public float startTimeBtwAttacks;
-    public float attackTime;
-    public bool disableAttack;
+    public float timeBetweenAttacks; //The actual time of the timer between each attack
+    public float startTimeBetweenAttacks; // The start time of the timer between each attack
+    public bool disableAttack; // Toggles if the enemys should attack
 
     [Header("Dodge Settings")]
-    public int dodgeRange;
-    public float dodgeStart;
-    public float dodgeTime;
+    public int dodgeRange; //The range of the dodges
+    public float startTimeBetweenDodges; // The start time of the timer between each dodge
+    public float timeBetweenDodges; // The actual time of the timer between each dodge
 
 
     public EnemyState State { get; protected set; }
@@ -62,7 +61,7 @@ public class Enemy : Entity
         agent.speed = 1;
         agent.acceleration = 10;
 
-        timeBetweenAttacks = startTimeBtwAttacks;
+        timeBetweenAttacks = startTimeBetweenAttacks;
         dodgeDirection = (DodgeDirection) Random.Range(0, System.Enum.GetValues(typeof(DodgeDirection)).Length);
         dodgeRange = Random.Range(dodgeRange-1, dodgeRange+3);
     }
@@ -94,16 +93,16 @@ public class Enemy : Entity
             }
         }
 
-        if (dodgeTime <= 0)
+        if (timeBetweenDodges <= 0)
         {
             
           
             dodgeDirection = dodgeDirection == DodgeDirection.LEFT ? DodgeDirection.RIGHT : DodgeDirection.LEFT;
-            dodgeTime = dodgeStart;
+            timeBetweenDodges = startTimeBetweenDodges;
         }
         else
         {
-            dodgeTime -= Time.deltaTime;
+            timeBetweenDodges -= Time.deltaTime;
             
         }
 
@@ -148,12 +147,13 @@ public class Enemy : Entity
     }
     /// <summary>
     /// This method gets called if the Enemy attacks.
+    /// It will also set a new random time between the attacks
     /// </summary>
     private void AttackPlayer()
     {
         EnemyProjectile projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
         projectile.SetDamage(damage);
-        timeBetweenAttacks = Random.Range(startTimeBtwAttacks, startTimeBtwAttacks+3);
+        timeBetweenAttacks = Random.Range(startTimeBetweenAttacks, startTimeBetweenAttacks+3);
     }
     /// <summary>
     /// This method gets called if the Enemy dodges.
