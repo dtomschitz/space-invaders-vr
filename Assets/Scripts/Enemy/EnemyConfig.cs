@@ -46,10 +46,6 @@ public class EnemyConfig : ScriptableObject
     /// </summary>
     public float maxDodgeSpeed = 1.3f;
     /// <summary>
-    /// The start time of the timer between each dodge
-    /// </summary>
-    public float startTimeBetweenDodges;
-    /// <summary>
     /// The minimum time of the timer between each dodge
     /// </summary>
     public float minTimeBetweenDodges;

@@ -30,8 +30,8 @@ public class Enemy : Entity
     float maxDodgeSpeed;
     float minTimeBetweenDodges;
     float maxTimeBetweenDodges;
-    float startTimeBetweenDodges;
     float timeBetweenDodges;
+    int dodgeRange;
 
     // Attack Settings
     float timeBetweenAttacks;
@@ -84,13 +84,14 @@ public class Enemy : Entity
             dodgeDirection = dodgeDirection == DodgeDirection.LEFT ? DodgeDirection.RIGHT : DodgeDirection.LEFT;
             timeBetweenDodges = Random.Range(minTimeBetweenDodges, maxTimeBetweenDodges);
 
-            int dodgeRange = Random.Range(minDodgeRange, maxDodgeRange);
-            Dodge(dodgeDirection == DodgeDirection.RIGHT ? dodgeRange : -dodgeRange);
+            dodgeRange = Random.Range(minDodgeRange, maxDodgeRange);
         }
         else
         {
             timeBetweenDodges -= Time.deltaTime;
         }
+
+        Dodge(dodgeDirection == DodgeDirection.RIGHT ? dodgeRange : -dodgeRange);
     }
 
     public void Init(EnemyConfig config)
@@ -104,7 +105,6 @@ public class Enemy : Entity
         minDodgeSpeed = config.minDodgeSpeed;
         maxDodgeSpeed = config.maxDodgeSpeed;
 
-        startTimeBetweenDodges = config.startTimeBetweenDodges;
         minTimeBetweenDodges = config.minTimeBetweenDodges;
         maxTimeBetweenDodges = config.maxTimeBetweenDodges;
 
@@ -155,7 +155,7 @@ public class Enemy : Entity
         projectile.SetDamage(Random.Range(minDamage, maxDamage));
         projectile.Fire();
 
-        timeBetweenAttacks = Random.Range(minStartTimeBetweenAttacks, maxStartTimeBetweenAttacks+3);
+        timeBetweenAttacks = Random.Range(minStartTimeBetweenAttacks, maxStartTimeBetweenAttacks);
     }
 
     /// <summary>
