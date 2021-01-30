@@ -20,15 +20,24 @@ public class Enemy : Entity
     public EnemyProjectile projectilePrefab;
     public GameObject firePoint;
 
+    int minDamage;
+    int maxDamage;
+
     // Doge Settings
-    int dodgeRange;
-    float dodgeSpeed;
+    int minDodgeRange;
+    int maxDodgeRange;
+    float minDodgeSpeed;
+    float maxDodgeSpeed;
+    float minTimeBetweenDodges;
+    float maxTimeBetweenDodges;
     float startTimeBetweenDodges;
     float timeBetweenDodges;
 
     // Attack Settings
     float timeBetweenAttacks;
-    float startTimeBetweenAttacks;
+    float minStartTimeBetweenAttacks;
+    float maxStartTimeBetweenAttacks;
+
     bool disableAttack;
 
     Coroutine attackCoroutine;
@@ -42,9 +51,8 @@ public class Enemy : Entity
         GameObject[] attackPonints = GameObject.FindGameObjectsWithTag("AttackPoint");
         attackPoint = attackPonints[Random.Range(0, attackPonints.Length)];
 
-        timeBetweenAttacks = startTimeBetweenAttacks;
+        timeBetweenAttacks = Random.Range(minStartTimeBetweenAttacks, maxStartTimeBetweenAttacks);
         dodgeDirection = (DodgeDirection) Random.Range(0, System.Enum.GetValues(typeof(DodgeDirection)).Length);
-        dodgeRange = Random.Range(dodgeRange-1, dodgeRange+3);
     }
 
     /// <summary>
@@ -74,28 +82,35 @@ public class Enemy : Entity
         if (timeBetweenDodges <= 0)
         {
             dodgeDirection = dodgeDirection == DodgeDirection.LEFT ? DodgeDirection.RIGHT : DodgeDirection.LEFT;
-            timeBetweenDodges = startTimeBetweenDodges;
+            timeBetweenDodges = Random.Range(minTimeBetweenDodges, maxTimeBetweenDodges);
+
+            int dodgeRange = Random.Range(minDodgeRange, maxDodgeRange);
+            Dodge(dodgeDirection == DodgeDirection.RIGHT ? dodgeRange : -dodgeRange);
         }
         else
         {
             timeBetweenDodges -= Time.deltaTime;
         }
-
-        Dodge(dodgeDirection == DodgeDirection.RIGHT ? dodgeRange : -dodgeRange);
     }
 
     public void Init(EnemyConfig config)
     {
-        maxHealth = config.maxHealth;
-        damage = config.damage;
+        maxHealth = Random.Range(config.minHealth, config.maxHealth);
+        minDamage = config.minDamage;
+        maxDamage = config.maxDamage;
 
-        dodgeRange = config.dodgeRange;
-        dodgeSpeed = config.dodgeSpeed;
+        minDodgeRange = config.minDodgeRange;
+        maxDodgeRange = config.maxDodgeRange;
+        minDodgeSpeed = config.minDodgeSpeed;
+        maxDodgeSpeed = config.maxDodgeSpeed;
+
         startTimeBetweenDodges = config.startTimeBetweenDodges;
-        timeBetweenDodges = config.timeBetweenDodges;
+        minTimeBetweenDodges = config.minTimeBetweenDodges;
+        maxTimeBetweenDodges = config.maxTimeBetweenDodges;
 
-        timeBetweenAttacks = config.timeBetweenAttacks;
-        startTimeBetweenAttacks = config.startTimeBetweenAttacks;
+        minStartTimeBetweenAttacks = config.minStartTimeBetweenAttacks;
+        maxStartTimeBetweenAttacks = config.maxStartTimeBetweenAttacks;
+
         disableAttack = config.disableAttack;
     }
 
@@ -131,16 +146,16 @@ public class Enemy : Entity
     /// </summary>
     IEnumerator AttackCoroutine()
     {
+
         AudioManager.instance.PlaySound(Sound.EnemyProjectileCharge, gameObject.transform.position);
-        yield return new WaitForSeconds(1f);
-        AudioManager.instance.PlaySound(Sound.EnemyProjectileFire, gameObject.transform.position);
         yield return new WaitForSeconds(1f);
 
         EnemyProjectile projectile = Instantiate(projectilePrefab, firePoint.transform.position, Quaternion.identity);
-        projectile.SetDamage(damage);
+        AudioManager.instance.PlaySound(Sound.EnemyProjectileFire, gameObject.transform.position);
+        projectile.SetDamage(Random.Range(minDamage, maxDamage));
+        projectile.Fire();
 
-        timeBetweenAttacks = Random.Range(startTimeBetweenAttacks, startTimeBetweenAttacks+3);
-        yield break;
+        timeBetweenAttacks = Random.Range(minStartTimeBetweenAttacks, maxStartTimeBetweenAttacks+3);
     }
 
     /// <summary>
@@ -160,7 +175,8 @@ public class Enemy : Entity
     /// <param name="position">The postion to which the enemy moves.</param>
     void MoveToPosition(Vector3 position)
     {
-        transform.position = Vector3.MoveTowards(transform.position,position, Time.deltaTime * dodgeSpeed);
+        float speed = Random.Range(minDodgeSpeed, maxDodgeSpeed);
+        transform.position = Vector3.MoveTowards(transform.position,position, Time.deltaTime * speed);
     }
 
     /// <summary>

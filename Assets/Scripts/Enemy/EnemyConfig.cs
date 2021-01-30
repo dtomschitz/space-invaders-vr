@@ -11,43 +11,62 @@ public class EnemyConfig : ScriptableObject
 {
     [Header("Stats")]
     /// <summary>
+    /// The minimum health points a enemy can have.
+    /// </summary>
+    public float minHealth = 100;
+    /// <summary>
     /// The maximum health points a enemy can have.
     /// </summary>
     public float maxHealth = 100;
     /// <summary>
+    /// The minimum damage a enemy can deal.
+    /// </summary>
+    public int minDamage = 5;
+    /// <summary>
     /// The maximum damage a enemy can deal.
     /// </summary>
-    public float damage = 5;
+    public int maxDamage = 10;
+
 
     [Header("Dodge Settings")]
     /// <summary>
-    /// The range of the dodges
+    /// The minimum range of the dodges
     /// </summary>
-    public int dodgeRange = 2;
-
+    public int minDodgeRange = 2;
     /// <summary>
-    /// The speed in which the enemy can dodge.
+    /// The maximum range of the dodges
     /// </summary>
-    public float dodgeSpeed = 1f;
-
+    public int maxDodgeRange = 2;
+    /// <summary>
+    /// The minimum speed in which the enemy can dodge.
+    /// </summary>
+    public float minDodgeSpeed = 1f;
+    /// <summary>
+    /// The maximum speed in which the enemy can dodge.
+    /// </summary>
+    public float maxDodgeSpeed = 1.3f;
     /// <summary>
     /// The start time of the timer between each dodge
     /// </summary>
     public float startTimeBetweenDodges;
     /// <summary>
-    /// The actual time of the timer between each dodge
+    /// The minimum time of the timer between each dodge
     /// </summary>
-    public float timeBetweenDodges;
+    public float minTimeBetweenDodges;
+    /// <summary>
+    /// The maximum time of the timer between each dodge
+    /// </summary>
+    public float maxTimeBetweenDodges;
 
     [Header("Attack Settings")]
     /// <summary>
-    /// The actual time of the timer between each attack
+    /// The minimum start time of the timer between each attack
     /// </summary>
-    public float timeBetweenAttacks;
+    public float minStartTimeBetweenAttacks;
     /// <summary>
-    /// The start time of the timer between each attack
+    /// The maximumstart time of the timer between each attack
     /// </summary>
-    public float startTimeBetweenAttacks;
+    public float maxStartTimeBetweenAttacks;
     /// <summary>
     /// Toggles if the enemys should attack
     /// </summary>

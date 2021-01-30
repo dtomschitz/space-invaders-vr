@@ -8,6 +8,7 @@ public class EnemyProjectile : MonoBehaviour{
     public float speed;
     public GameObject[] hitPrefabs;
 
+    bool isFired;
     float damage;
     GameObject player;
 
@@ -22,7 +23,10 @@ public class EnemyProjectile : MonoBehaviour{
     /// </summary>
     void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+        if (isFired)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+        }
     }
 
     void OnCollisionEnter(Collision collision)
@@ -57,5 +61,10 @@ public class EnemyProjectile : MonoBehaviour{
     public void SetDamage(float damage)
     {
         this.damage = damage;
+    }
+
+    public void Fire()
+    {
+        this.isFired = true;
     }
 }
