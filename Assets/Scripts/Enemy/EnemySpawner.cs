@@ -37,6 +37,7 @@ public class EnemySpawner : MonoBehaviour
     void Start()
     {
         GameState.instance.OnGameStateChanged += ToggleSpawner;
+
         configs = Resources.LoadAll<EnemySpawnerConfig>("WaveConfigs");
         Debug.LogFormat("Loaded {0} spawner configs.", configs.Length);
     } 
@@ -60,13 +61,15 @@ public class EnemySpawner : MonoBehaviour
 
             waveCountdown -= Time.deltaTime;
         }
-    } 
+    }
 
     void ToggleSpawner(GameStateType newState)
     {
         bool isInGame = newState == GameStateType.InGame;
         isSpawningEnabled = isInGame;
         State = isInGame ? EnemySpawnerState.Counting : EnemySpawnerState.Disabled;
+
+        if (newState == GameStateType.GameOver) KillAllEnemies();
     }
 
     /// <summary>
@@ -158,6 +161,19 @@ public class EnemySpawner : MonoBehaviour
             if (config.round == Rounds) return config;
         }
         return null;
+    }
+
+    /// <summary>
+    /// Zhis method is called when the player dies and the game is over. 
+    /// All remaining enemies are destroyed.
+    /// </summary>
+    void KillAllEnemies()
+    {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject enemy in enemies)
+        {
+            Destroy(enemy);
+        }
     }
 
     /// <summary>
