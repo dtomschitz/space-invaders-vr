@@ -1017,7 +1017,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  damage: 20
+  damage: 100
   controls: {fileID: 1509435544659711152}
   leftHand: {fileID: 843819129993604584}
   rightHand: {fileID: 3274274702770460614}

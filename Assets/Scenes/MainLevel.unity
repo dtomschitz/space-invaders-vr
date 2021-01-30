@@ -357,6 +357,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Seat
       objectReference: {fileID: 0}
+    - target: {fileID: 5348209917888788394, guid: 3ea22637dc86d0649b6357edbf70ce01,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ea22637dc86d0649b6357edbf70ce01, type: 3}
 --- !u!4 &272137953 stripped
@@ -1225,10 +1230,20 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1509435544659711183, guid: 6fa5f62d105c4234b961e2972a77b545,
+    - target: {fileID: 1509435545008084434, guid: 6fa5f62d105c4234b961e2972a77b545,
         type: 3}
-      propertyPath: damage
-      value: 100
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1509435545008084434, guid: 6fa5f62d105c4234b961e2972a77b545,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1509435545008084434, guid: 6fa5f62d105c4234b961e2972a77b545,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1509435545008084435, guid: 6fa5f62d105c4234b961e2972a77b545,
         type: 3}
@@ -3788,25 +3803,15 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1932292061397858374, guid: c0933db3c6bb5d341937a4e8e399483f,
-        type: 3}
-      propertyPath: size.y
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 1932292061397858374, guid: c0933db3c6bb5d341937a4e8e399483f,
-        type: 3}
-      propertyPath: size.x
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 1932292061397858374, guid: c0933db3c6bb5d341937a4e8e399483f,
-        type: 3}
-      propertyPath: center.y
-      value: 14
-      objectReference: {fileID: 0}
     - target: {fileID: 7595446806006920964, guid: c0933db3c6bb5d341937a4e8e399483f,
         type: 3}
       propertyPath: m_Name
       value: EnemySpawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 7595446806006920964, guid: c0933db3c6bb5d341937a4e8e399483f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7595446806006920967, guid: c0933db3c6bb5d341937a4e8e399483f,
         type: 3}

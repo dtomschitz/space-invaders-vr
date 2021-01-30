@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: DefaultCompany
-  productName: XRInteractionHands_Unity
+  productName: SpaceInvaders
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -127,7 +127,14 @@ PlayerSettings:
     16:9: 1
     Others: 1
   bundleVersion: 0.1
-  preloadedAssets: []
+  preloadedAssets:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 11400000, guid: c77969fb0bc0b6f4790cb99c4d23ea00, type: 2}
+  - {fileID: 4143491862875679753, guid: 3a1346a2ee54d9d4d9e7d8b0ecbadde5, type: 2}
+  - {fileID: -8969543420441573078, guid: 931236cef18701348815d3c3421cdd7f, type: 2}
+  - {fileID: 11400000, guid: 85afc7ac7d077f049a21ba6afc957f85, type: 2}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1

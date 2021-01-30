@@ -15,8 +15,9 @@ MonoBehaviour:
   maxHealth: 100
   damage: 5
   dodgeRange: 3
+  dodgeSpeed: 1
   startTimeBetweenDodges: 3
   timeBetweenDodges: 3
-  timeBetweenAttacks: 10
-  startTimeBetweenAttacks: 2
+  timeBetweenAttacks: 100
+  startTimeBetweenAttacks: 10
   disableAttack: 0
