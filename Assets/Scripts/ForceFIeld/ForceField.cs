@@ -37,9 +37,6 @@ public class ForceField : MonoBehaviour
     public delegate void ForceFieldPowerConsumed();
     public event ForceFieldPowerConsumed OnForceFieldPowerConsumed;
 
-    public delegate void ForceFieldStateChanged(bool active);
-    public event ForceFieldStateChanged OnForceFieldStateChanged;
-
     Coroutine soundCoroutine;
 
     void Start()

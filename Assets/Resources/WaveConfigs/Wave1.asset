@@ -12,9 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cb30f2331c62dd4cadef72e7e847f88, type: 3}
   m_Name: Wave1
   m_EditorClassIdentifier: 
-  round: 1
-  difficulty: 0
-  enemies:
-  - {fileID: 1127429720928874676, guid: 6ab2a551ea45dd34eb1e72191ef183db, type: 3}
-  - {fileID: 9049424406648759438, guid: 41e3c4f9b1bc22d4a967ca82d3737f60, type: 3}
+  round: 0
+  timeBetweenWaves: 2.5
+  timeBetweenSpawns: 1.5
   enemyConfig: {fileID: 11400000, guid: 4652cb0db2d04f24faa54dda15a03797, type: 2}

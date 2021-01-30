@@ -3,7 +3,6 @@ using UnityEngine;
 /// <summary>
 /// Class <c>EnemyProjectile</c> manages the enemy projectiles.
 /// </summary>
-
 public class EnemyProjectile : MonoBehaviour{
 
     public float speed;

@@ -13,17 +13,23 @@ public class EnemyConfig : ScriptableObject
     /// <summary>
     /// The maximum health points a enemy can have.
     /// </summary>
-    public float maxHealth;
+    public float maxHealth = 100;
     /// <summary>
     /// The maximum damage a enemy can deal.
     /// </summary>
-    public float damage;
+    public float damage = 5;
 
     [Header("Dodge Settings")]
     /// <summary>
     /// The range of the dodges
     /// </summary>
-    public int dodgeRange;
+    public int dodgeRange = 2;
+
+    /// <summary>
+    /// The speed in which the enemy can dodge.
+    /// </summary>
+    public float dodgeSpeed = 1f;
+
     /// <summary>
     /// The start time of the timer between each dodge
     /// </summary>

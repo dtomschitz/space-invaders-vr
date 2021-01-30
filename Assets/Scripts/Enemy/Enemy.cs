@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.AI;
 
 /// <summary>
 /// enum <c>DodgeDirection</c> contains the two options of directions in which the enemy can dodge.
@@ -22,6 +21,7 @@ public class Enemy : Entity
 
     // Doge Settings
     int dodgeRange;
+    float dodgeSpeed;
     float startTimeBetweenDodges;
     float timeBetweenDodges;
 
@@ -31,14 +31,12 @@ public class Enemy : Entity
     bool disableAttack;
 
     DodgeDirection dodgeDirection;
-    NavMeshAgent agent;
     GameObject attackPoint;
 
     protected override void Start()
     {
         base.Start();
         
-
         GameObject[] attackPonints = GameObject.FindGameObjectsWithTag("AttackPoint");
         attackPoint = attackPonints[Random.Range(0, attackPonints.Length)];
 
@@ -54,11 +52,6 @@ public class Enemy : Entity
     /// </summary>
     void Update()
     {
-        if (transform.position.z <= 0)
-        {
-            Destroy(agent.gameObject);
-        }
-
         transform.LookAt(attackPoint.transform.position);
 
         if (!disableAttack)
@@ -92,6 +85,7 @@ public class Enemy : Entity
         damage = config.damage;
 
         dodgeRange = config.dodgeRange;
+        dodgeSpeed = config.dodgeSpeed;
         startTimeBetweenDodges = config.startTimeBetweenDodges;
         timeBetweenDodges = config.timeBetweenDodges;
 
@@ -125,6 +119,7 @@ public class Enemy : Entity
         base.OnDamaged(damage);
         Statistics.instance.AddDamage(damage);
     }
+
     /// <summary>
     /// This method gets called if the Enemy attacks.
     /// It will also set a new random time between the attacks
@@ -135,26 +130,27 @@ public class Enemy : Entity
         projectile.SetDamage(damage);
         timeBetweenAttacks = Random.Range(startTimeBetweenAttacks, startTimeBetweenAttacks+3);
     }
+
     /// <summary>
     /// This method gets called if the Enemy dodges.
     /// </summary>
     /// <param name="range">The Range in which the enemy dodges.</param>
     void Dodge(int range)
     {
-        Vector3 destination = agent.transform.position;
+        Vector3 destination = gameObject.transform.position;
         destination.x += range;
         MoveToPosition(destination);
-        
     }
+
     /// <summary>
     /// This method gets called whenever the enemy is moving to a postion.
     /// </summary>
     /// <param name="position">The postion to which the enemy moves.</param>
     void MoveToPosition(Vector3 position)
     {
-        transform.position = Vector3.MoveTowards(transform.position,position, Time.deltaTime * agent.speed);
-        
+        transform.position = Vector3.MoveTowards(transform.position,position, Time.deltaTime * dodgeSpeed);
     }
+
     /// <summary>
     /// This method gets called when the enemy dies.
     /// </summary>

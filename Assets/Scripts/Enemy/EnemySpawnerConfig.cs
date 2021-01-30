@@ -11,11 +11,23 @@
 [CreateAssetMenu(fileName = "New Wave Config", menuName = "Configs/Wave Config")]
 public class EnemySpawnerConfig : ScriptableObject
 {
+    /// <summary>
+    /// The round on which the specific config should be loaded.
+    /// </summary>
     public int round;
-    public Difficulty difficulty;
-    public GameObject[] enemies;
 
-    [Header("Enemy Config")]
+    /// <summary>
+    /// The actual time between the each wave.
+    /// </summary>
+    public float timeBetweenWaves = 2.5f;
+
+    /// <summary>
+    /// The actual time between each spawning process.
+    /// </summary>
+    public float timeBetweenSpawns = 1.5f;
+
+    /// <summary>
+    /// The configuration for each spawned enemy.
+    /// </summary>
     public EnemyConfig enemyConfig;
-
 }

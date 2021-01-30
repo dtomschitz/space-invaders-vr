@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd89e245e2a46d042a213bbbdd6a1712, type: 3}
   m_Name: Enemy1
   m_EditorClassIdentifier: 
-  maxHealth: 0
-  damage: 0
+  maxHealth: 100
+  damage: 5
   dodgeRange: 3
   startTimeBetweenDodges: 3
   timeBetweenDodges: 3
-  timeBetweenAttacks: 0
-  startTimeBetweenAttacks: 0
+  timeBetweenAttacks: 10
+  startTimeBetweenAttacks: 2
   disableAttack: 0
