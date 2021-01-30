@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 
 /// <summary>
-/// Class <c>EnemySpawner</c> spawns the Enemys in the Area of given Size Vector3 size.
-/// 
+/// Class <c>EnemySpawner</c> spawns Enemys in an Area of the Size of the Vector3 size 
 /// </summary>
 
 public class EnemySpawner : MonoBehaviour
@@ -46,7 +45,6 @@ public class EnemySpawner : MonoBehaviour
     {
         isSpawningEnabled = state == GameStateType.InGame;
     }
-
     /// <summary>
     /// This method gets called if isSpawningEnabled is true.
     /// </summary>

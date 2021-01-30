@@ -58,6 +58,7 @@ public class EnemyDodges : MonoBehaviour
                 Dodge(-dodgerange*2);
             }
             
+            
 
             dodgetime = dodgestart;
 
