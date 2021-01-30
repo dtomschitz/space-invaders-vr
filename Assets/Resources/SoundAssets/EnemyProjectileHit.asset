@@ -10,34 +10,27 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a268ac05b86a6124aa40444183680735, type: 3}
-  m_Name: Projectiles
+  m_Name: EnemyProjectileHit
   m_EditorClassIdentifier: 
-  sound: 0
+  sound: 11
   clips:
-  - clip: {fileID: 8300000, guid: 097d00ee959de3d42a08b100a24f42c0, type: 3}
+  - clip: {fileID: 8300000, guid: 954fc62cfa3b7e642966485f4d0a52ce, type: 3}
     maxTimer: 0
-    volume: 0.06
+    volume: 0.1
     pitch: 0
     loop: 0
     spatialBlend: 0
     maxDistance: 0
-  - clip: {fileID: 8300000, guid: bd216d2c198592845a3bb8274d949eaa, type: 3}
+  - clip: {fileID: 8300000, guid: 0f647e358f590d144abf164328b005a0, type: 3}
     maxTimer: 0
-    volume: 0.06
+    volume: 0.1
     pitch: 0
     loop: 0
     spatialBlend: 0
     maxDistance: 0
-  - clip: {fileID: 8300000, guid: 607b881ec0cf84c4c81bdc0aef32c118, type: 3}
+  - clip: {fileID: 8300000, guid: bdb3de1ddf6efae4ebde3b5f6814c1e8, type: 3}
     maxTimer: 0
-    volume: 0.06
-    pitch: 0
-    loop: 0
-    spatialBlend: 0
-    maxDistance: 0
-  - clip: {fileID: 8300000, guid: 4a776527997071f46a7ef2e2839a56d8, type: 3}
-    maxTimer: 0
-    volume: 0.06
+    volume: 0.1
     pitch: 0
     loop: 0
     spatialBlend: 0

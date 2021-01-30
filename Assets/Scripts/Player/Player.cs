@@ -25,6 +25,7 @@ public class Player : Entity
     protected override void Start()
     {
         base.Start();
+        AudioManager.instance.PlaySound(Sound.Engine, gameObject.transform.position);
     }
 
     protected override void OnDeath()

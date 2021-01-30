@@ -48,7 +48,7 @@ public class EnemyProjectile : MonoBehaviour{
         GameObject hit = Instantiate(hitPrefab, contact.point, rotation);
 
         AudioManager.instance.PlaySound(
-            ForceField.instance.IsForceFieldEnabled ? Sound.ForceFieldImpact : Sound.Explosion, 
+            ForceField.instance.IsForceFieldEnabled ? Sound.ForceFieldImpact : Sound.EnemyProjectileHit, 
             collision.transform.position);
 
         Destroy(hit, 3f);

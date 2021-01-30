@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 /// <summary>
 /// enum <c>DodgeDirection</c> contains the two options of directions in which the enemy can dodge.
@@ -30,6 +31,7 @@ public class Enemy : Entity
     float startTimeBetweenAttacks;
     bool disableAttack;
 
+    Coroutine attackCoroutine;
     DodgeDirection dodgeDirection;
     GameObject attackPoint;
 
@@ -58,7 +60,10 @@ public class Enemy : Entity
         {
             if (timeBetweenAttacks <= 0)
             {
-                AttackPlayer();
+                if (attackCoroutine == null)
+                {
+                    attackCoroutine = StartCoroutine(AttackCoroutine());
+                }
             }
             else
             {
@@ -124,11 +129,18 @@ public class Enemy : Entity
     /// This method gets called if the Enemy attacks.
     /// It will also set a new random time between the attacks
     /// </summary>
-    void AttackPlayer()
+    IEnumerator AttackCoroutine()
     {
+        AudioManager.instance.PlaySound(Sound.EnemyProjectileCharge, gameObject.transform.position);
+        yield return new WaitForSeconds(1f);
+        AudioManager.instance.PlaySound(Sound.EnemyProjectileFire, gameObject.transform.position);
+        yield return new WaitForSeconds(1f);
+
         EnemyProjectile projectile = Instantiate(projectilePrefab, firePoint.transform.position, Quaternion.identity);
         projectile.SetDamage(damage);
+
         timeBetweenAttacks = Random.Range(startTimeBetweenAttacks, startTimeBetweenAttacks+3);
+        yield break;
     }
 
     /// <summary>

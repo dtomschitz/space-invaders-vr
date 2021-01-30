@@ -8,5 +8,9 @@ public enum Sound
     ForceFieldImpact,
     ForceFieldStart,
     ForceFieldStop,
-    Engine
+    Engine,
+    EngineStart,
+    EnemyProjectileFire,
+    EnemyProjectileCharge,
+    EnemyProjectileHit,
 }
