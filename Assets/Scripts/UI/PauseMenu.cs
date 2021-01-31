@@ -23,7 +23,6 @@ public class PauseMenu : MonoBehaviour
     /// </summary>
     public void OnDisable()
     {
-        Time.timeScale = 1f;
         Statistics.instance.ToggleTimer(true);
     }
 

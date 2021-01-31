@@ -14574,7 +14574,7 @@ GameObject:
   - component: {fileID: 4983590539943298}
   - component: {fileID: 199561757109601946}
   - component: {fileID: 198302984453370694}
-  - component: {fileID: 65138394354385980}
+  - component: {fileID: 8135088438618459332}
   - component: {fileID: 54780134100305680}
   - component: {fileID: 2591900824676839440}
   m_Layer: 2
@@ -19445,8 +19445,8 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!65 &65138394354385980
-BoxCollider:
+--- !u!135 &8135088438618459332
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -19456,7 +19456,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.25, y: 0.6, z: 0.6}
+  m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &54780134100305680
 Rigidbody:
@@ -19489,6 +19489,7 @@ MonoBehaviour:
   speed: 15
   hitPrefabs:
   - {fileID: 1351045683517926, guid: f120eb28a1ca7b84088699ed9242f4a4, type: 3}
+  projectileLoop: {fileID: 2949372860163853785}
 --- !u!1 &8043942324332355974
 GameObject:
   m_ObjectHideFlags: 0

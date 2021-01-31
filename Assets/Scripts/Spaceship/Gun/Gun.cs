@@ -2,6 +2,7 @@
 
 public class Gun : MonoBehaviour
 {
+    [Header("Settings")]
     public GunPosition position;
     public float defaultLength;
     
@@ -14,9 +15,8 @@ public class Gun : MonoBehaviour
     public GunLaser laser;
     public GameObject firePoint;
 
-
-    [Header("Settings")]
-    public float minY;
+    Vector3 defaultPosition;
+    Quaternion defaultRotation;
 
     bool isShootingEnabled = true;
     bool isEnabled = false;
@@ -31,6 +31,10 @@ public class Gun : MonoBehaviour
         {
             Player.instance.controls.OnRightTriggerButtonPressed += Shoot;
         }
+
+        GameState.instance.OnGameStateChanged += OnGameStateChanged;
+        defaultPosition = gameObject.transform.position;
+        defaultRotation = gameObject.transform.rotation;
     } 
 
     void Update()
@@ -40,7 +44,16 @@ public class Gun : MonoBehaviour
             firePoint.transform.LookAt(laser.dot.transform);
             gun.transform.LookAt(laser.dot.transform);
         }
-    } 
+    }
+
+    void OnGameStateChanged(GameStateType newState)
+    {
+        if (newState != GameStateType.PreInGame || newState != GameStateType.InGame)
+        {
+            gameObject.transform.position = defaultPosition;
+            gameObject.transform.rotation = defaultRotation;
+        }
+    }
 
     void Shoot()
     {

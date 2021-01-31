@@ -38,16 +38,16 @@ public class Enemy : Entity
     float minStartTimeBetweenAttacks;
     float maxStartTimeBetweenAttacks;
 
-    bool disableAttack;
-
-    Coroutine attackCoroutine;
     DodgeDirection dodgeDirection;
     GameObject attackPoint;
+    Coroutine attackCoroutine;
 
     protected override void Start()
     {
         base.Start();
-        
+
+        GameState.instance.OnGameStateChanged += OnGameStateChanged;
+
         GameObject[] attackPonints = GameObject.FindGameObjectsWithTag("AttackPoint");
         attackPoint = attackPonints[Random.Range(0, attackPonints.Length)];
 
@@ -64,7 +64,7 @@ public class Enemy : Entity
     {
         transform.LookAt(attackPoint.transform.position);
 
-        if (!disableAttack)
+        if (CanAttack)
         {
             if (timeBetweenAttacks <= 0)
             {
@@ -110,9 +110,14 @@ public class Enemy : Entity
 
         minStartTimeBetweenAttacks = config.minStartTimeBetweenAttacks;
         maxStartTimeBetweenAttacks = config.maxStartTimeBetweenAttacks;
-
-        disableAttack = config.disableAttack;
     }
+
+    void OnGameStateChanged(GameStateType newState)
+    {
+        CanAttack = newState == GameStateType.InGame;
+        if (newState == GameStateType.GameOver) Destroy(gameObject);
+    }
+
 
     /// <summary>
     /// This method gets called if the Enemy gets killed.
@@ -187,4 +192,6 @@ public class Enemy : Entity
         GameObject hit = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
         Destroy(hit, 3f);
     }
+
+    public bool CanAttack { set; get; } = true;
 }

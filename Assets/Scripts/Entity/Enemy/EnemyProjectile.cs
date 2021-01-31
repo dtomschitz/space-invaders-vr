@@ -3,19 +3,25 @@ using UnityEngine;
 /// <summary>
 /// Class <c>EnemyProjectile</c> manages the enemy projectiles.
 /// </summary>
-public class EnemyProjectile : MonoBehaviour{
-
+public class EnemyProjectile : MonoBehaviour
+{
     public float speed;
     public GameObject[] hitPrefabs;
+    public AudioSource projectileLoop;
 
+    bool canMove = true;
     bool isFired;
     float damage;
     GameObject player;
 
+    float defaultDestroyTime = 5f;
+
     void Start()
     {
+        GameState.instance.OnGameStateChanged += OnGameStateChanged;
         player = GameObject.FindGameObjectWithTag("Player");
-        Destroy(gameObject, 5f);
+
+        Invoke(nameof(DestroyProjectile), defaultDestroyTime);
     }
 
     /// <summary>
@@ -23,7 +29,7 @@ public class EnemyProjectile : MonoBehaviour{
     /// </summary>
     void Update()
     {
-        if (isFired)
+        if (isFired && canMove)
         {
             transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
         }
@@ -44,6 +50,27 @@ public class EnemyProjectile : MonoBehaviour{
         }
     }
 
+    void OnGameStateChanged(GameStateType newState)
+    {
+        canMove = newState == GameStateType.InGame;
+        if (canMove) Invoke(nameof(DestroyProjectile), defaultDestroyTime);
+        else CancelInvoke(nameof(DestroyProjectile));
+
+        if (newState != GameStateType.InGame && projectileLoop != null)
+        {
+            projectileLoop.Stop();
+        } else
+        {
+            projectileLoop.Play();
+        }
+
+        if (newState == GameStateType.GameOver)
+        {
+            if (projectileLoop != null) projectileLoop.Stop();
+            Destroy(gameObject);
+        }
+    }
+
     void SpawnHitIndicator(Collision collision)
     {
         GameObject hitPrefab = hitPrefabs[Random.Range(0, hitPrefabs.Length)];
@@ -56,6 +83,11 @@ public class EnemyProjectile : MonoBehaviour{
             collision.transform.position);
 
         Destroy(hit, 3f);
+    }
+
+    void DestroyProjectile()
+    {
+        Destroy(gameObject);
     }
 
     public void SetDamage(float damage)

@@ -9,7 +9,7 @@
 [CreateAssetMenu(fileName = "New Enemy Config", menuName = "Configs/Enemy Config")]
 public class EnemyConfig : ScriptableObject
 {
-    [Header("Stats")]
+    [Header("Health Settings")]
     /// <summary>
     /// The minimum health points a enemy can have.
     /// </summary>
@@ -18,6 +18,8 @@ public class EnemyConfig : ScriptableObject
     /// The maximum health points a enemy can have.
     /// </summary>
     public float maxHealth = 100;
+
+    [Header("Damage Settings")]
     /// <summary>
     /// The minimum damage a enemy can deal.
     /// </summary>
@@ -63,8 +65,4 @@ public class EnemyConfig : ScriptableObject
     /// The maximumstart time of the timer between each attack
     /// </summary>
     public float maxStartTimeBetweenAttacks;
-    /// <summary>
-    /// Toggles if the enemys should attack
-    /// </summary>
-    public bool disableAttack;
 }

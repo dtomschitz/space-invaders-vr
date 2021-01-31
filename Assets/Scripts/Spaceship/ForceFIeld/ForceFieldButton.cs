@@ -30,8 +30,8 @@ public class ForceFieldButton : MonoBehaviour
 
     void ToggleButton(bool value)
     {
-        GetComponent<Renderer>().material = pressed ? defaultMaterial : highlightMaterial;
         pressed = value;
+        GetComponent<Renderer>().material = pressed ? highlightMaterial : defaultMaterial;
     }
 
     public bool IsEnabled { set; get; } = false;

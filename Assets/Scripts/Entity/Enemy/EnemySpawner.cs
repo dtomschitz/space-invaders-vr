@@ -68,8 +68,6 @@ public class EnemySpawner : MonoBehaviour
         bool isInGame = newState == GameStateType.InGame;
         isSpawningEnabled = isInGame;
         State = isInGame ? EnemySpawnerState.Counting : EnemySpawnerState.Disabled;
-
-        if (newState == GameStateType.GameOver) KillAllEnemies();
     }
 
     /// <summary>
@@ -161,19 +159,6 @@ public class EnemySpawner : MonoBehaviour
             if (config.round == Rounds) return config;
         }
         return null;
-    }
-
-    /// <summary>
-    /// Zhis method is called when the player dies and the game is over. 
-    /// All remaining enemies are destroyed.
-    /// </summary>
-    void KillAllEnemies()
-    {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        foreach (GameObject enemy in enemies)
-        {
-            Destroy(enemy);
-        }
     }
 
     /// <summary>
