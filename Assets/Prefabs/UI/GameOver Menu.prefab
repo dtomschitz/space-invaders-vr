@@ -161,6 +161,7 @@ GameObject:
   - component: {fileID: 1994344025545626053}
   - component: {fileID: 1994344025545626052}
   - component: {fileID: 1994344025545626050}
+  - component: {fileID: 1283728406354340882}
   m_Layer: 0
   m_Name: ReplayButton
   m_TagString: Untagged
@@ -301,6 +302,20 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!114 &1283728406354340882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1994344025545626054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 147bef252ce19334086a20f028a2afac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultMaterial: {fileID: 2100000, guid: 31db74a9f0c9622438a39e12cf60197c, type: 2}
+  highlightMaterial: {fileID: 2100000, guid: 7da63c18ac71feb498f0fffa2f35d4c2, type: 2}
 --- !u!1 &1994344026085682075
 GameObject:
   m_ObjectHideFlags: 0
@@ -314,6 +329,7 @@ GameObject:
   - component: {fileID: 1994344026085682078}
   - component: {fileID: 1994344026085682073}
   - component: {fileID: 1994344026085682070}
+  - component: {fileID: 533022587969143475}
   m_Layer: 0
   m_Name: BackToMainMenu
   m_TagString: Untagged
@@ -454,6 +470,20 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!114 &533022587969143475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1994344026085682075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 147bef252ce19334086a20f028a2afac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultMaterial: {fileID: 2100000, guid: 31db74a9f0c9622438a39e12cf60197c, type: 2}
+  highlightMaterial: {fileID: 2100000, guid: 7da63c18ac71feb498f0fffa2f35d4c2, type: 2}
 --- !u!1 &1994344026172459825
 GameObject:
   m_ObjectHideFlags: 0
