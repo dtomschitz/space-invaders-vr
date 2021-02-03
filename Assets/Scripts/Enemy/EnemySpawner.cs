@@ -30,7 +30,7 @@ public class EnemySpawner : MonoBehaviour
     public Vector3 center;
     public Vector3 size;
 
-    EnemySpawnerConfig[] configs;
+    public EnemySpawnerConfig[] configs;
     float waveCountdown;
     float searchCountdown = 1f;
 
@@ -43,7 +43,7 @@ public class EnemySpawner : MonoBehaviour
     
     void Update()
     {
-        if (isSpawningEnabled && State != EnemySpawnerState.Disabled)
+        if (isSpawningEnabled /*&& State != EnemySpawnerState.Disabled*/)
         {
             if (State == EnemySpawnerState.Running)
             {
