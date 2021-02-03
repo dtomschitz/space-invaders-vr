@@ -12,6 +12,8 @@ public class EnemyProjectile : MonoBehaviour
     bool canMove = true;
     bool isFired;
     float damage;
+
+    GameObject enemy;
     GameObject player;
 
     float defaultDestroyTime = 5f;
@@ -20,8 +22,6 @@ public class EnemyProjectile : MonoBehaviour
     {
         GameState.instance.OnGameStateChanged += OnGameStateChanged;
         player = GameObject.FindGameObjectWithTag("Player");
-
-        Invoke(nameof(DestroyProjectile), defaultDestroyTime);
     }
 
     /// <summary>
@@ -47,6 +47,7 @@ public class EnemyProjectile : MonoBehaviour
             Destroy(gameObject);
 
             if (isSpaceship) Player.instance.Damage(damage);
+            enemy.SendMessage("OnCancelAttack");
         }
     }
 
@@ -93,6 +94,11 @@ public class EnemyProjectile : MonoBehaviour
     public void SetDamage(float damage)
     {
         this.damage = damage;
+    }
+
+    public void SetAttacker(GameObject enemy)
+    {
+        this.enemy = enemy;
     }
 
     public void Fire()

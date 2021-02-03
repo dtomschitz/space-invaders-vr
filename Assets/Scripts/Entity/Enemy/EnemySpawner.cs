@@ -44,7 +44,7 @@ public class EnemySpawner : MonoBehaviour
     
     void Update()
     {
-        if (isSpawningEnabled /*&& State != EnemySpawnerState.Disabled*/)
+        if (isSpawningEnabled && State != EnemySpawnerState.Disabled)
         {
             if (State == EnemySpawnerState.Running)
             {

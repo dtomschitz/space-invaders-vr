@@ -42,10 +42,12 @@ public class Enemy : Entity
     GameObject attackPoint;
     Coroutine attackCoroutine;
 
+    bool engagePlayer = false;
+    bool attackRequested = false;
+
     protected override void Start()
     {
         base.Start();
-
         GameState.instance.OnGameStateChanged += OnGameStateChanged;
 
         GameObject[] attackPonints = GameObject.FindGameObjectsWithTag("AttackPoint");
@@ -66,12 +68,9 @@ public class Enemy : Entity
 
         if (CanAttack)
         {
-            if (timeBetweenAttacks <= 0)
+            if (timeBetweenAttacks <= 0 && !engagePlayer && !attackRequested)
             {
-                if (attackCoroutine == null)
-                {
-                    attackCoroutine = StartCoroutine(AttackCoroutine());
-                }
+                RequestAttack();
             }
             else
             {
@@ -118,6 +117,26 @@ public class Enemy : Entity
         if (newState == GameStateType.GameOver) Destroy(gameObject);
     }
 
+    public void RequestAttack()
+    {
+        attackRequested = true;
+        if (Player.instance.OnRequestAttack(gameObject.GetInstanceID()))
+        {
+            if (CanAttack) StartCoroutine(AttackCoroutine());
+        } else
+        {
+            ResetTimeBetweenAttack();
+            attackRequested = false;
+        }
+    }
+
+    public void OnCancelAttack()
+    {
+        Player.instance.OnCancelAttack(gameObject.GetInstanceID());
+        ResetTimeBetweenAttack();
+        engagePlayer = false;
+        attackRequested = false;
+    }
 
     /// <summary>
     /// This method gets called if the Enemy gets killed.
@@ -131,6 +150,8 @@ public class Enemy : Entity
         
         Statistics.instance.AddKill();
         AudioManager.instance.PlaySound(Sound.Explosion, gameObject.transform.position);
+
+        if (engagePlayer) Player.instance.OnCancelAttack(gameObject.GetInstanceID());
 
         Destroy(gameObject);
     }
@@ -151,16 +172,16 @@ public class Enemy : Entity
     /// </summary>
     IEnumerator AttackCoroutine()
     {
+        engagePlayer = true;
 
         AudioManager.instance.PlaySound(Sound.EnemyProjectileCharge, gameObject.transform.position);
         yield return new WaitForSeconds(1f);
 
         EnemyProjectile projectile = Instantiate(projectilePrefab, firePoint.transform.position, Quaternion.identity);
         AudioManager.instance.PlaySound(Sound.EnemyProjectileFire, gameObject.transform.position);
+        projectile.SetAttacker(gameObject);
         projectile.SetDamage(Random.Range(minDamage, maxDamage));
         projectile.Fire();
-
-        timeBetweenAttacks = Random.Range(minStartTimeBetweenAttacks, maxStartTimeBetweenAttacks);
     }
 
     /// <summary>
@@ -191,6 +212,11 @@ public class Enemy : Entity
     {
         GameObject hit = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
         Destroy(hit, 3f);
+    }
+
+    void ResetTimeBetweenAttack()
+    {
+        timeBetweenAttacks = Random.Range(minStartTimeBetweenAttacks, maxStartTimeBetweenAttacks);
     }
 
     public bool CanAttack { set; get; } = true;
