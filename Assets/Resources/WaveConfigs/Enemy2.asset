@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minHealth: 100
   maxHealth: 100
-  minDamage: 5
-  maxDamage: 10
+  minDamage: 10
+  maxDamage: 20
   minDodgeRange: 2
   maxDodgeRange: 5
   minDodgeSpeed: 2
   maxDodgeSpeed: 2.5
   minTimeBetweenDodges: 3
   maxTimeBetweenDodges: 5
-  minStartTimeBetweenAttacks: 4
-  maxStartTimeBetweenAttacks: 8
+  minStartTimeBetweenAttacks: 1
+  maxStartTimeBetweenAttacks: 4

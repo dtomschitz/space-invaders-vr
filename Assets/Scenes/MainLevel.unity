@@ -3192,6 +3192,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2081518043}
     m_Modifications:
+    - target: {fileID: 793261231724323352, guid: 6fa5f62d105c4234b961e2972a77b545,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5014445668561520296, guid: 6fa5f62d105c4234b961e2972a77b545,
+        type: 3}
+      propertyPath: m_InteractionLayerMask.m_Bits
+      value: 307
+      objectReference: {fileID: 0}
+    - target: {fileID: 5014445668611536141, guid: 6fa5f62d105c4234b961e2972a77b545,
+        type: 3}
+      propertyPath: m_InteractionLayerMask.m_Bits
+      value: 307
+      objectReference: {fileID: 0}
     - target: {fileID: 5014445670090003117, guid: 6fa5f62d105c4234b961e2972a77b545,
         type: 3}
       propertyPath: m_Name
@@ -3251,6 +3266,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5014445670278468552, guid: 6fa5f62d105c4234b961e2972a77b545,
+        type: 3}
+      propertyPath: field of view
+      value: 70
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6fa5f62d105c4234b961e2972a77b545, type: 3}

@@ -6,6 +6,7 @@ public class GunLaser : MonoBehaviour
     public GunPosition gunPosition;
     public float defaultLength = 40f;
     public GameObject dot;
+    public LayerMask ignoreLayer;
 
     GameObject player;
     GameObject hand;
@@ -30,6 +31,7 @@ public class GunLaser : MonoBehaviour
             if (hit.collider)
             {
                 endPosition = hit.point;
+                Debug.Log("dadwad");
             }
 
             dot.transform.position = endPosition;

@@ -14574,8 +14574,8 @@ GameObject:
   - component: {fileID: 4983590539943298}
   - component: {fileID: 199561757109601946}
   - component: {fileID: 198302984453370694}
+  - component: {fileID: 7653762214445080579}
   - component: {fileID: 8135088438618459332}
-  - component: {fileID: 54780134100305680}
   - component: {fileID: 2591900824676839440}
   m_Layer: 2
   m_Name: Enemy Projectile
@@ -19445,20 +19445,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!135 &8135088438618459332
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1823173409967616}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 1
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &54780134100305680
+--- !u!54 &7653762214445080579
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -19474,6 +19461,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!135 &8135088438618459332
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1823173409967616}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.01
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2591900824676839440
 MonoBehaviour:
   m_ObjectHideFlags: 0

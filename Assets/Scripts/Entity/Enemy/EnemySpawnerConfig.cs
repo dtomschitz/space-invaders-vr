@@ -17,6 +17,15 @@ public class EnemySpawnerConfig : ScriptableObject
     public int round;
 
     /// <summary>
+    /// The round on which the specific config should be loaded.
+    /// </summary>
+    public int minEnemyCount;
+
+    public int maxEnemyCount;
+
+    public float enemyCountMultiplicator;
+
+    /// <summary>
     /// The actual time between the each wave.
     /// </summary>
     public float timeBetweenWaves = 2.5f;

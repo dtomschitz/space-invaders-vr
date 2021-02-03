@@ -107,7 +107,8 @@ public class EnemySpawner : MonoBehaviour
     {
         SetState(EnemySpawnerState.Spawning);
 
-        for (int i = 0; i < Rounds * 1.25; i++)
+        int count = Random.Range(CurrentConfig.minEnemyCount, CurrentConfig.maxEnemyCount);
+        for (int i = 0; i < count * CurrentConfig.enemyCountMultiplicator; i++)
         {
             Vector3 position = center + new Vector3(
                  Random.Range(-size.x / 2, size.x / 2),
