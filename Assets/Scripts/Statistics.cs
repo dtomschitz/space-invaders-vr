@@ -38,8 +38,6 @@ public class Statistics : MonoBehaviour
         OnEnemyKilled?.Invoke(Kills);
     }
 
-    public void AddDamage(float damage) => DamageCaused += damage;
-
     public void ToggleTimer(bool value)
     {
         isTimerEnabled = value;
@@ -51,15 +49,16 @@ public class Statistics : MonoBehaviour
         time = 0f;
     }
 
+    public void Reset()
+    {
+        ResetTimer();
+        Kills = 0;
+    }
+
     /// <summary>
     /// The amount of kills the player made.
     /// </summary>
     public int Kills { get; protected set; }
-
-    /// <summary>
-    /// The amount of damage the player dealed.
-    /// </summary>
-    public float DamageCaused { get; protected set; }
 
     public string PlayedTime
     {

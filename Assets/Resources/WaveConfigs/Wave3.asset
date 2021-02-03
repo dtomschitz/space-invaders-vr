@@ -17,5 +17,5 @@ MonoBehaviour:
   maxEnemyCount: 20
   enemyCountMultiplicator: 1.8
   timeBetweenWaves: 1
-  timeBetweenSpawns: 1.2
+  timeBetweenSpawns: 0.8
   enemyConfig: {fileID: 11400000, guid: f10024d4933e0914797f79b2309155b1, type: 2}

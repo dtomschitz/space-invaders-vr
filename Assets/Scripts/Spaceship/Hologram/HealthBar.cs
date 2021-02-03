@@ -1,11 +1,18 @@
-﻿using UnityEngine;
-
-public class HealthBar : SlideBar
+﻿public class HealthBar : SlideBar
 {
     void Start()
     {
         Player.instance.OnEntityHealed += OnEntityHealed;
         Player.instance.OnEntityDamaged += OnEntityDamaged;
+        GameState.instance.OnGameStateChanged += OnGameStateChanged;
+    }
+
+    void OnGameStateChanged(GameStateType newState) 
+    {
+        if (newState == GameStateType.PreInGame)
+        {
+            SetFillAmount(Player.instance.HealthNormalized);
+        }
     }
 
     /// <summary>

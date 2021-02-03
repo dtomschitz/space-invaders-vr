@@ -38,6 +38,7 @@ public class Player : Entity
     protected override void OnDeath()
     {
         base.OnDeath();
+        AudioManager.instance.StopSound(Sound.Alarm);
         ForceField.instance.IsForceFieldEnabled = false;
         GameState.instance.SetState(GameStateType.GameOver);
     }
@@ -45,7 +46,11 @@ public class Player : Entity
     protected override void OnDamaged(float damage)
     {
         base.OnDamaged(damage);
-        if (CurrentHealth <= 20f)  OnNearDeath?.Invoke();
+        if (CurrentHealth <= 25f)
+        {
+            AudioManager.instance.PlaySound(Sound.Alarm, gameObject.transform.position);
+            OnNearDeath?.Invoke();
+        }
     }
 
     /// <summary>
@@ -80,5 +85,11 @@ public class Player : Entity
     {
         leftHand.EnableHand(value);
         rightHand.EnableHand(value);
+    }
+
+    public void Reset()
+    {
+        attackers = new List<int>();
+        CurrentHealth = maxHealth;
     }
 }

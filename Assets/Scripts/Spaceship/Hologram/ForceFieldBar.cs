@@ -4,6 +4,15 @@
     {
         ForceField.instance.OnForceFieldPowerAdded += OnShieldPowerAdded;
         ForceField.instance.OnForceFieldPowerUsed += OnShieldPowerUsed;
+        GameState.instance.OnGameStateChanged += OnGameStateChanged;
+    }
+
+    void OnGameStateChanged(GameStateType newState)
+    {
+        if (newState == GameStateType.PreInGame)
+        {
+            SetFillAmount(ForceField.instance.ForceFieldPowerNormalized);
+        }
     }
 
     /// <summary>

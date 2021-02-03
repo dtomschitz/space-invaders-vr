@@ -23,6 +23,17 @@ public enum EnemySpawnerState
 /// </summary>
 public class EnemySpawner : MonoBehaviour
 {
+    #region Singelton
+
+    public static EnemySpawner instance;
+
+    void Awake()
+    {
+        instance = this;
+    }
+
+    #endregion;
+
     public Enemy[] enemyPrefabs;
     public bool isSpawningEnabled;
 
@@ -63,12 +74,30 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
+    public void Reset()
+    {
+        Rounds = 0;
+    }
+
     void ToggleSpawner(GameStateType newState)
     {
         bool isInGame = newState == GameStateType.InGame;
         isSpawningEnabled = isInGame;
         State = isInGame ? EnemySpawnerState.Counting : EnemySpawnerState.Disabled;
-    }
+
+        if (newState == GameStateType.GameOver)
+        {
+            foreach (GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy"))
+            {
+                Destroy(enemy);
+            }
+
+            foreach (GameObject enemyProjectile in GameObject.FindGameObjectsWithTag("EnemyProjectile"))
+            {
+                Destroy(enemyProjectile);
+            }
+        }
+    } 
 
     /// <summary>
     /// This method starts the next wave. It will add a new round to the

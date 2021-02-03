@@ -47,7 +47,7 @@ public class AudioManager : MonoBehaviour
     /// <param name="position">The position where the sound should be played.</param>
     public void PlaySound(Sound sound, Vector3 position)
     {
-        if (CanPlay(sound))
+        if (CanPlay(sound) && !loopingAudio.ContainsKey(sound))
         {
             GameObject soundGameObject = new GameObject("Sound");
             soundGameObject.transform.position = position;
@@ -74,7 +74,7 @@ public class AudioManager : MonoBehaviour
     /// <param name="sound">The sound which should get played.</param>
     public void PlaySound(Sound sound)
     {
-        if (CanPlay(sound))
+        if (CanPlay(sound) && !loopingAudio.ContainsKey(sound))
         {
             if (oneShotGameObject == null)
             {
@@ -133,15 +133,8 @@ public class AudioManager : MonoBehaviour
     private SoundClip GetSoundClip(Sound sound)
     {
         SoundClip[] clips = Array.Find(soundAssets, (soundAsset) => soundAsset.sound == sound).clips.ToArray();
-        if (clips == null || clips.Length == 0)
-        {
-            return null;
-        }
-
-        if (clips.Length == 1)
-        {
-            return clips[0];
-        }
+        if (clips == null || clips.Length == 0) return null;
+        if (clips.Length == 1) return clips[0];
 
         return clips[UnityEngine.Random.Range(0, clips.Length)];
     }

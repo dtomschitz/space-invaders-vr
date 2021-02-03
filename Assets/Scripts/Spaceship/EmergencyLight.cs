@@ -14,5 +14,9 @@ public class EmergencyLight : MonoBehaviour
     public void Toggle(bool active)
     {
         animator.enabled = active;
+        if (!active)
+        {
+            GetComponentInChildren<Light>().intensity = 0;
+        }
     }
 }

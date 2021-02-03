@@ -114,7 +114,6 @@ public class Enemy : Entity
     void OnGameStateChanged(GameStateType newState)
     {
         CanAttack = newState == GameStateType.InGame;
-        if (newState == GameStateType.GameOver) Destroy(gameObject);
     }
 
     public void RequestAttack()
@@ -154,16 +153,6 @@ public class Enemy : Entity
         if (engagePlayer) Player.instance.OnCancelAttack(gameObject.GetInstanceID());
 
         Destroy(gameObject);
-    }
-
-    /// <summary>
-    /// This method gets called if the Enemy gets damaged.
-    /// It will also call the <see cref="AddDamage"/> method.
-    /// </summary>
-    protected override void OnDamaged(float damage)
-    {
-        base.OnDamaged(damage);
-        Statistics.instance.AddDamage(damage);
     }
 
     /// <summary>

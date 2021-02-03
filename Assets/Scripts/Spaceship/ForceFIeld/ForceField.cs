@@ -119,6 +119,11 @@ public class ForceField : MonoBehaviour
         }
     }
 
+    public void Reset()
+    {
+        CurrentForceFieldPower = maxForceFieldPower;
+    }
+
     public void EnableForceField(bool value)
     {
         if (!value && IsForceFieldEnabled)

@@ -54,15 +54,12 @@ public class EnemyProjectile : MonoBehaviour
     void OnGameStateChanged(GameStateType newState)
     {
         canMove = newState == GameStateType.InGame;
-        if (canMove) Invoke(nameof(DestroyProjectile), defaultDestroyTime);
-        else CancelInvoke(nameof(DestroyProjectile));
-
-        if (newState != GameStateType.InGame && projectileLoop != null)
+        if (newState != GameStateType.InGame)
         {
-            projectileLoop.Stop();
+            if (projectileLoop != null) projectileLoop.Stop();
         } else
         {
-            projectileLoop.Play();
+            if (projectileLoop != null) projectileLoop.Play();
         }
 
         if (newState == GameStateType.GameOver)

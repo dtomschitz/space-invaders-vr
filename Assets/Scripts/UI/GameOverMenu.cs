@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using TMPro;
-using UnityEngine.SceneManagement;
 
 public class GameOverMenu : MonoBehaviour
 {
@@ -15,10 +14,9 @@ public class GameOverMenu : MonoBehaviour
 
     public void Replay()
     {
-        Scene scene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(scene.name);
-
-        GameState.instance.SetState(GameStateType.PreInGame);
+        //Scene scene = SceneManager.GetActiveScene();
+        //SceneManager.LoadScene(scene.name);
+        GameState.instance.Reset();
     }
 
     public void Quit()

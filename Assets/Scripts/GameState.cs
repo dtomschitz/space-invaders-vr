@@ -64,6 +64,15 @@ public class GameState : MonoBehaviour
         OnGameStateChanged?.Invoke(State);
     }
 
+    public void Reset()
+    {
+        Player.instance.Reset();
+        ForceField.instance.Reset();
+        Statistics.instance.Reset();
+        EnemySpawner.instance.Reset();
+        SetState(GameStateType.PreInGame);
+    }
+
     void ToggleMainMenu()
     {
         Statistics.instance.ResetTimer();
@@ -126,6 +135,8 @@ public class GameState : MonoBehaviour
             Statistics.instance.ToggleTimer(true);
             UIManager.instance.ShowHolograms(true);
             ForceField.instance.EnableForceField(true);
+
+            UIManager.instance.StopCountdown();
         }));
     }
 

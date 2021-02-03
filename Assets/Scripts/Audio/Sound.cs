@@ -13,4 +13,5 @@ public enum Sound
     EnemyProjectileFire,
     EnemyProjectileCharge,
     EnemyProjectileHit,
+    Alarm
 }

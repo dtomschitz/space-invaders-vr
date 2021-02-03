@@ -31,7 +31,6 @@ public class GunLaser : MonoBehaviour
             if (hit.collider)
             {
                 endPosition = hit.point;
-                Debug.Log("dadwad");
             }
 
             dot.transform.position = endPosition;

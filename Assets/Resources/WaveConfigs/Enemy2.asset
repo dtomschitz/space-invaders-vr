@@ -22,5 +22,5 @@ MonoBehaviour:
   maxDodgeSpeed: 2.5
   minTimeBetweenDodges: 3
   maxTimeBetweenDodges: 5
-  minStartTimeBetweenAttacks: 1
-  maxStartTimeBetweenAttacks: 4
+  minStartTimeBetweenAttacks: 2
+  maxStartTimeBetweenAttacks: 6
