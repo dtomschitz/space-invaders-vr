@@ -39,6 +39,7 @@ public class GameState : MonoBehaviour
         if (State == newState) return;
         if (State == GameStateType.MainMenu && newState == GameStateType.PauseMenu) return;
 
+        GameStateType previousGameState = State;
         State = newState;
 
         switch (newState)
@@ -56,7 +57,7 @@ public class GameState : MonoBehaviour
                 break;
 
             case GameStateType.PreInGame:
-                TogglePreInGame();
+                TogglePreInGame(previousGameState);
                 break;
         }
 
@@ -107,13 +108,14 @@ public class GameState : MonoBehaviour
         UIManager.instance.ShowPauseMenu(false);
     }
 
-    void TogglePreInGame()
+    void TogglePreInGame(GameStateType previousGameState)
     {
+        if (previousGameState == GameStateType.PauseMenu) Time.timeScale = 1f;
+
         StopCountdown();
 
         XRManager.instance.EnableXRInteractors(false);
         GunManager.instance.EnableGuns(true);
-        ForceField.instance.EnableForceField(true);
 
         UIManager.instance.ShowMainMenu(false);
         UIManager.instance.ShowPauseMenu(false);
@@ -123,6 +125,7 @@ public class GameState : MonoBehaviour
             SetState(GameStateType.InGame);
             Statistics.instance.ToggleTimer(true);
             UIManager.instance.ShowHolograms(true);
+            ForceField.instance.EnableForceField(true);
         }));
     }
 

@@ -132,7 +132,6 @@ public class AudioManager : MonoBehaviour
     /// <returns></returns>
     private SoundClip GetSoundClip(Sound sound)
     {
-        //SoundClip[] clips = soundAssets.Find(soundAsset => soundAsset.sound == sound).clips.ToArray();
         SoundClip[] clips = Array.Find(soundAssets, (soundAsset) => soundAsset.sound == sound).clips.ToArray();
         if (clips == null || clips.Length == 0)
         {

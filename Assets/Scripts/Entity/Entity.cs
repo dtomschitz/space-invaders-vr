@@ -11,9 +11,6 @@ public class Entity : MonoBehaviour
     public float maxHealth;
     public float damage;
 
-    public EntityCombatState CombatState { get; protected set; }
-    public float CurrentHealth { get; set; }
-
     public delegate void EntityDied();
     public event EntityDied OnEntityDied;
 
@@ -26,7 +23,6 @@ public class Entity : MonoBehaviour
     protected virtual void Start()
     {
         CurrentHealth = maxHealth;
-        CombatState = EntityCombatState.Idle;
     }
 
     /// <summary>
@@ -84,13 +80,9 @@ public class Entity : MonoBehaviour
     }
 
     /// <summary>
-    /// Sets the new combat state of the entity.
+    /// Returns the current health of the entity.
     /// </summary>
-    public void SetState(EntityCombatState state)
-    {
-        if (state == CombatState || !GameState.instance.IsInGame) return;
-        CombatState = state;
-    }
+    public float CurrentHealth { get; set; }
 
     /// <summary>
     /// Returns the normalized health.
@@ -116,23 +108,5 @@ public class Entity : MonoBehaviour
     public bool IsDead
     {
         get { return CurrentHealth <= 0; }
-    }
-
-    /// <summary>
-    /// Determinates whether the entity is shooting or not. If the entity is shooting
-    /// the method will return true; otherwise false.
-    /// </summary>
-    public bool IsShooting
-    {
-        get { return CombatState == EntityCombatState.Shooting; }
-    }
-
-    /// <summary>
-    /// Determinates whether the entity is idling or not. If the entity is idling
-    /// the method will return true; otherwise false.
-    /// </summary>
-    public bool IsIdle
-    {
-        get { return CombatState == EntityCombatState.Idle; }
     }
 }
