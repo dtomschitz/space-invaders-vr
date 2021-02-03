@@ -3545,10 +3545,25 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1932292061397858374, guid: c0933db3c6bb5d341937a4e8e399483f,
+        type: 3}
+      propertyPath: isSpawningEnabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7595446806006920964, guid: c0933db3c6bb5d341937a4e8e399483f,
         type: 3}
       propertyPath: m_Name
       value: EnemySpawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 7595446806006920964, guid: c0933db3c6bb5d341937a4e8e399483f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7595446806006920964, guid: c0933db3c6bb5d341937a4e8e399483f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7595446806006920967, guid: c0933db3c6bb5d341937a4e8e399483f,
         type: 3}
