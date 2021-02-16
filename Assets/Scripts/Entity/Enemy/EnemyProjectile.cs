@@ -16,8 +16,6 @@ public class EnemyProjectile : MonoBehaviour
     GameObject enemy;
     GameObject player;
 
-    float defaultDestroyTime = 5f;
-
     void Start()
     {
         GameState.instance.OnGameStateChanged += OnGameStateChanged;
