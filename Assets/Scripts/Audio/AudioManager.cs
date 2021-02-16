@@ -4,8 +4,8 @@ using System.Linq;
 using UnityEngine;
 
 /// <summary>
-/// Class <c>AudioManager</c> is used play back a specific <see cref="SoundClip"/>
-/// for once.
+/// Class <c>AudioManager</c> is used play back a specific <see cref="Sound"/> 
+/// for once or in a loop.
 /// </summary>
 public class AudioManager : MonoBehaviour
 {
@@ -36,12 +36,13 @@ public class AudioManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Plays the specific <see cref="SoundClip"/> at the given position.
-    /// The Method will determine whether the sound can be played currently or
-    /// not. If it can a new game object with the <see cref="AudioSource"/>
-    /// component attached will be created. Based on the given <see cref="Sound"/>
-    /// the method will find the associated <see cref="SoundClip"/>. 
-    /// The created game object will get destoryed after the sound ended.
+    /// Plays the specific <see cref="Sound"/> at the given position. The Method
+    /// will determine whether the sound can be played currently or not. If it 
+    /// can a new game object with the <see cref="AudioSource"/> component 
+    /// attached will be created. Based on the given <see cref="Sound"/> the 
+    /// method will find the associated <see cref="SoundClip"/>. If the resolved
+    /// <see cref="SoundClip"/> is marked as a looping one the created game 
+    /// object will not get destoryed after the sound ended.
     /// </summary>
     /// <param name="sound">The sound which should get played.</param>
     /// <param name="position">The position where the sound should be played.</param>
@@ -58,8 +59,11 @@ public class AudioManager : MonoBehaviour
             SetAudioSourceConfig(audioSource, soundClip);
             audioSource.Play();
 
-            if (soundClip.loop) loopingAudio.Add(sound, soundGameObject);
-            if (!soundClip.loop) Destroy(soundGameObject, audioSource.clip.length);
+            if (soundClip.loop) {
+                loopingAudio.Add(sound, soundGameObject);
+            } else {
+                Destroy(soundGameObject, audioSource.clip.length);
+            }
         }
     }
 
@@ -93,7 +97,7 @@ public class AudioManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Stops the specific <see cref="SoundClip"/>.
+    /// Stops the specific looping <see cref="Sound"/>.
     /// </summary>
     /// <param name="sound">The sound which should get stopped.</param>
     public void StopSound(Sound sound)
@@ -128,7 +132,9 @@ public class AudioManager : MonoBehaviour
     /// <see cref="Sound"/> and returns it. If no <see cref="SoundClip"/> could
     /// be found the method will return null.
     /// </summary>
-    /// <param name="sound"></param>
+    /// <param name="sound">
+    /// The sound for which the <see cref="SoundClip"/> should be found.
+    /// </param>
     /// <returns></returns>
     private SoundClip GetSoundClip(Sound sound)
     {

@@ -1,4 +1,7 @@
-﻿public class HealthBar : SlideBar
+﻿/// <summary>
+/// Class <c>HealthBar</c> is used to visualize the health bar for the player.
+/// </summary>
+public class HealthBar : SlideBar
 {
     void Start()
     {

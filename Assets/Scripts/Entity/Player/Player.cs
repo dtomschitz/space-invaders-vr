@@ -35,6 +35,10 @@ public class Player : Entity
         AudioManager.instance.PlaySound(Sound.Engine, gameObject.transform.position);
     }
 
+    /// <summary>
+    /// This method overrides the OnDeath method of the <see cref="Entity"/>
+    /// class in order to update the game state.
+    /// </summary>
     protected override void OnDeath()
     {
         base.OnDeath();
@@ -43,6 +47,11 @@ public class Player : Entity
         GameState.instance.SetState(GameStateType.GameOver);
     }
 
+    /// <summary>
+    /// This method overrides the OnDamaged method of the <see cref="Entity"/>
+    /// class in order to start the emergency alarm inside the spaceship incase
+    /// the player is on low health.
+    /// </summary>
     protected override void OnDamaged(float damage)
     {
         base.OnDamaged(damage);
@@ -81,12 +90,21 @@ public class Player : Entity
         attackers.Remove(id);
     }
 
+    /// <summary>
+    /// This method disables or enables the player hands.
+    /// </summary>
+    /// <param name="value">
+    /// Whether the player hands should be shown or not.
+    /// </param>
     public void EnableHands(bool value)
     {
         leftHand.EnableHand(value);
         rightHand.EnableHand(value);
     }
 
+    /// <summary>
+    /// This method resets the player stats.
+    /// </summary>
     public void Reset()
     {
         attackers = new List<int>();

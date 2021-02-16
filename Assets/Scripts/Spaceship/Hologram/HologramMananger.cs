@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 
+/// <summary>
+/// Class <c>HologramMananger</c> is used to enable or disable the holograms.
+/// </summary>
 public class HologramMananger : MonoBehaviour
 {
     public Hologram statsHologram;
     public Hologram killsHologram;
     public Hologram timeHologram;
-
 
     public void EnableHolograms(bool value)
     {

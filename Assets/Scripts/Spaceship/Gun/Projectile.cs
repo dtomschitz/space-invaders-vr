@@ -1,5 +1,9 @@
 ﻿using UnityEngine;
 
+/// <summary>
+/// Class <c>Projectile</c> is used in order to handle the projectile logic and 
+/// spawn the effects if the player hit an enemy.
+/// </summary>
 public class Projectile : MonoBehaviour
 {
     public float speed;

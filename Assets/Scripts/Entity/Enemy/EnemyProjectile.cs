@@ -51,6 +51,10 @@ public class EnemyProjectile : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// This method can stop the projectile sound and movement based on the 
+    /// current game state.
+    /// </summary>
     void OnGameStateChanged(GameStateType newState)
     {
         canMove = newState == GameStateType.InGame;
@@ -68,7 +72,12 @@ public class EnemyProjectile : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
+    	
+    /// <summary>
+    /// This method spawns the hit explosion and plays either the 
+    /// <see cref="Sound.ForceFieldImpact"/> or the <see cref="Sound.EnemyProjectileHit"/>
+    /// based on the current force field state.
+    /// </summary>
     void SpawnHitIndicator(Collision collision)
     {
         GameObject hitPrefab = hitPrefabs[Random.Range(0, hitPrefabs.Length)];
@@ -83,11 +92,10 @@ public class EnemyProjectile : MonoBehaviour
         Destroy(hit, 3f);
     }
 
-    void DestroyProjectile()
-    {
-        Destroy(gameObject);
-    }
-
+    /// <summary>
+    /// This method sets the base damage of the projectile.
+    /// </summary>
+    /// <param name="damage">The amount of damage the projectile can deal.</param>
     public void SetDamage(float damage)
     {
         this.damage = damage;

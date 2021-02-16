@@ -1,6 +1,10 @@
 ﻿using System.Collections;
 using UnityEngine;
 
+/// <summary>
+/// Class <c>ForceField</c> is used to handle the interaction with the player
+/// as well as the stats of it.
+/// </summary>
 public class ForceField : MonoBehaviour
 {
     #region Singelton
@@ -61,11 +65,20 @@ public class ForceField : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// This method enables or disables the force field if the player pressed
+    /// the button on the desk.
+    /// </summary>
     void OnShieldButtonPress()
     {
         ToggleForceField(!IsForceFieldEnabled);
     }
 
+    /// <summary>
+    /// This method enables or disables the force field if the player pressed
+    /// the button on the desk. In case the start or stop sound is currently 
+    ///playing it will get stopped and restarted.
+    /// </summary>
     void ToggleForceField(bool active)
     {
         IsForceFieldEnabled = active;
@@ -75,6 +88,10 @@ public class ForceField : MonoBehaviour
         soundCoroutine = StartCoroutine(ToggleForceFieldSound(IsForceFieldEnabled));
     }
 
+    /// <summary>
+    /// This method plays back the start or stop sound of the force field based
+    /// on the given value.
+    /// </summary>
     IEnumerator ToggleForceFieldSound(bool active)
     {
         if (active)
@@ -91,8 +108,8 @@ public class ForceField : MonoBehaviour
     }
 
     /// <summary>
-    /// This method adds a set ammount of shield power to the player and calls the
-    /// <see cref="OnForceFieldPowerAdded"/> event.
+    /// This method adds a set ammount of shield power to the player and calls 
+    /// the <see cref="OnForceFieldPowerAdded"/> event.
     /// </summary>
     /// <param name="amount">The ammount of shield power the player received.</param>
     public void AddForceFieldPower(float amount)
@@ -103,8 +120,8 @@ public class ForceField : MonoBehaviour
     }
 
     /// <summary>
-    /// This method reduces a set ammount of shield power from the player and calls the
-    /// <see cref="OnForceFieldPowerUsed"/> event.
+    /// This method reduces a set ammount of shield power from the player and 
+    /// calls the <see cref="OnForceFieldPowerUsed"/> event.
     /// </summary>
     /// <param name="amount">The ammount of shield power the player lost.</param>
     public void UseForceFieldPower(float amount)
@@ -119,11 +136,18 @@ public class ForceField : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Resets the current force field power back to the default max value.
+    /// </summary>
     public void Reset()
     {
         CurrentForceFieldPower = maxForceFieldPower;
     }
 
+    /// <summary>
+    /// Enables or disables the entire interaction possibilties that the player 
+    /// has with the force field.
+    /// </summary>
     public void EnableForceField(bool value)
     {
         if (!value && IsForceFieldEnabled)
@@ -146,8 +170,18 @@ public class ForceField : MonoBehaviour
 
     public float CurrentForceFieldPower { get; protected set; }
 
+
+    /// <summary>
+    /// This method checks if the force field is currently enabled while the 
+    /// player is playing.
+    /// </summary>
+    /// <returns>True if the force field is enabled; otherwise, false.</returns>
     public bool IsForceFieldEnabled { set; get; } = false;
 
+    /// <summary>
+    /// This method checks if the interaction with the force field is allowed.
+    /// </summary>
+    /// <returns>True if the interaction is permissible; otherwise, false.</returns>
     public bool IsEnabled { set; get; }
 }
 

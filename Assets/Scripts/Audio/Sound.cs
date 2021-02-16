@@ -1,4 +1,6 @@
-﻿
+﻿/// <summary>
+/// The list of sounds which can be used for the <see cref="SoundAsset"/>.
+/// </summary>
 public enum Sound
 {
     Projectile,

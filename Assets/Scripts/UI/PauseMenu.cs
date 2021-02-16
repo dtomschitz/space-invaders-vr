@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 /// can either restart the current game, go back to the main menu or continue
 /// the current game.
 /// </summary>
-
 public class PauseMenu : MonoBehaviour
 {
     /// <summary>

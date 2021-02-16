@@ -1,5 +1,9 @@
 ﻿using UnityEngine;
 
+/// <summary>
+/// Class <c>Gun</c> is used for handling a specific gun and the interaction with
+/// the player. From this script the projectiles will get instantiated.
+/// </summary>
 public class Gun : MonoBehaviour
 {
     [Header("Settings")]
@@ -21,6 +25,11 @@ public class Gun : MonoBehaviour
     bool isShootingEnabled = true;
     bool isEnabled = false;
 
+
+    /// <summary>
+    /// Sets the default postions and subsribes to the trigger event based on the 
+    /// set position of the gun.
+    /// </summary>
     void Start()
     {
         if (position == GunPosition.LEFT)
@@ -37,6 +46,10 @@ public class Gun : MonoBehaviour
         defaultRotation = gameObject.transform.rotation;
     } 
 
+    /// <summary>
+    /// Rotates the specific gun to the position the player is aiming with the
+    /// associated controller.
+    /// </summary>
     void Update()
     {
         if (IsEnabled)
@@ -46,6 +59,12 @@ public class Gun : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// This method gets called if the game state has been changed. In case the
+    /// state is not set to PreInGame or InGame both positions of the guns will
+    /// get resetted. 
+    /// </summary>
+    /// <param name="newState">The new game state.</param>
     void OnGameStateChanged(GameStateType newState)
     {
         if (newState != GameStateType.PreInGame || newState != GameStateType.InGame)
@@ -55,6 +74,12 @@ public class Gun : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// This method gets called if the player has pressed the according trigger.
+    /// If the game state is currently set to InGame or IsPreInGame and the 
+    /// shooting is enabled a new projectile as well as the muzzle flash will 
+    /// get instantiated. 
+    /// </summary>
     void Shoot()
     {
         if (IsShootingEnabled && (GameState.instance.IsInGame || GameState.instance.IsPreInGame))
@@ -75,6 +100,10 @@ public class Gun : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// This method checks if shooting is enabled for the specific gun.
+    /// </summary>
+    /// <returns>True if shooting is enaled; otherwise, false.</returns>
     public bool IsShootingEnabled
     {
         set
@@ -86,6 +115,10 @@ public class Gun : MonoBehaviour
         get => isShootingEnabled;
     }
 
+    /// <summary>
+    /// This method checks if the entire interaction with the gun is enabled or disabled.
+    /// </summary>
+    /// <returns>True if it is enaled; otherwise, false.</returns>
     public bool IsEnabled
     {
         set

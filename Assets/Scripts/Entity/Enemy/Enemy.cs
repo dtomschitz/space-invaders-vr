@@ -2,7 +2,8 @@
 using UnityEngine;
 
 /// <summary>
-/// enum <c>DodgeDirection</c> contains the two options of directions in which the enemy can dodge.
+/// Enum <c>DodgeDirection</c> contains the two options of directions in which 
+/// the enemy can dodge.
 /// </summary>
 public enum DodgeDirection
 {
@@ -11,7 +12,8 @@ public enum DodgeDirection
 }
 
 /// <summary>
-/// Class <c>Enemy</c> contains the logic of the enemies when they are shooting and when they are dodging.
+/// Class <c>Enemy</c> contains the logic of the enemies when they are shooting 
+/// and when they are dodging.
 /// </summary>
 public class Enemy : Entity
 {
@@ -20,6 +22,7 @@ public class Enemy : Entity
     public EnemyProjectile projectilePrefab;
     public GameObject firePoint;
 
+    // Damage Settings
     int minDamage;
     int maxDamage;
 
@@ -58,9 +61,9 @@ public class Enemy : Entity
     }
 
     /// <summary>
-    /// This method checks if the enemy is to close to the player if thats the case enemy gets destroyed.
-    /// Additionally it will time the attacks of the enemy.
-    /// It also times the dodges and the direction of the dodges.
+    /// This method checks if the enemy is to close to the player if thats the 
+    /// case enemy gets destroyed. Additionally it will time the attacks of the 
+    /// enemy. It also times the dodges and the direction of the dodges.
     /// </summary>
     void Update()
     {
@@ -93,6 +96,13 @@ public class Enemy : Entity
         Dodge(dodgeDirection == DodgeDirection.RIGHT ? dodgeRange : -dodgeRange);
     }
 
+    /// <summary>
+    /// This method initializes the different config values of the specific
+    /// enemy in order to keep those values dynamic based on the current wave.
+    /// </summary>
+    /// <param name="config">
+    /// The specific <see cref="EnemyConfig"/> which should get loaded.
+    /// </param>
     public void Init(EnemyConfig config)
     {
         maxHealth = Random.Range(config.minHealth, config.maxHealth);
@@ -111,11 +121,19 @@ public class Enemy : Entity
         maxStartTimeBetweenAttacks = config.maxStartTimeBetweenAttacks;
     }
 
+    /// <summary>
+    /// This method is used for subscribing to the GameStateChange event in 
+    /// order to enable or disable the attacking behaviour of the specific enemy.
+    /// </summary>
     void OnGameStateChanged(GameStateType newState)
     {
         CanAttack = newState == GameStateType.InGame;
     }
 
+    /// <summary>
+    /// This method is used for requesting an attack on the player in order to 
+    /// prevent multiple simultaneous shots.
+    /// </summary>
     public void RequestAttack()
     {
         attackRequested = true;
@@ -129,6 +147,10 @@ public class Enemy : Entity
         }
     }
 
+    /// <summary>
+    /// This method is used to cancel the currently ongoing attack so other 
+    /// enemies can start their attack.
+    /// </summary>
     public void OnCancelAttack()
     {
         Player.instance.OnCancelAttack(gameObject.GetInstanceID());
@@ -138,8 +160,8 @@ public class Enemy : Entity
     }
 
     /// <summary>
-    /// This method gets called if the Enemy gets killed.
-    /// It will also call the <see cref="ShowExplosion"/> method.
+    /// This method gets called if the Enemy gets killed. It will also call 
+    /// the <see cref="ShowExplosion"/> method.
     /// </summary>
     protected override void OnDeath()
     {
@@ -203,6 +225,9 @@ public class Enemy : Entity
         Destroy(hit, 3f);
     }
 
+    /// <summary>
+    /// This method resets the attack timer.
+    /// </summary>
     void ResetTimeBetweenAttack()
     {
         timeBetweenAttacks = Random.Range(minStartTimeBetweenAttacks, maxStartTimeBetweenAttacks);

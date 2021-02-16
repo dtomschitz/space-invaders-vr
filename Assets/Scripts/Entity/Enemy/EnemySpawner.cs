@@ -48,7 +48,6 @@ public class EnemySpawner : MonoBehaviour
     void Start()
     {
         GameState.instance.OnGameStateChanged += ToggleSpawner;
-
         configs = Resources.LoadAll<EnemySpawnerConfig>("WaveConfigs");
         Debug.LogFormat("Loaded {0} spawner configs.", configs.Length);
     } 
@@ -79,6 +78,11 @@ public class EnemySpawner : MonoBehaviour
         Rounds = 0;
     }
 
+    /// <summary>
+    /// Enables or disables the <see cref="EnemySpawner"/> based on the current
+    /// game state. If the new game state is set to GameOver the method will
+    /// also kill all enemies and the projectiles.
+    /// </summary>
     void ToggleSpawner(GameStateType newState)
     {
         bool isInGame = newState == GameStateType.InGame;

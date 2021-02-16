@@ -1,6 +1,11 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
+/// <summary>
+/// Class <c>ForceFieldButton</c> is used to handle the interaction with the 
+/// pressable button. It is used as an middleware to enable or disable the 
+/// force field.
+/// </summary>
 public class ForceFieldButton : MonoBehaviour
 {
     public Material defaultMaterial;

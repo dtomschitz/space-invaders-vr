@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Class <c>SlideBar</c> is used as an base class for slide bars e.g. the 
+/// health or force field bar.
+/// </summary>
 public class SlideBar : MonoBehaviour
 {
     public Slider slider;

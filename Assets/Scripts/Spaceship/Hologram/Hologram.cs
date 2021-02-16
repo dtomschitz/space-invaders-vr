@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 
+/// <summary>
+/// Class <c>Hologram</c> is used to enable or disable the specific hologram.
+/// </summary>
 public class Hologram : MonoBehaviour
 {
     public Material lightOnMaterial;

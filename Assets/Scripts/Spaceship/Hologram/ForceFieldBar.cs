@@ -1,4 +1,8 @@
-﻿public class ForceFieldBar : SlideBar
+﻿/// <summary>
+/// Class <c>HealthBar</c> is used to visualize the force field power bar for 
+/// the player.
+/// </summary>
+public class ForceFieldBar : SlideBar
 {
     void Start()
     {

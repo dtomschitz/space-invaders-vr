@@ -2,8 +2,8 @@
 
 /// <summary>
 /// Class <c>Entity</c> is used as the base class for all entities such as the
-/// player or the enemies. It contains all the necessary methods in
-/// order to handle animations, stats and the combat relevant stuff.
+/// player or the enemies. It contains all the necessary methods in  order to 
+/// handle animations, stats and the combat relevant stuff.
 /// </summary>
 public class Entity : MonoBehaviour
 {

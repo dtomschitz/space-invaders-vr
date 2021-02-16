@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 
+/// <summary>
+/// Enum <c>GameStateType</c> contains the different possible game states.
+/// </summary>
 public enum GameStateType
 {
     Initial,
@@ -10,6 +13,11 @@ public enum GameStateType
     InGame,
 }
 
+
+/// <summary>
+/// Class <c>GameState</c> handles the different game states and coordinates
+/// between the different states.
+/// </summary>
 public class GameState : MonoBehaviour
 {
     #region Singleton
@@ -34,6 +42,12 @@ public class GameState : MonoBehaviour
         SetState(GameStateType.MainMenu);
     }
 
+    /// <summary>
+    /// This method updates the game state and triggers the associated methods 
+    /// in order to disable or enable specific menus and overlays. Additionaly
+    /// the method also fires the <see cref="OnGameStateChanged"/> action so 
+    /// that other scripts can subscribe to the changes.
+    /// </summary>
     public void SetState(GameStateType newState)
     {
         if (State == newState) return;
@@ -64,6 +78,10 @@ public class GameState : MonoBehaviour
         OnGameStateChanged?.Invoke(State);
     }
 
+    /// <summary>
+    /// This method restets all gameplay relevant stats and updates the current
+    /// game state to <see cref="GameStateType.PreInGame"/>.
+    /// </summary>
     public void Reset()
     {
         Player.instance.Reset();
@@ -73,6 +91,10 @@ public class GameState : MonoBehaviour
         SetState(GameStateType.PreInGame);
     }
 
+    /// <summary>
+    /// This method enables the main menu and disables/hides all unnecessary 
+    /// informations which are not relevant anymore.
+    /// </summary>
     void ToggleMainMenu()
     {
         Statistics.instance.ResetTimer();
@@ -86,6 +108,10 @@ public class GameState : MonoBehaviour
         UIManager.instance.ShowGameOverMenu(false);
     }
 
+    /// <summary>
+    /// This method enables the pause menu and disables/hides all unnecessary 
+    /// informations which are not relevant anymore.
+    /// </summary>
     void TogglePauseMenu()
     {
         Statistics.instance.ToggleTimer(false);
@@ -101,6 +127,10 @@ public class GameState : MonoBehaviour
         UIManager.instance.ShowHolograms(false);
     }
 
+    /// <summary>
+    /// This method enables the game over menu and disables/hides all unnecessary 
+    /// informations which are not relevant anymore.
+    /// </summary>
     void ToggleGameOver()
     {
         Statistics.instance.ToggleTimer(false);
@@ -117,6 +147,15 @@ public class GameState : MonoBehaviour
         UIManager.instance.ShowPauseMenu(false);
     }
 
+    /// <summary>
+    /// This method gets called if the game state is set to 
+    /// <see cref="GameStateType.PreInGame"/>. This intermediate step is necessary
+    /// in order to initialize the countdown and waite for it to finish. After 
+    /// that the callback method will be called which sets the game state to 
+    /// <see cref="GameStateType.InGame"/>. This in turn enables the force field
+    /// for the player, shows the holograms and starts the first spawning
+    /// process of the enemies.
+    /// </summary>
     void TogglePreInGame(GameStateType previousGameState)
     {
         if (previousGameState == GameStateType.PauseMenu) Time.timeScale = 1f;
@@ -140,6 +179,9 @@ public class GameState : MonoBehaviour
         }));
     }
 
+    /// <summary>
+    /// This methods stops the currently running countdown if there is one to stop.
+    /// </summary>
     void StopCountdown()
     {
         if (countdownCoroutine != null)
@@ -154,8 +196,7 @@ public class GameState : MonoBehaviour
     /// This method checks if the player is currently in game.
     /// </summary>
     /// <returns>True if the current game state is equals to
-    /// <see cref="GameStateType.InGame"/>;
-    /// otherwise, false.
+    /// <see cref="GameStateType.InGame"/>; otherwise, false.
     /// </returns>
     public bool IsInGame
     {
@@ -166,8 +207,7 @@ public class GameState : MonoBehaviour
     /// This method checks if the player is currently pre in game.
     /// </summary>
     /// <returns>True if the current game state is equals to
-    /// <see cref="GameStateType.PreInGame"/>;
-    /// otherwise, false.
+    /// <see cref="GameStateType.PreInGame"/>; otherwise, false.
     /// </returns>
     public bool IsPreInGame
     {
