@@ -12,8 +12,8 @@ public enum DodgeDirection
 }
 
 /// <summary>
-/// Class <c>Enemy</c> contains the logic of the enemies when they are shooting 
-/// and when they are dodging.
+/// Class <c>Enemy</c> contains the logic for enemies in order to give them the 
+/// ability to attack the player or doge the projectiles from the player.
 /// </summary>
 public class Enemy : Entity
 {
@@ -69,6 +69,7 @@ public class Enemy : Entity
     {
         transform.LookAt(attackPoint.transform.position);
 
+        // Tries to attack the player if the timner has expired.
         if (CanAttack)
         {
             if (timeBetweenAttacks <= 0 && !engagePlayer && !attackRequested)
@@ -81,6 +82,7 @@ public class Enemy : Entity
             }
         }
 
+        // Doges if the timner has expired.
         if (timeBetweenDodges <= 0)
         {
             dodgeDirection = dodgeDirection == DodgeDirection.LEFT ? DodgeDirection.RIGHT : DodgeDirection.LEFT;
@@ -233,5 +235,9 @@ public class Enemy : Entity
         timeBetweenAttacks = Random.Range(minStartTimeBetweenAttacks, maxStartTimeBetweenAttacks);
     }
 
+    /// <summary>
+    /// This method checks if the enemy is allowed to attack the player.
+    /// </summary>
+    /// <returns>True if it can attack the player; otherwise, false.</returns>
     public bool CanAttack { set; get; } = true;
 }

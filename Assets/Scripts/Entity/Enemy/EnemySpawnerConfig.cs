@@ -17,10 +17,13 @@ public class EnemySpawnerConfig : ScriptableObject
     public int round;
 
     /// <summary>
-    /// The round on which the specific config should be loaded.
+    /// The minimal amount of enemies that should spawn in the specific wave.
     /// </summary>
     public int minEnemyCount;
 
+    /// <summary>
+    /// The maximum amount of enemies that should spawn in the specific wave.
+    /// </summary>
     public int maxEnemyCount;
 
     public float enemyCountMultiplicator;

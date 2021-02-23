@@ -1,6 +1,11 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Class <c>Player</c> extends the <c>Entity</c> class in order to override 
+/// specific methods which will trigger additionall sounds, effects and updates
+/// the game state in special cases.
+/// </summary>
 public class Player : Entity
 {
     #region Singelton
@@ -37,7 +42,8 @@ public class Player : Entity
 
     /// <summary>
     /// This method overrides the OnDeath method of the <see cref="Entity"/>
-    /// class in order to update the game state.
+    /// class in order to update the game state, disable the force field and 
+    /// stop the alarm sound.
     /// </summary>
     protected override void OnDeath()
     {

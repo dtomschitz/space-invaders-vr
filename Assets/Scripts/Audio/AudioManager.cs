@@ -5,7 +5,7 @@ using UnityEngine;
 
 /// <summary>
 /// Class <c>AudioManager</c> is used play back a specific <see cref="Sound"/> 
-/// for once or in a loop.
+/// for once or in a loop. 
 /// </summary>
 public class AudioManager : MonoBehaviour
 {

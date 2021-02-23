@@ -12,6 +12,7 @@ public class HealthBar : SlideBar
 
     void OnGameStateChanged(GameStateType newState) 
     {
+        // Reset the heatlh status bar if the game state is set to PreInGame.
         if (newState == GameStateType.PreInGame)
         {
             SetFillAmount(Player.instance.HealthNormalized);

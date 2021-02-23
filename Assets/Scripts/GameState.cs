@@ -47,11 +47,13 @@ public class GameState : MonoBehaviour
     /// in order to disable or enable specific menus and overlays. Additionaly
     /// the method also fires the <see cref="OnGameStateChanged"/> action so 
     /// that other scripts can subscribe to the changes.
+    /// <param name="newState">The new game state.</param>
     /// </summary>
     public void SetState(GameStateType newState)
-    {
+    {   
         if (State == newState) return;
-        if (State == GameStateType.MainMenu && newState == GameStateType.PauseMenu) return;
+        if (State == GameStateType.MainMenu && 
+            newState == GameStateType.PauseMenu) return;
 
         GameStateType previousGameState = State;
         State = newState;

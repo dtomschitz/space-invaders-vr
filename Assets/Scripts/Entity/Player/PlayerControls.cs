@@ -1,6 +1,10 @@
-﻿
-using UnityEngine;
+﻿using UnityEngine;
 
+/// <summary>
+/// Class <c>PlayerControls</c> subscribes to specific input events in order to
+/// provide them for every script which needs information about the different
+/// input actions the player can perform.
+/// </summary>
 public class PlayerControls : MonoBehaviour
 {
     public PlayerInputActions inputActions;

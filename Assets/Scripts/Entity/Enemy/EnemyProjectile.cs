@@ -22,9 +22,6 @@ public class EnemyProjectile : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
-    /// <summary>
-    /// This method lets the projecile move to the player.
-    /// </summary>
     void Update()
     {
         if (isFired && canMove)
@@ -38,6 +35,9 @@ public class EnemyProjectile : MonoBehaviour
         bool isSpaceship = collision.gameObject.CompareTag("Spaceship");
         bool isForceField = collision.gameObject.CompareTag("ForceField");
 
+        // If the collided object is the spaceship or the force field, the hit
+        // explosion should get instantiated. Incase the force field ist disabled
+        // the player has to take damge.
         if (isSpaceship || isForceField)
         {
             if (hitPrefabs?.Length != 0) SpawnHitIndicator(collision);
@@ -67,7 +67,7 @@ public class EnemyProjectile : MonoBehaviour
         if (newState == GameStateType.GameOver)
         {
             if (projectileLoop != null) projectileLoop.Stop();
-            Destroy(gameObject);
+            if (gameObject) Destroy(gameObject);
         }
     }
     	
@@ -84,7 +84,9 @@ public class EnemyProjectile : MonoBehaviour
         GameObject hit = Instantiate(hitPrefab, contact.point, rotation);
 
         AudioManager.instance.PlaySound(
-            ForceField.instance.IsForceFieldEnabled ? Sound.ForceFieldImpact : Sound.EnemyProjectileHit, 
+            ForceField.instance.IsForceFieldEnabled 
+                ? Sound.ForceFieldImpact 
+                : Sound.EnemyProjectileHit, 
             collision.transform.position);
 
         Destroy(hit, 3f);

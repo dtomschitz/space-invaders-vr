@@ -12,11 +12,17 @@ public class Hologram : MonoBehaviour
     public GameObject hologram;
     public Animator animator;
 
+    /// <summary>
+    /// Enables or disables the entire game object which contains the hologram.
+    /// </summary>
     public void EnableHologram(bool value)
     {
         hologram.SetActive(value);
     }
 
+    /// <summary>
+    /// EEnables or disables the hologram and starts the according animation.
+    /// </summary>
     public void ToggleHologram(bool value)
     {
         projectorLight.GetComponent<MeshRenderer>().material = value ? lightOnMaterial : lightOffMaterial;

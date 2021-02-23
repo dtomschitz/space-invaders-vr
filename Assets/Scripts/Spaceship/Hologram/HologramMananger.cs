@@ -9,6 +9,10 @@ public class HologramMananger : MonoBehaviour
     public Hologram killsHologram;
     public Hologram timeHologram;
 
+    /// <summary>
+    /// Enables or disables the all game object which are containing the 
+    /// different holograms.
+    /// </summary>
     public void EnableHolograms(bool value)
     {
         statsHologram.EnableHologram(value);
@@ -16,6 +20,10 @@ public class HologramMananger : MonoBehaviour
         timeHologram.EnableHologram(value);
     }
 
+    /// <summary>
+    /// Enables or disables the all holograms and starts the according animation
+    /// for them.
+    /// </summary>
     public void ToggleHologram(bool value)
     {
         statsHologram.ToggleHologram(value);

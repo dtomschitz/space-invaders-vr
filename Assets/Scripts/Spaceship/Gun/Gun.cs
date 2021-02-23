@@ -1,8 +1,10 @@
 ﻿using UnityEngine;
 
 /// <summary>
-/// Class <c>Gun</c> is used for handling a specific gun and the interaction with
-/// the player. From this script the projectiles will get instantiated.
+/// Class <c>Gun</c> is used for handling the player actions which are 
+/// associated with on of the guns. The class implements all the needed methods
+/// for implementing the Gun functionailities as well as the update methods for
+/// the position and rotation.
 /// </summary>
 public class Gun : MonoBehaviour
 {

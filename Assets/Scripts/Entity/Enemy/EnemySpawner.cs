@@ -89,6 +89,7 @@ public class EnemySpawner : MonoBehaviour
         isSpawningEnabled = isInGame;
         State = isInGame ? EnemySpawnerState.Counting : EnemySpawnerState.Disabled;
 
+        // If the game is over all enemies and projectiles should get destroyed.
         if (newState == GameStateType.GameOver)
         {
             foreach (GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy"))
@@ -132,10 +133,10 @@ public class EnemySpawner : MonoBehaviour
     /// <summary>
     /// This method spawns the enemies for the current wave. For each enemy
     /// one of the set spawn points will be selected randomly. The new
-    /// instantiate enemy will then get the enemy config of the current wave
-    /// config in order to create random enemy types.
+    /// instantiate enemy will then get the enemy config which is stored inside
+    /// the wave config which is used at the time in order to create random type 
+    /// of enemy. This should enhance the gameplay and the difficulty level.
     /// </summary>
-    /// <returns></returns>
     IEnumerator SpawnRoutine()
     {
         SetState(EnemySpawnerState.Spawning);
@@ -143,11 +144,15 @@ public class EnemySpawner : MonoBehaviour
         int count = Random.Range(CurrentConfig.minEnemyCount, CurrentConfig.maxEnemyCount);
         for (int i = 0; i < count * CurrentConfig.enemyCountMultiplicator; i++)
         {
+            // Create a random point which is located somehwere inside the 
+            // spawning cube.
             Vector3 position = center + new Vector3(
                  Random.Range(-size.x / 2, size.x / 2),
                  Random.Range(-size.y / 2, size.y / 2),
                  Random.Range(-size.z / 2, size.z / 2));
 
+            // Pick a random enemy from the prefab list and instaniated it with
+            // the given config.
             Enemy enemyPrefab = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)];
             Enemy enemy = Instantiate(enemyPrefab, position, Quaternion.identity);
             if (enemy != null) enemy.Init(CurrentConfig.enemyConfig);
@@ -155,6 +160,8 @@ public class EnemySpawner : MonoBehaviour
             yield return new WaitForSeconds(CurrentConfig.timeBetweenSpawns);
         }
 
+        // If the spawning is finished the game state is set to running in order
+        // to trigger the next wave.
         SetState(EnemySpawnerState.Running);
         yield break;
     }
@@ -221,8 +228,16 @@ public class EnemySpawner : MonoBehaviour
     /// <returns>The current enemy spawner state.</returns>
     public EnemySpawnerState State { get; protected set; }
 
+    /// <summary>
+    /// This method returns the currently used wave config.
+    /// </summary>
+    /// <returns>The current wave config.</returns>
     public EnemySpawnerConfig CurrentConfig { get; protected set; }
 
+    /// <summary>
+    /// This method returns the rounds total.
+    /// </summary>
+    /// <returns>The rounds total.</returns>
     public int Rounds { get; protected set; } = 0;
 
     void OnDrawGizmosSelected()
