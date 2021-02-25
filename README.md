@@ -9,11 +9,6 @@ Space Invaders VR ist eine Neuinterpretation des Shoot-'em-up Games "Space Invad
 
 Der Spieler befindet sich über das ganze Spiel hinweg in dem Cockpit eines Raumschiffes und muss versuchen so viele Gegner wie möglich zu besiegen. Diese erscheinen in unterschiedlichen Intervallen und versuchen den Spielern mit ihren Schüssen zu Töten. Um dies zu verhindern muss der Spieler, die verschiedenen Gegner entweder schnell Abschießen oder im Notfall sein Schutzschild aktivieren, welches ihn vor den Einschlägen schütz. Besonders das Schutzschild muss vom Spieler regelmäßig genutzt werden, da Lebenspunkte nicht regeneriert werden können und das Spiel endlos Gegner enstehen lässt. Sollte der Spieler alle Lebenspunkte verloren haben, was mit längerer Spielzeit immer wahrscheinlicher wird, muss das Spiel von vorne Begonnen werden. Ziel des Spiels ist es, so viele erfolgreiche Abschüsse wie Möglich zu erreichen.
 
-<video width="100%" controls>
-  <source src="Docs/Gameplay.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
-
 # Spielmechaniken
 
 ## Die Geschütztürme
